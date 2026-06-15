@@ -1,8 +1,7 @@
-/* ==========================================================================
-   RAKTechSoftHub — 3D WebGL Animations & Systems Preloader (Three.js)
-   ========================================================================== */
+console.log("3d-animations.js: Script file loaded and executing.");
 
 function startSubsystems() {
+    console.log("3d-animations.js: startSubsystems() triggered.");
     initPreloader();
     
     // Safety check: if Three.js CDN fails to load, bypass 3D WebGL to avoid blocking the website
@@ -12,18 +11,21 @@ function startSubsystems() {
     }
 
     try {
+        console.log("3d-animations.js: Initializing Hero Animation...");
         initHeroAnimation();
     } catch (e) {
         console.error("Error initializing Hero 3D animation:", e);
     }
 
     try {
+        console.log("3d-animations.js: Initializing Services Animation...");
         initServicesAnimations();
     } catch (e) {
         console.error("Error initializing Services 3D animation:", e);
     }
 
     try {
+        console.log("3d-animations.js: Initializing CTA Animation...");
         initCtaAnimation();
     } catch (e) {
         console.error("Error initializing CTA 3D animation:", e);
@@ -36,7 +38,6 @@ if (document.readyState === 'loading') {
     startSubsystems();
 }
 
-
 /* ==========================================
    1. Systems Preloader (0-100%)
    ========================================== */
@@ -46,7 +47,12 @@ function initPreloader() {
     const pct = document.getElementById('preloader-percentage');
     const status = document.getElementById('preloader-status');
 
-    if (!preloader || !bar || !pct) return;
+    console.log("3d-animations.js: initPreloader() called. Elements:", { preloader, bar, pct, status });
+
+    if (!preloader || !bar || !pct) {
+        console.error("3d-animations.js: initPreloader aborting because DOM elements are missing!");
+        return;
+    }
 
     const statuses = [
         "Initializing core subsystems...",
@@ -63,6 +69,7 @@ function initPreloader() {
         // Increment progress faster at first, slower towards the end
         const step = Math.random() * 8 + 1;
         progress = Math.min(progress + step, 100);
+        console.log("3d-animations.js: updateProgress tick: progress =", progress);
         
         bar.style.width = `${progress}%`;
         pct.textContent = `${Math.floor(progress)}%`;
