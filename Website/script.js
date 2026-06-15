@@ -2,7 +2,7 @@
    RAKTechSoftHub — Full Interactive JS
    =================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function startScript() {
 
     // ─── Robust Storage Utilities (Cookie Fallbacks) ───
     const Storage = {
@@ -512,4 +512,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log('%c🔧 RAKTechSoftHub — Engineered with Precision', 'color: #88cff9; font-size: 14px; font-weight: bold;');
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startScript);
+} else {
+    startScript();
+}

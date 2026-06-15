@@ -2,12 +2,40 @@
    RAKTechSoftHub — 3D WebGL Animations & Systems Preloader (Three.js)
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function startSubsystems() {
     initPreloader();
-    initHeroAnimation();
-    initServicesAnimations();
-    initCtaAnimation();
-});
+    
+    // Safety check: if Three.js CDN fails to load, bypass 3D WebGL to avoid blocking the website
+    if (typeof THREE === 'undefined') {
+        console.warn("Three.js library not loaded. Bypassing WebGL animations.");
+        return;
+    }
+
+    try {
+        initHeroAnimation();
+    } catch (e) {
+        console.error("Error initializing Hero 3D animation:", e);
+    }
+
+    try {
+        initServicesAnimations();
+    } catch (e) {
+        console.error("Error initializing Services 3D animation:", e);
+    }
+
+    try {
+        initCtaAnimation();
+    } catch (e) {
+        console.error("Error initializing CTA 3D animation:", e);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startSubsystems);
+} else {
+    startSubsystems();
+}
+
 
 /* ==========================================
    1. Systems Preloader (0-100%)
