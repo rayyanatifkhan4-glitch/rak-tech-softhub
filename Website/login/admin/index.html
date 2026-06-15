@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin Panel — RAKTechSoftHub</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ══════════════════ LOGIN SCREEN ══════════════════ -->
+<div class="login-wrapper" id="loginScreen">
+    <div class="login-card">
+        <div class="login-logo">
+            <div class="login-logo-icon">R</div>
+            RAKTechSoftHub
+        </div>
+        <p class="login-subtitle">Admin Control Panel — Sign in to manage your site.</p>
+        <form id="loginForm">
+            <div class="login-field">
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername" placeholder="Enter username" autofocus required>
+            </div>
+            <div class="login-field">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+            <div class="login-error" id="loginError"></div>
+        </form>
+    </div>
+</div>
+
+<!-- ══════════════════ ADMIN APP ══════════════════ -->
+<div class="admin-app" id="adminApp">
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ─── Sidebar ─── -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-icon">R</div>
+            <span class="sidebar-logo-text">RAKTech</span>
+            <span class="sidebar-logo-badge">Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main</div>
+            <a class="sidebar-link active" data-page="dashboard">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="sidebar-link" data-page="inquiries">
+                <span class="material-symbols-outlined">mail</span>
+                Inquiries
+                <span class="sidebar-badge" id="sidebarInqCount">0</span>
+            </a>
+            <a class="sidebar-link" data-page="newsletter">
+                <span class="material-symbols-outlined">newspaper</span>
+                Newsletter
+            </a>
+            <div class="sidebar-section-label">System</div>
+            <a class="sidebar-link" data-page="users">
+                <span class="material-symbols-outlined">group</span>
+                Users
+            </a>
+            <a class="sidebar-link" data-page="settings">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+            <a class="sidebar-link" href="/" target="_blank">
+                <span class="material-symbols-outlined">open_in_new</span>
+                View Website
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a class="sidebar-footer-link" id="logoutBtn">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- ─── Main Content ─── -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h1 class="topbar-title" id="topbarTitle">Dashboard</h1>
+            </div>
+            <div class="topbar-actions">
+                <a class="topbar-btn" href="/" target="_blank" title="View Website">
+                    <span class="material-symbols-outlined">open_in_new</span>
+                </a>
+                <button class="topbar-btn" id="refreshBtn" title="Refresh Data">
+                    <span class="material-symbols-outlined">refresh</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ══════════ DASHBOARD PAGE ══════════ -->
+        <div class="page-content">
+            <div class="admin-page active" id="page-dashboard">
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon blue">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div class="stat-card-value" id="dashTotalInq">0</div>
+                        <div class="stat-card-label">Total Inquiries</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon cyan">
+                            <span class="material-symbols-outlined">fiber_new</span>
+                        </div>
+                        <div class="stat-card-value" id="dashNewInq">0</div>
+                        <div class="stat-card-label">New (Today)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon green">
+                            <span class="material-symbols-outlined">group</span>
+                        </div>
+                        <div class="stat-card-value" id="dashSubscribers">0</div>
+                        <div class="stat-card-label">Newsletter Subscribers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon purple">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="stat-card-value" id="dashCompleted">0</div>
+                        <div class="stat-card-label">Completed</div>
+                    </div>
+                </div>
+
+                <!-- Recent Inquiries -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <div class="admin-card-title">
+                            <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-dim)">schedule</span>
+                            Recent Inquiries
+                        </div>
+                        <a class="btn-outline" style="cursor:pointer;font-size:12px;" data-page="inquiries" id="dashViewAll">
+                            View All
+                            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="admin-card-body no-pad">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Service</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dashRecentTable">
+                                    <tr><td colspan="4">
+                                        <div class="empty-state" style="padding:40px 24px">
+                                            <span class="material-symbols-outlined">inbox</span>
+                                            <div class="empty-state-title">No inquiries yet</div>
+                                            <div class="empty-state-desc">When visitors submit the contact form, their inquiries will appear here.</div>
+                                        </div>
+                                    </td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════ INQUIRIES PAGE ══════════ -->
+            <div class="admin-page" id="page-inquiries">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <div class="admin-card-title">
+                            <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-dim)">mail</span>
+                            All Inquiries
+                        </div>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                            <div class="search-bar">
+                                <span class="material-symbols-outlined">search</span>
+                                <input type="text" placeholder="Search by name or company..." id="inqSearch">
+                            </div>
+                            <select class="filter-select" id="inqFilter">
+                                <option value="all">All Status</option>
+                                <option value="new">New</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                            <button class="btn-primary" id="inqExport" style="font-size:12px">
+                                <span class="material-symbols-outlined" style="font-size:16px">download</span>
+                                Export CSV
+                            </button>
+                            <button class="btn-danger" id="inqDeleteAll" style="font-size:12px">
+                                <span class="material-symbols-outlined" style="font-size:16px">delete_sweep</span>
+                                Clear All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="admin-card-body no-pad">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Contact Info</th>
+                                        <th>Company</th>
+                                        <th>Service</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inqTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════ NEWSLETTER PAGE ══════════ -->
+            <div class="admin-page" id="page-newsletter">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <div class="admin-card-title">
+                            <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-dim)">newspaper</span>
+                            Newsletter Subscribers
+                        </div>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                            <div class="search-bar">
+                                <span class="material-symbols-outlined">search</span>
+                                <input type="text" placeholder="Search email..." id="nlSearch">
+                            </div>
+                            <button class="btn-primary" id="nlExport" style="font-size:12px">
+                                <span class="material-symbols-outlined" style="font-size:16px">download</span>
+                                Export CSV
+                            </button>
+                            <button class="btn-danger" id="nlDeleteAll" style="font-size:12px">
+                                <span class="material-symbols-outlined" style="font-size:16px">delete_sweep</span>
+                                Clear All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="admin-card-body no-pad">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Date Subscribed</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="nlTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════ USERS PAGE ══════════ -->
+            <div class="admin-page" id="page-users">
+                <div class="admin-card" style="margin-bottom:24px">
+                    <div class="admin-card-header">
+                        <div class="admin-card-title">
+                            <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-dim)">person_add</span>
+                            Add New User
+                        </div>
+                    </div>
+                    <div class="admin-card-body">
+                        <form id="addUserForm" class="add-user-form">
+                            <div class="settings-field" style="margin:0">
+                                <label for="newUsername">Username</label>
+                                <input type="text" id="newUsername" placeholder="e.g. john" required>
+                            </div>
+                            <div class="settings-field" style="margin:0">
+                                <label for="newPassword">Password</label>
+                                <input type="password" id="newPassword" placeholder="Min 4 characters" required>
+                            </div>
+                            <div class="settings-field" style="margin:0">
+                                <label for="newRole">Role</label>
+                                <select class="filter-select" id="newRole" style="padding:12px 16px;border-radius:10px;width:100%">
+                                    <option value="admin">Admin</option>
+                                    <option value="viewer">Viewer (Read Only)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary" style="height:46px">Add User</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <div class="admin-card-title">
+                            <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-dim)">group</span>
+                            All Users
+                        </div>
+                    </div>
+                    <div class="admin-card-body no-pad">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════ SETTINGS PAGE ══════════ -->
+            <div class="admin-page" id="page-settings">
+                <div class="settings-grid">
+                    <!-- Contact Info -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <span class="material-symbols-outlined" style="font-size:20px;color:var(--primary-dim)">contact_mail</span>
+                            Contact Information
+                        </div>
+                        <p class="settings-section-desc">These details are displayed on your main website's contact section and footer.</p>
+                        <div class="settings-field">
+                            <label for="setEmail">Contact Email</label>
+                            <input type="email" id="setEmail" placeholder="raktechsofthub@gmail.com">
+                        </div>
+                        <div class="settings-field">
+                            <label for="setPhone">Phone Number</label>
+                            <input type="text" id="setPhone" placeholder="+923092003125">
+                        </div>
+                        <div class="settings-field">
+                            <label for="setWhatsApp">WhatsApp Number (international format)</label>
+                            <input type="text" id="setWhatsApp" placeholder="15559876543">
+                        </div>
+                        <div class="settings-field">
+                            <label for="setWhatsAppMsg">WhatsApp Default Message</label>
+                            <input type="text" id="setWhatsAppMsg" placeholder="Hi RAKTechSoftHub! I'm interested in your services.">
+                        </div>
+                    </div>
+
+                    <!-- Company Info -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <span class="material-symbols-outlined" style="font-size:20px;color:var(--primary-dim)">business</span>
+                            Company Information
+                        </div>
+                        <p class="settings-section-desc">Update your company details displayed in the footer section.</p>
+                        <div class="settings-field">
+                            <label for="setCompanyDesc">Footer Description</label>
+                            <textarea id="setCompanyDesc" rows="3" placeholder="Global provider of industrial-grade IT..."></textarea>
+                        </div>
+                        <div class="settings-field">
+                            <label for="setCopyright">Copyright Text</label>
+                            <input type="text" id="setCopyright" placeholder="© 2026 RAKTechSoftHub. All rights reserved.">
+                        </div>
+                    </div>
+
+                    <!-- Change My Password -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <span class="material-symbols-outlined" style="font-size:20px;color:var(--primary-dim)">lock</span>
+                            Change My Password
+                        </div>
+                        <p class="settings-section-desc">Update the password for your currently logged-in account: <strong id="setCurrentUser"></strong></p>
+                        <div class="settings-field">
+                            <label for="setCurrentPass">Current Password</label>
+                            <input type="password" id="setCurrentPass" placeholder="Enter current password">
+                        </div>
+                        <div class="settings-field">
+                            <label for="setNewPass">New Password</label>
+                            <input type="password" id="setNewPass" placeholder="Enter new password">
+                        </div>
+                        <div class="settings-field">
+                            <label for="setConfirmPass">Confirm New Password</label>
+                            <input type="password" id="setConfirmPass" placeholder="Re-enter new password">
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <span class="material-symbols-outlined" style="font-size:20px;color:var(--error)">warning</span>
+                            Data Management
+                        </div>
+                        <p class="settings-section-desc">Export or clear all stored data. Use with caution.</p>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <button class="btn-primary" id="setExportAll" style="justify-content:center">
+                                <span class="material-symbols-outlined" style="font-size:18px">download</span>
+                                Export All Data (JSON)
+                            </button>
+                            <button class="btn-danger" id="setResetAll" style="justify-content:center">
+                                <span class="material-symbols-outlined" style="font-size:18px">delete_forever</span>
+                                Reset All Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions" style="margin-top:32px">
+                    <button class="btn-outline" id="settingsCancel">Cancel</button>
+                    <button class="btn-primary" id="settingsSave">
+                        <span class="material-symbols-outlined" style="font-size:18px">save</span>
+                        Save Settings
+                    </button>
+                </div>
+            </div>
+
+        </div><!-- /page-content -->
+    </div><!-- /main-content -->
+</div><!-- /admin-app -->
+
+<!-- ── Inquiry Detail Modal ── -->
+<div class="modal-overlay" id="inqModal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title">Inquiry Details</span>
+            <button class="modal-close" id="inqModalClose">
+                <span class="material-symbols-outlined" style="font-size:18px">close</span>
+            </button>
+        </div>
+        <div class="modal-body" id="inqModalBody"></div>
+        <div class="modal-footer" id="inqModalFooter"></div>
+    </div>
+</div>
+
+<!-- ── Confirm Dialog ── -->
+<div class="confirm-overlay" id="confirmDialog">
+    <div class="confirm-box">
+        <h3 id="confirmTitle">Are you sure?</h3>
+        <p id="confirmDesc">This action cannot be undone.</p>
+        <div class="confirm-actions">
+            <button class="btn-outline" id="confirmCancel">Cancel</button>
+            <button class="btn-danger" id="confirmOk">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── Toast Container ── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>
