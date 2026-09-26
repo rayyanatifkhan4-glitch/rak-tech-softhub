@@ -94,27 +94,72 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
 
-    // ─── 3. Video Performance & Offscreen Pausing ───
-    (function initVideoObservers() {
+    // ─── 3. Video Engine: iOS Safari Autoplay & Seamless Mobile Playback ───
+    (function initVideoEngine() {
         if (prefersReducedMotion()) return;
 
         const videos = document.querySelectorAll('video');
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    if (video.paused) {
-                        video.play().catch(() => {});
-                    }
-                } else {
-                    if (!video.paused) {
-                        video.pause();
-                    }
+
+        function enforceInlineMuted(video) {
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('x5-playsinline', '');
+        }
+
+        function attemptPlay(video) {
+            enforceInlineMuted(video);
+            const promise = video.play();
+            if (promise !== undefined) {
+                promise.catch(() => {
+                    // Autoplay paused by iOS / Low Power Mode policy; user gesture will start it
+                });
+            }
+        }
+
+        videos.forEach(video => {
+            enforceInlineMuted(video);
+            attemptPlay(video);
+
+            video.addEventListener('loadedmetadata', () => attemptPlay(video), { once: true });
+            video.addEventListener('canplay', () => {
+                if (video.paused) attemptPlay(video);
+            }, { once: true });
+        });
+
+        // Mobile / iOS Low Power Mode Unlock: Start playback on user's first touch/scroll gesture
+        const wakeMobileVideos = () => {
+            videos.forEach(v => {
+                if (v.paused) {
+                    attemptPlay(v);
                 }
             });
-        }, { threshold: 0.1 });
+        };
 
-        videos.forEach(v => videoObserver.observe(v));
+        ['touchstart', 'touchend', 'pointerdown', 'scroll', 'click'].forEach(evt => {
+            window.addEventListener(evt, wakeMobileVideos, { passive: true });
+        });
+
+        // Intersection Observer: pause off-screen videos to save battery, resume when visible
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        attemptPlay(video);
+                    } else {
+                        if (!video.paused) {
+                            video.pause();
+                        }
+                    }
+                });
+            }, { threshold: 0.05 });
+
+            videos.forEach(v => videoObserver.observe(v));
+        }
     })();
 
     // ─── 4. Preloader Transition ───
