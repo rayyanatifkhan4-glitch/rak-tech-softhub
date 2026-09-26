@@ -1,8 +1,29 @@
-# Ignore system files
+# System & IDE files
 .DS_Store
 Thumbs.db
+desktop.ini
+.idea/
+.vscode/
 
-# Ignore node_modules & build directories of the React/Electron App
-App/node_modules/
+# Large Archives & Binaries (Over 100MB GitHub limit)
+*.zip
+*.tar.gz
+*.rar
+*.exe
+*.dmg
+
+# Node & dependencies
+node_modules/
+**/node_modules/
+
+# App & Electron builds
 App/dist/
+App/dist-out/
+App/dist-release/
 App/dist-electron/
+App/build/
+App/release/
+App/android/
+
+# Logs
+*.log

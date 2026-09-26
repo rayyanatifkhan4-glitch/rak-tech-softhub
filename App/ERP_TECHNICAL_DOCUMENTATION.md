@@ -34,19 +34,29 @@ The **Tech ERP Application** is designed as a standalone, offline-first applicat
 
 ---
 
-## 2. Local LAN Database API Server
+## 2. Local LAN Database API Server & Safety Layer
 
-Inside `electron/main.js`, the app initializes a Node.js-based HTTP server running on port `3010` that binds to `0.0.0.0` (all network interfaces).
+Inside `electron/main.js`, the app initializes a Node.js-based HTTP server running on port `3010` that binds to `0.0.0.0` (all network interfaces) and enforces an enterprise-grade database safety layer.
 
-### 2.1 API Endpoints:
-*   `GET /api/db`: Reads the local `database.json` file from disk and returns it as a JSON payload. Configured with CORS headers (`Access-Control-Allow-Origin: *`) to allow client workstations on the network to request data.
-*   `POST /api/db`: Receives a JSON payload representing the modified database and writes it back to `database.json` atomically.
+### 2.1 Data Integrity & Safety Features:
+*   **Atomic Writes:** To prevent write corruption and partial-file writes, the main process writes data to a temporary file (`database.tmp.json`) first and uses atomic file renaming (`fs.renameSync`) to commit changes to the disk.
+*   **Automated Rolling Backups:** A rolling backup is automatically created in `userData/backups/` before any write operation. The system retains the 15 most recent backups, pruning older ones.
+*   **Schema Versioning & Auto-Migration:** Initiates a schema verification check on boot. Upgrades the database to Schema Version 2 and seeds the default admin credentials (`admin` / `admin123` via WebCrypto SHA-256) and default workspace configurations if they are missing or corrupt.
 
-### 2.2 Client-Side Syncing (`src/utils/db.js`):
-The database service handles the network requests and provides offline local caching:
-*   **Local Caches:** Every fetch from the server caches a copy in the workstation's `localStorage` under `erp_cache_[collectionName]` (e.g. `erp_cache_invoices`).
-*   **Offline Fallback:** If the workstation cannot reach the main server ip, it seamlessly switches to loading its local cache, allowing managers to read existing lists.
-*   **Syncer Payload:** Every write updates both the client caches and performs a POST sync request to the LAN database.
+### 2.2 API Endpoints:
+*   `GET /api/health`: Endpoint checking database health status, current schema version, backup files count, and server timestamps.
+*   `GET /api/db`: Reads the local `database.json` file from disk and returns it as a JSON payload (for backwards compatibility).
+*   `POST /api/db`: Receives a JSON payload representing the modified database, creates a backup, and writes it back to `database.json` atomically.
+*   `GET /api/:collection`: Fetches records filtered by active `x-workspace-id` header (except system collections). Filters out soft-deleted records.
+*   `POST /api/:collection`: Inserts a new record, automatically stamping `createdAt` and triggering an atomic write.
+*   `PUT /api/:collection/:id`: Merges changes on a specific record, stamping `updatedAt` and triggering an atomic write.
+*   `DELETE /api/:collection/:id`: Implements a soft-delete mechanism by stamping `deletedAt` without destroying raw data.
+
+### 2.3 Authentication & Workspace Gate Architecture:
+*   **Secure Auth Gate (`src/contexts/AuthContext.jsx`):** Enforces a login gate. User passwords are verified client-side using native Web Crypto API SHA-256 hashes. Authenticated sessions are stamped with an 8-hour auto-expiring token.
+*   **Workspace Access Control (`src/contexts/WorkspaceContext.jsx`):** Gated access control. Users are presented with a workspace selector based on their membership roles. If the user only belongs to a single workspace, selection is seamlessly bypassed.
+*   **Sync Utility (`src/utils/db.js`):** Intercepts API requests, appending the active `x-workspace-id` header, and manages cache synchronization for 29 distinct data collections with a client-side localStorage fallback when offline.
+
 
 ---
 

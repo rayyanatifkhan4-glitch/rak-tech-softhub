@@ -1,0 +1,63 @@
+{
+  "company": {
+    "name": "RAKTechSoftHub",
+    "legalName": "RAKTechSoftHub Systems & Technologies",
+    "tagline": "Digital & Physical Infrastructure Foundry",
+    "description": "Systems observatory & engineering foundry bridging high-performance software, physical networking, server architecture, and creative technology.",
+    "email": "contact@raktechsofthub.com",
+    "phone": "+92 334 3096932",
+    "whatsapp": "923343096932",
+    "whatsappMessage": "Hi RAKTechSoftHub! I'm interested in your systems & software engineering services.",
+    "location": "Karachi, Pakistan",
+    "yearFounded": 2024,
+    "copyright": "© 2026 RAKTechSoftHub. All rights reserved."
+  },
+  "stats": [
+    { "label": "Industrial Deployments", "value": "150+" },
+    { "label": "Client Uptime SLA", "value": "99.98%" },
+    { "label": "Active Global Nodes", "value": "45+" },
+    { "label": "Lines of Hardened Code", "value": "2.4M" }
+  ],
+  "services": {
+    "digital": [
+      {
+        "id": "full-stack-web",
+        "title": "Bespoke Web & App Engineering",
+        "desc": "High-throughput, reactive web applications built with modern frontend frameworks, real-time WebSockets, and distributed cloud backends."
+      },
+      {
+        "id": "enterprise-software",
+        "title": "Enterprise ERP & Automation Systems",
+        "desc": "Custom desktop, mobile, and web ERP solutions designed to streamline manufacturing, accounting, logistics, and HR operations."
+      },
+      {
+        "id": "creative-tech",
+        "title": "Creative Technology & Interactive 3D",
+        "desc": "Cinematic visual design, high-framerate WebGL/Three.js 3D animations, brand identities, and immersive UI/UX systems."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "network-architecture",
+        "title": "Industrial Network Architecture",
+        "desc": "Structured cabling, fiber backbones, multi-gigabit routing, VLAN segmentations, and enterprise-grade Wi-Fi deployments."
+      },
+      {
+        "id": "server-deployment",
+        "title": "On-Premises & Hybrid Server Deployment",
+        "desc": "Rack-mount server provisioning, Proxmox/VMware virtualization clusters, NAS/SAN storage arrays, and disaster recovery replication."
+      },
+      {
+        "id": "cybersecurity-monitoring",
+        "title": "Network Security & Telemetry Monitoring",
+        "desc": "Firewall hardening (pfSense/Fortinet), automated intrusion prevention, 24/7 endpoint observability, and VPN tunnels."
+      }
+    ]
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/raktechsofthub",
+    "github": "https://github.com/raktechsofthub",
+    "twitter": "https://x.com/raktechsofthub",
+    "instagram": "https://instagram.com/raktechsofthub"
+  }
+}

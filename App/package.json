@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && electron-builder",
+    "build:mobile": "vite build --mode mobile",
+    "mobile:sync": "cap sync",
+    "mobile:open": "cap open android",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -15,27 +18,36 @@
     "productName": "Tech ERP",
     "files": [
       "dist/**/*",
-      "dist-electron/**/*"
+      "dist-electron/main.js"
     ],
     "directories": {
-      "output": "dist-electron/release"
+      "output": "dist-release"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "build/icon.ico"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "perMachine": true
+      "perMachine": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
     }
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@tailwindcss/vite": "^4.3.3",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.8",
     "lucide-react": "^1.17.0",
+    "motion": "^13.4.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.17.0"
+    "react-router-dom": "^7.17.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

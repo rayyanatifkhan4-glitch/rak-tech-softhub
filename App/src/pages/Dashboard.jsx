@@ -42,24 +42,18 @@ export default function Dashboard() {
       const employeesList = data.employees || [];
       const productsList = data.products || [];
 
-      // --- CALCULATE REVENUE ---
-      // Revenue is paid invoices
       const revenue = invoicesList
         .filter(inv => inv.status === 'Paid')
         .reduce((sum, inv) => sum + Number(inv.amount || 0), 0);
 
-      // Outstanding Receivables (unpaid invoices)
       const receivables = invoicesList
         .filter(inv => inv.status !== 'Paid')
         .reduce((sum, inv) => sum + Number(inv.amount || 0), 0);
 
-      // --- CALCULATE EXPENSES ---
-      // 1. Paid Purchase Orders
       const poExpenses = purchaseOrdersList
         .filter(po => po.status === 'Paid')
         .reduce((sum, po) => sum + Number(po.amount || 0), 0);
       
-      // 2. Manual Transactions (Expenses)
       const manualExpenses = transactionsList
         .filter(t => t.type === 'expense')
         .reduce((sum, t) => sum + Number(t.amount || 0), 0);
@@ -67,7 +61,6 @@ export default function Dashboard() {
       const totalExpenses = poExpenses + manualExpenses;
       const netProfit = revenue - totalExpenses;
 
-      // Low Stock products count
       const lowStock = productsList.filter(p => (p.stock || 0) <= (p.minStock || 0)).length;
 
       setMetrics({
@@ -81,10 +74,8 @@ export default function Dashboard() {
         employeeCount: employeesList.length
       });
 
-      // --- POPULATE ACTIVITIES ---
       const activities = [];
       
-      // Recent Invoices
       invoicesList.slice(0, 3).forEach(inv => {
         activities.push({
           type: 'invoice',
@@ -92,11 +83,10 @@ export default function Dashboard() {
           amount: `Rs. ${Number(inv.amount).toLocaleString()}`,
           date: inv.date,
           color: 'var(--accent-primary)',
-          timestamp: Date.now() - 3600000 // mock ordering helper
+          timestamp: Date.now() - 3600000
         });
       });
 
-      // Recent Purchase Orders
       purchaseOrdersList.slice(0, 3).forEach(po => {
         activities.push({
           type: 'purchase',
@@ -108,7 +98,6 @@ export default function Dashboard() {
         });
       });
 
-      // Recent Employees
       employeesList.slice(0, 2).forEach(emp => {
         activities.push({
           type: 'hr',
@@ -120,13 +109,11 @@ export default function Dashboard() {
         });
       });
 
-      // Sort activities (here we can just sort by date, since date is string we try to parse or keep basic order)
       activities.sort((a, b) => new Date(b.date) - new Date(a.date));
       setRecentActivities(activities.slice(0, 6));
     });
   }, []);
 
-  // Module Configuration for Cards
   const modules = [
     {
       title: 'Sales & CRM',
@@ -186,8 +173,8 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <header className="page-header" style={{ marginBottom: 'var(--sp-6)' }}>
+    <div className="animate-fade-in dashboard-wrapper">
+      <header className="page-header desktop-only" style={{ marginBottom: 'var(--sp-6)' }}>
         <div>
           <h1 className="page-title">Tech ERP Suite</h1>
           <p style={{ color: 'var(--text-secondary)' }}>Welcome to your business cockpit. LAN sync is online.</p>
@@ -195,64 +182,64 @@ export default function Dashboard() {
       </header>
 
       {/* Top financial metrics */}
-      <div style={{ 
+      <div className="metrics-grid" style={{
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: 'var(--sp-4)',
         marginBottom: 'var(--sp-8)'
       }}>
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)', display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
-          <div style={{ backgroundColor: 'rgba(16, 185, 129, 0.15)', color: 'var(--accent-success)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)' }}>
-            <TrendingUp size={24} />
+        <div className="glass-panel metric-card" style={{ padding: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+          <div style={{ backgroundColor: 'rgba(16, 185, 129, 0.15)', color: 'var(--accent-success)', padding: 'var(--sp-2)', borderRadius: 'var(--radius-md)' }}>
+            <TrendingUp size={20} />
           </div>
           <div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '500' }}>Total Revenue (Paid)</p>
-            <h3 style={{ fontSize: '1.6rem', fontWeight: '600', marginTop: 'var(--sp-1)' }}>Rs. {metrics.totalRevenue.toLocaleString()}</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', fontWeight: '500' }}>Revenue</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Rs. {metrics.totalRevenue.toLocaleString()}</h3>
           </div>
         </div>
 
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)', display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
-          <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', color: 'var(--accent-danger)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)' }}>
-            <ArrowUpRight size={24} />
+        <div className="glass-panel metric-card" style={{ padding: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+          <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.15)', color: 'var(--accent-danger)', padding: 'var(--sp-2)', borderRadius: 'var(--radius-md)' }}>
+            <ArrowUpRight size={20} />
           </div>
           <div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '500' }}>Total Expenses</p>
-            <h3 style={{ fontSize: '1.6rem', fontWeight: '600', marginTop: 'var(--sp-1)' }}>Rs. {metrics.totalExpenses.toLocaleString()}</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', fontWeight: '500' }}>Expenses</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Rs. {metrics.totalExpenses.toLocaleString()}</h3>
           </div>
         </div>
 
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)', display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
-          <div style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: 'var(--accent-primary)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)' }}>
-            <Wallet size={24} />
+        <div className="glass-panel metric-card" style={{ padding: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+          <div style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)', color: 'var(--accent-primary)', padding: 'var(--sp-2)', borderRadius: 'var(--radius-md)' }}>
+            <Wallet size={20} />
           </div>
           <div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '500' }}>Net Profit Position</p>
-            <h3 style={{ fontSize: '1.6rem', fontWeight: '600', marginTop: 'var(--sp-1)', color: metrics.netProfit >= 0 ? 'var(--accent-success)' : 'var(--accent-danger)' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', fontWeight: '500' }}>Net Profit</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: metrics.netProfit >= 0 ? 'var(--accent-success)' : 'var(--accent-danger)' }}>
               Rs. {metrics.netProfit.toLocaleString()}
             </h3>
           </div>
         </div>
 
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)', display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
-          <div style={{ backgroundColor: 'rgba(245, 158, 11, 0.15)', color: 'var(--accent-warning)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)' }}>
-            <ArrowDownLeft size={24} />
+        <div className="glass-panel metric-card" style={{ padding: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+          <div style={{ backgroundColor: 'rgba(245, 158, 11, 0.15)', color: 'var(--accent-warning)', padding: 'var(--sp-2)', borderRadius: 'var(--radius-md)' }}>
+            <ArrowDownLeft size={20} />
           </div>
           <div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '500' }}>Outstanding Receivables</p>
-            <h3 style={{ fontSize: '1.6rem', fontWeight: '600', marginTop: 'var(--sp-1)', color: 'var(--accent-warning)' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', fontWeight: '500' }}>Receivables</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--accent-warning)' }}>
               Rs. {metrics.outstandingReceivables.toLocaleString()}
             </h3>
           </div>
         </div>
       </div>
 
-      <h2 style={{ fontSize: '1.4rem', marginBottom: 'var(--sp-4)' }}>Quick Modules Launch</h2>
+      <h2 style={{ fontSize: '1.2rem', marginBottom: 'var(--sp-4)' }}>Quick Launch</h2>
       
       {/* 6 Grid Module Cards */}
-      <div style={{ 
+      <div className="modules-grid" style={{
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-        gap: 'var(--sp-4)',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+        gap: 'var(--sp-3)',
         marginBottom: 'var(--sp-8)'
       }}>
         {modules.map((m, idx) => (
@@ -261,86 +248,77 @@ export default function Dashboard() {
             className="glass-panel" 
             onClick={() => navigate(m.path)}
             style={{ 
-              padding: 'var(--sp-6)', 
+              padding: 'var(--sp-4)',
               cursor: 'pointer',
               transition: 'transform var(--transition-fast), border-color var(--transition-fast)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              minHeight: '160px'
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.borderColor = m.iconColor;
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'var(--border-color)';
+              minHeight: '130px'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'white' }}>{m.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '4px', lineHeight: '1.3' }}>{m.desc}</p>
-              </div>
-              <div style={{ backgroundColor: m.color, color: m.iconColor, padding: '10px', borderRadius: 'var(--radius-md)' }}>
-                {m.icon}
+              <div style={{ backgroundColor: m.color, color: m.iconColor, padding: '8px', borderRadius: 'var(--radius-md)' }}>
+                {React.cloneElement(m.icon, { size: 20 })}
               </div>
             </div>
             
-            <div style={{ 
-              marginTop: 'var(--sp-4)', 
-              fontSize: '0.85rem', 
-              fontWeight: '600', 
-              color: m.isWarning ? 'var(--accent-danger)' : 'var(--text-secondary)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px'
-            }}>
-              {m.isWarning && <AlertTriangle size={14} />}
-              {m.stats}
+            <div style={{ marginTop: 'var(--sp-2)' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: '600', color: 'white' }}>{m.title}</h3>
+              <p style={{
+                marginTop: 'var(--sp-2)',
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                color: m.isWarning ? 'var(--accent-danger)' : 'var(--text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px'
+              }}>
+                {m.isWarning && <AlertTriangle size={12} />}
+                {m.stats}
+              </p>
             </div>
           </div>
         ))}
       </div>
 
       {/* Two column layouts: Quick Actions & Recent Activities */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: 'var(--sp-6)' }}>
+      <div className="bottom-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sp-4)' }}>
         
         {/* Quick Actions Panel */}
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)' }}>
-          <h3 style={{ marginBottom: 'var(--sp-4)', color: 'white' }}>Quick Actions</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-4)' }}>
-            <button className="btn btn-outline" style={{ height: '50px', justifyContent: 'flex-start', gap: '10px' }} onClick={() => navigate('/invoices')}>
-              <Plus size={16} color="var(--accent-primary)" /> Create Invoice
+        <div className="glass-panel" style={{ padding: 'var(--sp-4)' }}>
+          <h3 style={{ marginBottom: 'var(--sp-4)', color: 'white', fontSize: '1.1rem' }}>Quick Actions</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-3)' }}>
+            <button className="btn btn-outline" style={{ height: '44px', padding: '0 8px', fontSize: '0.8rem', justifyContent: 'flex-start', gap: '6px' }} onClick={() => navigate('/invoices')}>
+              <Plus size={14} color="var(--accent-primary)" /> Invoice
             </button>
-            <button className="btn btn-outline" style={{ height: '50px', justifyContent: 'flex-start', gap: '10px' }} onClick={() => navigate('/sales')}>
-              <Plus size={16} color="var(--accent-primary)" /> Generate Quote
+            <button className="btn btn-outline" style={{ height: '44px', padding: '0 8px', fontSize: '0.8rem', justifyContent: 'flex-start', gap: '6px' }} onClick={() => navigate('/sales')}>
+              <Plus size={14} color="var(--accent-primary)" /> Quote
             </button>
-            <button className="btn btn-outline" style={{ height: '50px', justifyContent: 'flex-start', gap: '10px' }} onClick={() => navigate('/purchases')}>
-              <Plus size={16} color="var(--accent-warning)" /> New PO Order
+            <button className="btn btn-outline" style={{ height: '44px', padding: '0 8px', fontSize: '0.8rem', justifyContent: 'flex-start', gap: '6px' }} onClick={() => navigate('/purchases')}>
+              <Plus size={14} color="var(--accent-warning)" /> New PO
             </button>
-            <button className="btn btn-outline" style={{ height: '50px', justifyContent: 'flex-start', gap: '10px' }} onClick={() => navigate('/accounting')}>
-              <Plus size={16} color="var(--accent-success)" /> Log Transaction
+            <button className="btn btn-outline" style={{ height: '44px', padding: '0 8px', fontSize: '0.8rem', justifyContent: 'flex-start', gap: '6px' }} onClick={() => navigate('/accounting')}>
+              <Plus size={14} color="var(--accent-success)" /> Log Exp
             </button>
           </div>
         </div>
 
         {/* Dynamic Activity Feed */}
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)' }}>
-          <h3 style={{ marginBottom: 'var(--sp-4)', color: 'white' }}>Live Activity Feed</h3>
+        <div className="glass-panel" style={{ padding: 'var(--sp-4)' }}>
+          <h3 style={{ marginBottom: 'var(--sp-4)', color: 'white', fontSize: '1.1rem' }}>Activity Feed</h3>
           {recentActivities.length === 0 ? (
-            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textAlign: 'center', paddingTop: 'var(--sp-6)' }}>
-              No recent records found in system.
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'center', paddingTop: 'var(--sp-4)' }}>
+              No recent records.
             </div>
           ) : (
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
               {recentActivities.map((act, index) => (
-                <li key={index} style={{ display: 'flex', gap: 'var(--sp-3)', alignItems: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '8px' }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: act.color, marginTop: '6px' }}></div>
+                <li key={index} style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '6px' }}>
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: act.color, marginTop: '6px' }}></div>
                   <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '500' }}>{act.title}</p>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: '500' }}>{act.title}</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
                       <span>{act.amount}</span>
                       <span>{act.date}</span>
                     </div>
@@ -352,6 +330,15 @@ export default function Dashboard() {
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-only { display: none; }
+          .metrics-grid { grid-template-columns: 1fr 1fr !important; }
+          .modules-grid { grid-template-columns: 1fr 1fr !important; }
+          .bottom-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }

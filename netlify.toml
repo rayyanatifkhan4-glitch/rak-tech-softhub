@@ -1,2 +1,17 @@
 [build]
   publish = "Website"
+
+[[redirects]]
+  from = "/admin"
+  to = "/login/admin/"
+  status = 301
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/login/admin/:splat"
+  status = 301
+
+[[headers]]
+  for = "/animations/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

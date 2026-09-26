@@ -1,172 +1,182 @@
-import { HashRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Users, 
-  FileText, 
-  CheckSquare, 
-  BookOpen,
-  Settings as SettingsIcon,
-  Package,
-  Truck,
-  Wallet,
-  UserCheck
-} from 'lucide-react';
+import React, { Suspense } from 'react';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 
-// Import all pages
-import Dashboard from './pages/Dashboard';
-import Clients from './pages/Clients'; // Upgraded to Sales & CRM
-import Services from './pages/Services'; // Upgraded to Inventory
-import Purchases from './pages/Purchases';
-import Accounting from './pages/Accounting';
-import Invoices from './pages/Invoices';
-import HR from './pages/HR';
-import Ledgers from './pages/Ledgers';
-import Tasks from './pages/Tasks';
-import Docs from './pages/Docs';
-import Settings from './pages/Settings';
+// ── Contexts ──────────────────────────────────────────────────────────────────
+import { AuthProvider,      useAuth }       from './contexts/AuthContext';
+import { WorkspaceProvider, useWorkspace }  from './contexts/WorkspaceContext';
+import { AppProvider,       useAppContext } from './contexts/AppContext';
 
-function Sidebar() {
-  const groups = [
-    {
-      title: 'BUSINESS',
-      items: [
-        { path: '/', name: 'Dashboard', icon: <LayoutDashboard size={18} />, color: 'var(--accent-primary)' },
-        { path: '/sales', name: 'Sales & CRM', icon: <Users size={18} />, color: 'var(--accent-primary)' },
-        { path: '/purchases', name: 'Purchases & Vendors', icon: <Truck size={18} />, color: 'var(--accent-warning)' }
-      ]
-    },
-    {
-      title: 'INVENTORY',
-      items: [
-        { path: '/inventory', name: 'Products & Stock', icon: <Package size={18} />, color: 'var(--accent-purple)' }
-      ]
-    },
-    {
-      title: 'FINANCE',
-      items: [
-        { path: '/accounting', name: 'Accounting', icon: <Wallet size={18} />, color: 'var(--accent-success)' },
-        { path: '/invoices', name: 'Invoices', icon: <FileText size={18} />, color: 'var(--accent-primary)' },
-        { path: '/ledgers', name: 'Ledgers', icon: <BookOpen size={18} />, color: '#06b6d4' }
-      ]
-    },
-    {
-      title: 'OPERATIONS',
-      items: [
-        { path: '/tasks', name: 'Tasks', icon: <CheckSquare size={18} />, color: 'var(--accent-success)' },
-        { path: '/hr', name: 'HR & Payroll', icon: <UserCheck size={18} />, color: 'var(--accent-pink)' }
-      ]
-    },
-    {
-      title: 'SYSTEM',
-      items: [
-        { path: '/docs', name: 'Documentation', icon: <BookOpen size={18} />, color: 'var(--text-muted)' }
-      ]
-    }
-  ];
+// ── Layout ────────────────────────────────────────────────────────────────────
+import Sidebar       from './components/layout/Sidebar';
+import TopBar        from './components/layout/TopBar';
+import AppLauncher   from './components/layout/AppLauncher';
+import ToastContainer from './components/common/Toast';
 
+// ── Screens ───────────────────────────────────────────────────────────────────
+import Login             from './pages/Login';
+import WorkspaceSelector from './pages/WorkspaceSelector';
+
+// ── Pages (lazy for better startup performance) ───────────────────────────────
+const Dashboard  = React.lazy(() => import('./pages/Dashboard'));
+const Clients    = React.lazy(() => import('./pages/Clients'));
+const Services   = React.lazy(() => import('./pages/Services'));
+const Purchases  = React.lazy(() => import('./pages/Purchases'));
+const Accounting = React.lazy(() => import('./pages/Accounting'));
+const Invoices   = React.lazy(() => import('./pages/Invoices'));
+const HR         = React.lazy(() => import('./pages/HR'));
+const Ledgers    = React.lazy(() => import('./pages/Ledgers'));
+const Tasks      = React.lazy(() => import('./pages/Tasks'));
+const Docs       = React.lazy(() => import('./pages/Docs'));
+const Settings   = React.lazy(() => import('./pages/Settings'));
+const Users      = React.lazy(() => import('./pages/Users'));
+
+// ── Access Denied Page ─────────────────────────────────────────────────────────
+function AccessDenied({ moduleName }) {
   return (
-    <aside className="sidebar" style={{ width: '260px', height: '100vh', overflowY: 'auto' }}>
-      <div style={{ padding: '0 1.5rem', marginBottom: '1.5rem' }}>
-        <h2 style={{ background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-purple))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontSize: '1.5rem' }}>
-          Tech ERP
-        </h2>
-        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '500' }}>v2.0 — Business Suite</span>
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'60vh', gap:'16px', textAlign: 'center' }}>
+      <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>
+        🔒
       </div>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', padding: '0 0.75rem' }}>
-        {groups.map((group, idx) => (
-          <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: '700', color: 'var(--text-muted)', letterSpacing: '0.05em', paddingLeft: '0.75rem', marginBottom: '2px' }}>
-              {group.title}
-            </span>
-            {group.items.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                style={({ isActive }) => ({
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  padding: '0.6rem 0.75rem',
-                  borderRadius: 'var(--radius-sm)',
-                  color: isActive ? 'white' : 'var(--text-secondary)',
-                  background: isActive ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
-                  fontWeight: isActive ? '500' : '400',
-                  borderLeft: isActive ? `3px solid ${item.color}` : '3px solid transparent',
-                  transition: 'all var(--transition-fast)',
-                  fontSize: '0.875rem'
-                })}
-              >
-                <span style={{ color: item.color }}>{item.icon}</span>
-                {item.name}
-              </NavLink>
-            ))}
-          </div>
-        ))}
-      </div>
-      
-      <div style={{ marginTop: 'auto', padding: '1rem 0.75rem 0.5rem 0.75rem' }}>
-        <NavLink
-          to="/settings"
-          style={({ isActive }) => ({
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            padding: '0.6rem 0.75rem',
-            borderRadius: 'var(--radius-sm)',
-            color: isActive ? 'white' : 'var(--text-secondary)',
-            background: isActive ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
-            fontWeight: isActive ? '500' : '400',
-            borderLeft: isActive ? '3px solid var(--accent-primary)' : '3px solid transparent',
-            transition: 'all var(--transition-fast)',
-            fontSize: '0.875rem'
-          })}
-        >
-          <SettingsIcon size={18} />
-          Settings
-        </NavLink>
-      </div>
-    </aside>
+      <h2 style={{ color:'#f87171', margin:0, fontSize: '1.5rem' }}>Access Restricted</h2>
+      <p style={{ color:'#94a3b8', margin:0, fontSize:'0.95rem', maxWidth: '420px', lineHeight: 1.5 }}>
+        You do not have permission to access the <strong>{moduleName}</strong> service. Please contact your system administrator to update your account access permissions.
+      </p>
+    </div>
   );
 }
 
-function App() {
+// ── Protected Route Guard ─────────────────────────────────────────────────────
+function ProtectedRoute({ moduleKey, name, element }) {
+  const { hasPermission } = useAuth();
+  if (!hasPermission(moduleKey)) {
+    return <AccessDenied moduleName={name || moduleKey} />;
+  }
+  return element;
+}
+
+// ── Stub page for not-yet-built modules ───────────────────────────────────────
+function ComingSoon({ name }) {
   return (
-    <Router>
-      <div className="app-container">
-        <Sidebar />
-        <main className="main-content" style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto', flex: 1, height: '100vh', paddingBottom: '0' }}>
-          <div style={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/sales" element={<Clients />} />
-              <Route path="/inventory" element={<Services />} />
-              <Route path="/purchases" element={<Purchases />} />
-              <Route path="/accounting" element={<Accounting />} />
-              <Route path="/invoices" element={<Invoices />} />
-              <Route path="/hr" element={<HR />} />
-              <Route path="/ledgers" element={<Ledgers />} />
-              <Route path="/tasks" element={<Tasks />} />
-              <Route path="/docs" element={<Docs />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'60vh', gap:'12px' }}>
+      <div style={{ fontSize:'2.5rem' }}>🚧</div>
+      <h2 style={{ color:'#e2e8f0', margin:0 }}>{name}</h2>
+      <p style={{ color:'#64748b', margin:0, fontSize:'0.9rem' }}>This module is coming soon.</p>
+    </div>
+  );
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+function PageSpinner() {
+  return (
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', height:'200px' }}>
+      <div style={{
+        width:'32px', height:'32px', borderRadius:'50%',
+        border:'2px solid rgba(59,130,246,0.2)',
+        borderTopColor:'#3b82f6',
+        animation:'spin 0.8s linear infinite',
+      }} />
+    </div>
+  );
+}
+
+// ── Workspace shell ───────────────────────────────────────────────────────────
+function WorkspaceShell() {
+  const { sidebarCollapsed } = useAppContext();
+
+  return (
+    <div style={{ display:'flex', height:'100vh', overflow:'hidden', background:'#0a0f1e' }}>
+      <Sidebar />
+      <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden' }}>
+        <TopBar />
+        <AppLauncher />
+        <main style={{
+          flex      : 1,
+          overflowY : 'auto',
+          overflowX : 'hidden',
+          padding   : '0',
+          scrollbarWidth:'thin',
+          scrollbarColor:'rgba(255,255,255,0.1) transparent',
+        }}>
+          <div style={{ padding:'20px', maxWidth:'1400px', margin:'0 auto' }}>
+            <Suspense fallback={<PageSpinner />}>
+              <Routes>
+                <Route path="/"           element={<Dashboard />} />
+                <Route path="/sales"      element={<ProtectedRoute moduleKey="crm" name="CRM & Clients" element={<Clients />} />} />
+                <Route path="/inventory"  element={<ProtectedRoute moduleKey="inventory" name="Products & Services" element={<Services />} />} />
+                <Route path="/purchases"  element={<ProtectedRoute moduleKey="purchasing" name="Vendors & POs" element={<Purchases />} />} />
+                <Route path="/accounting" element={<ProtectedRoute moduleKey="accounting" name="Accounting & Finance" element={<Accounting />} />} />
+                <Route path="/invoices"   element={<ProtectedRoute moduleKey="invoices" name="Invoices" element={<Invoices />} />} />
+                <Route path="/hr"         element={<ProtectedRoute moduleKey="hr" name="Employees & HR" element={<HR />} />} />
+                <Route path="/ledgers"    element={<ProtectedRoute moduleKey="ledgers" name="Customer Ledgers" element={<Ledgers />} />} />
+                <Route path="/tasks"      element={<ProtectedRoute moduleKey="tasks" name="Tasks Board" element={<Tasks />} />} />
+                <Route path="/docs"       element={<ProtectedRoute moduleKey="docs" name="Documents" element={<Docs />} />} />
+                <Route path="/settings"   element={<ProtectedRoute moduleKey="settings" name="Settings" element={<Settings />} />} />
+                <Route path="/users"      element={<ProtectedRoute moduleKey="settings" name="User Management" element={<Users />} />} />
+                {/* New modules (stubs) */}
+                <Route path="/projects"   element={<ComingSoon name="Projects" />} />
+                <Route path="/warehouse"  element={<ComingSoon name="Warehouse" />} />
+                <Route path="/support"    element={<ComingSoon name="Support & Helpdesk" />} />
+                <Route path="/marketing"  element={<ComingSoon name="Marketing" />} />
+                <Route path="/reports"    element={<ComingSoon name="Analytics & Reports" />} />
+                <Route path="/activity"   element={<ComingSoon name="Activity Feed" />} />
+                {/* Catch-all */}
+                <Route path="*"           element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
           </div>
-          <footer style={{ 
-            padding: '1.5rem 0', 
-            borderTop: '1px solid var(--border-color)', 
-            textAlign: 'center', 
-            fontSize: '0.85rem', 
-            color: 'var(--text-muted)', 
-            marginTop: '3rem',
-            width: '100%'
-          }}>
-            Designed & Developed by <strong style={{ color: 'var(--accent-primary)' }}>RAK Tech Soft Hub Group</strong>
-          </footer>
         </main>
       </div>
+    </div>
+  );
+}
+
+// ── Root route guard ──────────────────────────────────────────────────────────
+function AppRouter() {
+  const { isAuthenticated, isLoading } = useAuth();
+  const { currentWorkspace, needsWorkspaceSelection, isLoading: wsLoading } = useWorkspace();
+
+  if (isLoading || wsLoading) {
+    return (
+      <div style={{
+        minHeight:'100vh', background:'#0a0f1e',
+        display:'flex', alignItems:'center', justifyContent:'center', gap:'12px',
+        flexDirection:'column',
+      }}>
+        <div style={{
+          width:'40px', height:'40px', borderRadius:'10px',
+          background:'linear-gradient(135deg, #1d4ed8, #7c3aed)',
+          display:'flex', alignItems:'center', justifyContent:'center',
+          fontSize:'0.9rem', fontWeight:800, color:'white',
+        }}>RT</div>
+        <div style={{ width:'24px', height:'24px', borderRadius:'50%', border:'2px solid rgba(59,130,246,0.2)', borderTopColor:'#3b82f6', animation:'spin 0.8s linear infinite' }} />
+        <style>{`@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`}</style>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated)        return <Login />;
+  if (needsWorkspaceSelection) return <WorkspaceSelector />;
+
+  return (
+    <Routes>
+      <Route path="/*" element={<WorkspaceShell />} />
+    </Routes>
+  );
+}
+
+// ── Root ──────────────────────────────────────────────────────────────────────
+export default function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <WorkspaceProvider>
+          <AppProvider>
+            <AppRouter />
+            <ToastContainer />
+          </AppProvider>
+        </WorkspaceProvider>
+      </AuthProvider>
     </Router>
   );
 }
-
-export default App;

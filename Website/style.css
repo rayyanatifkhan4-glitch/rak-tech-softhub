@@ -1,532 +1,1077 @@
-/* ===================================
-   RAKTechSoftHub — Custom Styles
-   =================================== */
+/* ==========================================================================
+   RAKTechSoftHub — Global Visual System & Cinematic Animations
+   Near-black futuristic technology aesthetic with controlled violet neon
+   ========================================================================== */
 
-/* --- Base Resets --- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { overflow-x: hidden; }
-ul, ol { list-style: none; }
-a { text-decoration: none; color: inherit; }
-
-/* --- Tech Grid Background --- */
-.tech-grid {
-    background-image: radial-gradient(#3e484f 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-/* --- Glass Card --- */
-.glass-card {
-    background: rgba(29, 32, 34, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* --- Glow Button --- */
-.glow-button {
-    box-shadow: inset 0 0 10px rgba(142, 213, 255, 0.2);
-    transition: all 0.3s ease;
-}
-.glow-button:active { transform: scale(0.95); }
-
-/* --- Pulse Indicator --- */
-.pulse-indicator {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-@keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: .5; transform: scale(1.2); }
+/* --- 1. Global Visual System Tokens --- */
+:root {
+    --bg-main: #050507;
+    --bg-darker: #07070A;
+    --text-main: #F5F5F7;
+    --text-secondary: rgba(245, 245, 247, 0.60);
+    --text-dim: rgba(245, 245, 247, 0.35);
+    
+    --primary-neon: #8B5CF6;
+    --neon-highlight: #BFA5FF;
+    --neon-glow: rgba(139, 92, 246, 0.25);
+    
+    --glass-bg: rgba(12, 12, 18, 0.55);
+    --glass-bg-hover: rgba(18, 18, 28, 0.75);
+    
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(191, 165, 255, 0.35);
+    
+    --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* --- Service Cards --- */
-.service-card {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-}
-.service-card:hover {
-    transform: translateY(-8px);
-    border-color: #d2ecff !important;
-    background-color: #272b2c;
-}
-
-/* --- Tab System --- */
-.tab-active {
-    background: #d2ecff;
-    color: #00344a;
-}
-.tab-content {
-    display: none !important;
-}
-.tab-content.active {
-    display: flex !important;
-    flex-direction: column;
-    animation: fadeIn 0.5s ease-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Hero Animations --- */
-.animate-fade-up {
-    animation: heroFadeUp 1s ease-out 0.3s both;
-}
-.animate-fade-up-delay {
-    animation: heroFadeUp 1s ease-out 0.6s both;
-}
-@keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Hero Glow Animations --- */
-.hero-glow-1 {
-    animation: glowFloat1 6s ease-in-out infinite;
-}
-.hero-glow-2 {
-    animation: glowFloat2 8s ease-in-out infinite;
-}
-@keyframes glowFloat1 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.6; }
-    50% { transform: translate(-20px, 15px); opacity: 1; }
-}
-@keyframes glowFloat2 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
-    50% { transform: translate(15px, -20px); opacity: 0.8; }
-}
-
-/* --- Scroll Reveal --- */
-.reveal-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: var(--delay, 0s);
-}
-.reveal-up.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Pricing Toggle --- */
-.toggle-switch {
-    position: relative;
-    width: 52px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* --- 2. Base Resets & Global Behavior --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
-    appearance: none;
-    -webkit-appearance: none;
-}
-.toggle-switch:hover { border-color: #88cff9; }
-.toggle-thumb {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(135deg, #88cff9, #d1ecff);
-    border-radius: 50%;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(142, 213, 255, 0.4);
-}
-.toggle-switch.yearly .toggle-thumb { transform: translateX(24px); }
-.toggle-label { color: #87929a; transition: color 0.3s ease; cursor: pointer; }
-.toggle-label.active-label { color: #e0e3e4; }
-
-/* --- FAQ Accordion --- */
-.faq-item { transition: all 0.3s ease; }
-.faq-item:hover { border-color: rgba(142, 213, 255, 0.3) !important; }
-.faq-item.open { 
-    border-color: rgba(142, 213, 255, 0.4) !important; 
-    box-shadow: 0 4px 24px rgba(142, 213, 255, 0.08);
-}
-.faq-item.open .faq-chevron { transform: rotate(180deg); color: #d2ecff; }
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.faq-item.open .faq-answer { max-height: 300px; }
-
-/* --- Back to Top Button --- */
-.back-to-top {
-    position: fixed;
-    bottom: 32px;
-    right: 100px;
-    width: 48px;
-    height: 48px;
-    background: rgba(29, 32, 34, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: #e0e3e4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 998;
-}
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-.back-to-top:hover {
-    background: #8ed5ff;
-    color: #00344a;
-    border-color: transparent;
-    transform: translateY(-4px);
-    box-shadow: 0 4px 24px rgba(142, 213, 255, 0.4);
 }
 
-/* --- WhatsApp Float --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    width: 56px;
-    height: 56px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    z-index: 998;
-    box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
-    transition: all 0.4s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.5);
-}
-.whatsapp-float.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 32px rgba(37, 211, 102, 0.6);
-}
-.whatsapp-float::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: rgba(37, 211, 102, 0.3);
-    animation: whatsappPulse 2s ease-in-out infinite;
-    z-index: -1;
-}
-@keyframes whatsappPulse {
-    0%, 100% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.3); opacity: 0; }
-}
-.whatsapp-tooltip {
-    position: absolute;
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 8px 16px;
-    background: rgba(16, 20, 21, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #e0e3e4;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    backdrop-filter: blur(10px);
-}
-.whatsapp-tooltip::after {
-    content: '';
-    position: absolute;
-    right: -6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 6px 0 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent transparent rgba(16, 20, 21, 0.95);
-}
-.whatsapp-float:hover .whatsapp-tooltip {
-    opacity: 1;
-    visibility: visible;
+html {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Mobile Nav --- */
-.mobile-nav {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--bg-main);
 }
-.mobile-nav.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-.mobile-nav-link {
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-.mobile-nav.open .mobile-nav-link {
-    transform: translateY(0);
-    opacity: 1;
-}
-.mobile-nav.open .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
-.mobile-nav.open .mobile-nav-link:nth-child(2) { transition-delay: 0.15s; }
-.mobile-nav.open .mobile-nav-link:nth-child(3) { transition-delay: 0.2s; }
-.mobile-nav.open .mobile-nav-link:nth-child(4) { transition-delay: 0.25s; }
-.mobile-nav.open .mobile-nav-link:nth-child(5) { transition-delay: 0.3s; }
-.mobile-nav.open .mobile-nav-link:nth-child(6) { transition-delay: 0.35s; }
 
-/* Hamburger animation */
-#hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-#hamburger.active span:nth-child(2) { opacity: 0; }
-#hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-/* --- Toast Notifications --- */
-.toast-container {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 10000;
-    pointer-events: none;
+/* Lenis Smooth Scroll Rules */
+html.lenis, html.lenis body {
+    height: auto;
 }
-.toast {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px 20px;
-    background: rgba(29, 32, 34, 0.95);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    min-width: 320px;
-    max-width: 420px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
-    pointer-events: auto;
-    position: relative;
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
     overflow: hidden;
 }
-.toast-out { animation: toastOut 0.4s ease both; }
-@keyframes toastIn {
-    from { opacity: 0; transform: translateX(100px) scale(0.9); }
-    to { opacity: 1; transform: translateX(0) scale(1); }
-}
-@keyframes toastOut {
-    to { opacity: 0; transform: translateX(100px) scale(0.9); }
-}
-.toast-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-.toast-content { flex: 1; }
-.toast-content strong { display: block; font-size: 0.9rem; margin-bottom: 2px; color: #e0e3e4; }
-.toast-content span { font-size: 0.82rem; color: #bfc8cf; line-height: 1.4; }
-.toast-close {
-    background: none;
-    border: none;
-    color: #87929a;
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 2px;
-    transition: color 0.2s;
-    flex-shrink: 0;
-}
-.toast-close:hover { color: #e0e3e4; }
-.toast-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #88cff9, #d1ecff);
-    border-radius: 0 0 12px 12px;
-    animation: toastProgress var(--duration, 3s) linear forwards;
-}
-@keyframes toastProgress {
-    from { width: 100%; }
-    to { width: 0%; }
+
+/* Accessible Focus States */
+:focus-visible {
+    outline: 2px solid var(--neon-highlight) !important;
+    outline-offset: 3px !important;
+    border-radius: 4px;
 }
 
-/* --- Navbar Active Link --- */
-.nav-link.active { color: #d2ecff !important; }
-
-/* --- Navbar Scrolled --- */
-#navbar.scrolled {
-    background: rgba(16, 20, 21, 0.95) !important;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+/* Accessible Skip Link */
+.skip-link {
+    position: fixed;
+    top: -60px;
+    left: 20px;
+    background: var(--primary-neon);
+    color: #FFF;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 18px;
+    border-radius: 0 0 8px 8px;
+    z-index: 10001;
+    transition: top 0.2s ease;
 }
+.skip-link:focus { top: 0; }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .back-to-top { bottom: 20px; right: 78px; width: 42px; height: 42px; }
-    .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
-    .toast { min-width: auto; max-width: calc(100vw - 48px); }
-}
-
-/* --- Material Symbols --- */
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-/* --- Preloader --- */
+/* Preloader */
 #preloader {
-    background-color: #0b0f10;
-    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 #preloader.fade-out {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
-#preloader-bar {
-    transition: width 0.3s cubic-bezier(0.1, 0.8, 0.2, 1);
+
+/* --- 3. Typography & Controlled Neon --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
-/* --- 3D Canvas Styles --- */
-#hero-canvas-container canvas {
+.neon-gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--neon-highlight) 45%, var(--primary-neon) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    padding-bottom: 0.25em;
+    padding-right: 0.12em;
+    margin-bottom: -0.25em;
+    vertical-align: baseline;
+    overflow: visible;
+}
+
+.eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--neon-highlight);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* --- 4. Navigation --- */
+nav#navbar {
+    background: rgba(5, 5, 7, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+nav#navbar.scrolled {
+    background: rgba(5, 5, 7, 0.92);
+    border-bottom-color: rgba(139, 92, 246, 0.2);
+}
+
+.nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 6px 0;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--text-main);
+}
+.nav-link.active::after {
+    content: '';
     position: absolute;
-    top: -25%;
-    left: -25%;
-    width: 150% !important;
-    height: 150% !important;
-    z-index: 5;
-    pointer-events: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-neon);
+    border-radius: 2px;
 }
 
-/* Rotate outer visual grids */
-.hero-circle-rotate {
-    border-style: dashed;
-    animation: spinClockwise 40s linear infinite;
+/* --- 5. Buttons (Controlled, Premium) --- */
+.btn-neon-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFF;
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    text-decoration: none;
 }
-.hero-circle-rotate-reverse {
-    border-style: dotted;
-    animation: spinCounterClockwise 60s linear infinite;
-}
-@keyframes spinClockwise {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-@keyframes spinCounterClockwise {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+.btn-neon-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(139, 92, 246, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
-/* --- 3D Logo Marquee --- */
-.perspective-container {
-    perspective: 1000px;
-    width: 100%;
-    padding: 20px 0;
-    background: radial-gradient(circle at center, rgba(142, 213, 255, 0.03) 0%, transparent 70%);
+.btn-glass-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    background: var(--glass-bg);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
 }
-.logo-marquee-track {
+.btn-glass-secondary:hover {
+    background: var(--glass-bg-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.hero-video-wrap {
+    position: absolute;
+    top: 5rem;
+    bottom: 5.2rem;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
     display: flex;
-    gap: 4rem;
-    width: max-content;
-    animation: logoScroll 25s linear infinite;
-    transform: rotateX(12deg) rotateY(-3deg) rotateZ(-1deg);
-    transform-style: preserve-3d;
+    align-items: center;
+    justify-content: center;
 }
-.logo-marquee-track:hover {
-    animation-play-state: paused;
+.hero-video-wrap video {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: right 6% center;
+    opacity: 0.95;
+    filter: contrast(1.08) brightness(1.02);
+    will-change: transform;
+    mask-image: radial-gradient(ellipse at 74% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.85) 80%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at 74% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.85) 80%, transparent 100%);
 }
-.logo-item {
-    transform: translateZ(20px);
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 35%, rgba(5, 5, 7, 0.45) 70%, #050507 98%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Atmospheric Background Watermark (Antimatter AI Style) */
+.hero-watermark {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 13vw, 12rem);
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.neon-italic-glow {
+    font-style: italic;
+    background: linear-gradient(175deg, #FFFFFF 0%, #FAF5FF 28%, #E9D5FF 55%, #C084FC 80%, #A855F7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
+    display: inline-block;
+    padding-left: 0.08em;
+    padding-right: 0.38em;
+    padding-bottom: 0.22em;
+    padding-top: 0.06em;
+    vertical-align: baseline;
+    overflow: visible;
+}
+
+.hero-center-content h1 {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+}
+.hero-center-content p {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95);
+}
+
+/* --- 7. Services Section Ambient Masked Background Animations & Symbols --- */
+.service-card-ambient-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.22;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 14px;
+    mask-image: radial-gradient(ellipse at 80% 45%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 65%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse at 80% 45%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 65%, transparent 92%);
+}
+
+.service-showcase-card:hover .service-card-ambient-bg,
+.service-showcase-card.active-card .service-card-ambient-bg {
+    opacity: 0.68;
+    transform: scale(1.08) translateY(-6px);
+}
+
+.service-symbol-svg {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.5));
+    transition: filter 0.4s ease;
+}
+.service-showcase-card:hover .service-symbol-svg,
+.service-showcase-card.active-card .service-symbol-svg {
+    filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.85)) drop-shadow(0 0 12px rgba(66, 200, 245, 0.6));
+}
+
+/* ── 01. SEO Radar Animations ── */
+.anim-radar-sweep {
+    transform-origin: 100px 100px;
+    animation: spinSweep 6s linear infinite;
+}
+.service-showcase-card:hover .anim-radar-sweep,
+.service-showcase-card.active-card .anim-radar-sweep {
+    animation-duration: 2s;
+}
+.anim-seo-node {
+    animation: seoNodePulse 2.4s ease-in-out infinite alternate;
+}
+.anim-rank-curve {
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: rankCurveDraw 3s ease-in-out infinite;
+}
+@keyframes rankCurveDraw {
+    0% { stroke-dashoffset: 120; opacity: 0.3; }
+    50% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: -120; opacity: 0.3; }
+}
+
+/* ── 02. Meta Ads Crosshairs & Funnel ── */
+.anim-spin-cw {
+    transform-origin: 100px 100px;
+    animation: spinSweep 12s linear infinite;
+}
+.anim-spin-ccw {
+    transform-origin: 100px 100px;
+    animation: spinSweepRev 9s linear infinite;
+}
+.service-showcase-card:hover .anim-spin-cw,
+.service-showcase-card.active-card .anim-spin-cw {
+    animation-duration: 4s;
+}
+.service-showcase-card:hover .anim-spin-ccw,
+.service-showcase-card.active-card .anim-spin-ccw {
+    animation-duration: 3s;
+}
+.anim-meta-diamond {
+    transform-origin: 100px 100px;
+    animation: diamondPulse 3s ease-in-out infinite alternate;
+}
+@keyframes diamondPulse {
+    0% { transform: scale(0.9) rotate(0deg); opacity: 0.5; }
+    100% { transform: scale(1.12) rotate(45deg); opacity: 1; }
+}
+
+/* ── 03. Google Ads PPC Intent Target ── */
+.anim-ppc-laser {
+    stroke-dasharray: 8 6;
+    animation: laserDash 1.2s linear infinite;
+}
+@keyframes laserDash {
+    to { stroke-dashoffset: -28; }
+}
+.anim-ppc-burst {
+    transform-origin: 100px 100px;
+    animation: ppcRipple 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+@keyframes ppcRipple {
+    0% { transform: scale(0.2); opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* ── 04. Social Media Network Broadcast ── */
+.anim-social-wave {
+    animation: wavePulse 2.5s ease-out infinite;
+}
+.anim-social-wave:nth-child(2) { animation-delay: 0.8s; }
+.anim-social-wave:nth-child(3) { animation-delay: 1.6s; }
+@keyframes wavePulse {
+    0% { opacity: 0.1; transform: scale(0.85); transform-origin: 100px 100px; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0; transform: scale(1.25); transform-origin: 100px 100px; }
+}
+.anim-social-node {
+    animation: nodeBlink 1.8s ease-in-out infinite alternate;
+}
+@keyframes nodeBlink {
+    0% { r: 3; fill: #8B5CF6; }
+    100% { r: 5.5; fill: #42C8F5; }
+}
+
+/* ── 05. Full-Stack Web Hologram ── */
+.anim-code-bracket-left {
+    animation: bracketLeft 2.4s ease-in-out infinite alternate;
+}
+.anim-code-bracket-right {
+    animation: bracketRight 2.4s ease-in-out infinite alternate;
+}
+@keyframes bracketLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-6px); }
+}
+@keyframes bracketRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(6px); }
+}
+.anim-circuit-trace {
+    stroke-dasharray: 6 4;
+    animation: circuitPulse 2s linear infinite;
+}
+@keyframes circuitPulse {
+    to { stroke-dashoffset: -20; }
+}
+
+/* ── 06. Mobile App Laser Scan ── */
+.anim-mobile-laser {
+    animation: laserVertical 3s ease-in-out infinite alternate;
+}
+@keyframes laserVertical {
+    0% { y1: 45; y2: 45; opacity: 0.4; }
+    50% { y1: 155; y2: 155; opacity: 1; }
+    100% { y1: 45; y2: 45; opacity: 0.4; }
+}
+.anim-app-block {
+    animation: appBlockGlow 2.2s ease-in-out infinite alternate;
+}
+
+/* ── 07. Full-Funnel Analytics ── */
+.anim-funnel-dot {
+    animation: funnelFlow 2.8s ease-in infinite;
+}
+@keyframes funnelFlow {
+    0% { transform: translateY(-40px); opacity: 0; }
+    30% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(40px); opacity: 0; }
+}
+.anim-telemetry-wave {
+    animation: waveShift 3s linear infinite;
+}
+@keyframes waveShift {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -40; }
+}
+
+/* ── 08. Creative Media Aperture & 3D Cube ── */
+.anim-iris-blade {
+    transform-origin: 100px 100px;
+    animation: irisSpin 10s linear infinite;
+}
+.service-showcase-card:hover .anim-iris-blade,
+.service-showcase-card.active-card .anim-iris-blade {
+    animation-duration: 3s;
+}
+@keyframes irisSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.anim-iso-cube {
+    transform-origin: 100px 100px;
+    animation: cubeFloat 3.5s ease-in-out infinite alternate;
+}
+@keyframes cubeFloat {
+    0% { transform: translateY(-4px) scale(0.96); }
+    100% { transform: translateY(4px) scale(1.04); }
+}
+
+/* ── 09. Structured Cabling & Fiber Traces ── */
+.anim-fiber-pulse {
+    stroke-dasharray: 8 6;
+    animation: fiberFlow 1.6s linear infinite;
+}
+@keyframes fiberFlow {
+    to { stroke-dashoffset: -28; }
+}
+.anim-port-led {
+    animation: portFlicker 1.4s steps(2, start) infinite;
+}
+@keyframes portFlicker {
+    0%, 100% { fill: #10B981; opacity: 0.3; }
+    50% { fill: #42C8F5; opacity: 1; }
+}
+
+/* ── 10. Enterprise Routing & Wi-Fi 6 ── */
+.anim-router-hex {
+    transform-origin: 100px 100px;
+    animation: spinSweep 14s linear infinite;
+}
+.anim-wifi-wave {
+    animation: wifiEmit 2.4s ease-out infinite;
+}
+.anim-wifi-wave:nth-of-type(2) { animation-delay: 0.6s; }
+.anim-wifi-wave:nth-of-type(3) { animation-delay: 1.2s; }
+@keyframes wifiEmit {
+    0% { opacity: 0; transform: scale(0.7); transform-origin: 100px 100px; }
+    40% { opacity: 0.9; }
+    100% { opacity: 0; transform: scale(1.3); transform-origin: 100px 100px; }
+}
+
+/* ── 11. Server Blade & Hypervisor Fans ── */
+.anim-server-fan {
+    transform-origin: 75px 100px;
+    animation: spinSweep 1.8s linear infinite;
+}
+.anim-server-fan-2 {
+    transform-origin: 125px 100px;
+    animation: spinSweep 1.8s linear infinite;
+}
+.service-showcase-card:hover .anim-server-fan,
+.service-showcase-card:hover .anim-server-fan-2,
+.service-showcase-card.active-card .anim-server-fan,
+.service-showcase-card.active-card .anim-server-fan-2 {
+    animation-duration: 0.6s;
+}
+
+/* ── 12. 4K CCTV Security & Biometric Lock ── */
+.anim-cctv-sweep {
+    transform-origin: 100px 100px;
+    animation: spinSweep 5s linear infinite;
+}
+.service-showcase-card:hover .anim-cctv-sweep,
+.service-showcase-card.active-card .anim-cctv-sweep {
+    animation-duration: 1.8s;
+}
+.anim-biometric-laser {
+    animation: bioLaser 2.2s ease-in-out infinite alternate;
+}
+@keyframes bioLaser {
+    0% { y1: 65; y2: 65; stroke: #8B5CF6; opacity: 0.4; }
+    50% { stroke: #42C8F5; opacity: 1; }
+    100% { y1: 135; y2: 135; stroke: #8B5CF6; opacity: 0.4; }
+}
+
+/* Universal Keyframes */
+@keyframes spinSweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes spinSweepRev {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+@keyframes seoNodePulse {
+    0% { transform: scale(0.9); opacity: 0.4; }
+    100% { transform: scale(1.25); opacity: 1; }
+}
+
+/* Category Filter Pills & Navigation Arrows */
+.category-pill-btn {
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 12, 24, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--text-secondary);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.category-pill-btn:hover {
+    color: #FFF;
+    background: rgba(30, 22, 50, 0.65);
+    border-color: rgba(167, 139, 250, 0.35);
+}
+.category-pill-btn.active {
+    background: rgba(139, 92, 246, 0.25);
+    backdrop-filter: blur(16px);
+    border-color: rgba(196, 181, 253, 0.5);
+    color: #FFF;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.service-nav-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(18, 14, 30, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.service-nav-arrow:hover {
+    color: #FFF;
+    border-color: rgba(196, 181, 253, 0.45);
+    background: rgba(139, 92, 246, 0.25);
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.3);
+    transform: scale(1.05);
+}
+
+/* Horizontal Cards Carousel Track */
+.services-cards-track {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 14px 100px 24px 20px;
+    scroll-snap-type: none;
+    scroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.services-cards-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* The Service Cards (Subtle Glassmorphic Style) */
+.service-showcase-card {
+    flex: 0 0 320px;
+    width: 320px;
+    min-height: 440px;
+    border-radius: 22px;
+    padding: 22px 20px;
+    background: rgba(16, 13, 28, 0.6);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                opacity 0.3s ease;
+    cursor: pointer;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    opacity: 0.72;
+}
+
+.service-showcase-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.service-showcase-card > .service-card-ambient-bg {
+    position: absolute;
+    z-index: 1;
+}
+
+.service-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Hover & Maximized Active / Inspected Card */
+.service-showcase-card:hover,
+.service-showcase-card.active-card {
+    opacity: 1;
+    background: linear-gradient(145deg, rgba(124, 58, 237, 0.5) 0%, rgba(76, 29, 149, 0.6) 60%, rgba(20, 14, 38, 0.9) 100%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(216, 180, 254, 0.65);
+    box-shadow: 0 20px 45px -8px rgba(124, 58, 237, 0.5), 0 0 32px rgba(139, 92, 246, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.service-showcase-card:hover::before,
+.service-showcase-card.active-card::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.service-showcase-card .service-inactive-view {
+    display: none !important;
+}
+
+.service-showcase-card .service-active-view {
+    display: block !important;
+}
+
+@media (min-width: 1024px) {
+    #services {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.5rem !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - 75px);
+        box-sizing: border-box;
+    }
+    #services .mb-8 {
+        margin-bottom: 0.85rem !important;
+        padding-bottom: 0.65rem !important;
+    }
+    #services .mb-6 {
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* --- 8. Purple Energy Dust Transition Section --- */
+.energy-transition-wrap {
+    position: relative;
+    width: 100%;
+    height: 44vh;
+    min-height: 280px;
+    max-height: 480px;
+    overflow: hidden;
+    background: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.energy-transition-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+    pointer-events: none;
+}
+
+/* --- 9. Infrastructure / Bits & Bolts Full-Width Background --- */
+.infra-section-wrap {
+    position: relative;
+    min-height: 110vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.infra-video-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+.infra-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+.infra-dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5,5,7,0.92) 0%, rgba(5,5,7,0.55) 45%, rgba(5,5,7,0.88) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Connecting neon line between the two cards */
+.bits-bolts-connector {
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-neon), transparent);
+    margin: 0 auto;
+}
+
+/* --- 10. Pricing Section (Visual Break, Clean) --- */
+.pricing-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+.pricing-card:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-4px);
+}
+.pricing-card.featured-plan {
+    border-color: rgba(139, 92, 246, 0.45);
+    background: rgba(18, 16, 32, 0.65);
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* --- 11. FAQ Accordion --- */
+.faq-row {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.faq-row:hover {
+    border-color: var(--border-highlight);
+}
+.faq-question-btn {
+    width: 100%;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.faq-chevron {
+    transition: transform 0.25s ease, color 0.25s ease;
+    color: var(--text-secondary);
+}
+.faq-row.open .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--neon-highlight);
+}
+.faq-answer-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    opacity: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+.faq-row.open .faq-answer-body {
+    max-height: 300px;
+    opacity: 1;
+}
+
+/* --- 12. Final CTA / Contact Neon Orb Component --- */
+.cta-section-wrap {
+    position: relative;
+    padding: 120px 24px;
+    overflow: hidden;
+}
+.cta-orb-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cta-orb-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.72;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    will-change: transform, opacity;
+}
+
+/* Console Inputs */
+.briefing-console {
+    background: rgba(12, 12, 18, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+.console-input {
+    width: 100%;
+    background: rgba(7, 7, 12, 0.85);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #FFF;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+.console-input:focus {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.25);
+}
+.console-label {
+    display: block;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--neon-highlight);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* --- 13. Toast Notifications & Floating Controls --- */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+.toast {
+    min-width: 320px;
+    background: rgba(15, 15, 24, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-highlight);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #FFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.2);
+    pointer-events: auto;
+    animation: toastSlideIn 0.3s ease;
+}
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.toast-content strong {
+    display: block;
+    font-size: 13px;
+    color: var(--neon-highlight);
+    margin-bottom: 2px;
+}
+.toast-content span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 50px;
+    height: 50px;
+    background: #25D366;
+    color: #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
     transition: all 0.3s ease;
 }
-.logo-item:hover {
-    color: #88cff9 !important;
-    transform: translateZ(40px) scale(1.1);
-    text-shadow: 0 0 15px rgba(142, 213, 255, 0.6);
-}
-@keyframes logoScroll {
-    0% { transform: rotateX(12deg) rotateY(-3deg) rotateZ(-1deg) translate3d(0, 0, 0); }
-    100% { transform: rotateX(12deg) rotateY(-3deg) rotateZ(-1deg) translate3d(-50%, 0, 0); }
-}
-
-/* --- Services Split Sticky Layout & Canvases --- */
-#services-canvas-container {
-    background: rgba(29, 32, 34, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: inset 0 0 20px rgba(142, 213, 255, 0.03);
-}
-
-#services-canvas-container canvas {
-    position: absolute;
-    top: -25%;
-    left: -25%;
-    width: 150% !important;
-    height: 150% !important;
-    z-index: 5;
-    pointer-events: auto;
-}
-
-.service-list-item {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    background: rgba(29, 32, 34, 0.3);
-}
-
-.service-list-item:hover, .service-list-item.active-item {
-    background: rgba(39, 43, 44, 0.7);
-    border-color: #d2ecff !important;
-    box-shadow: 0 4px 24px rgba(142, 213, 255, 0.04);
-}
-
-.service-item-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-list-item.active-item .service-item-content {
-    max-height: 500px;
+.whatsapp-float.visible {
     opacity: 1;
-    padding-top: 1rem;
-}
-
-.service-chevron {
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #87929a;
-}
-
-.service-list-item.active-item .service-chevron {
-    transform: rotate(45deg);
-    color: #d2ecff;
-}
-
-/* --- CTA Canvas --- */
-#cta-canvas-container canvas {
-    position: absolute;
-    top: -25%;
-    left: -25%;
-    width: 150% !important;
-    height: 150% !important;
-    z-index: 5;
     pointer-events: auto;
+    transform: translateY(0);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 88px;
+    width: 44px;
+    height: 44px;
+    background: rgba(14, 14, 22, 0.85);
+    border: 1px solid var(--border-subtle);
+    color: #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* --- 14. Mobile & Reduced Motion Rules --- */
+@media (max-width: 1024px) {
+    .services-stage-wrap {
+        position: relative;
+        top: 0;
+        max-height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-video-wrap video {
+        object-position: center center;
+        opacity: 0.45;
+    }
+    .hero-overlay-gradient {
+        background: linear-gradient(180deg, rgba(5,5,7,0.7) 0%, rgba(5,5,7,0.95) 60%, #050507 100%);
+    }
+    .infra-video-wrap video {
+        opacity: 0.4;
+    }
+    .cta-orb-wrap video {
+        opacity: 0.55;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    video {
+        display: none !important;
+    }
+    .hero-video-wrap {
+        background: url('animations/hero-network-poster.jpg') center right / cover no-repeat;
+        opacity: 0.5;
+    }
+    .services-stage-wrap {
+        background: url('animations/services-morph-poster.jpg') center / cover no-repeat;
+    }
+    .infra-video-wrap {
+        background: url('animations/infrastructure-network-poster.jpg') center / cover no-repeat;
+        opacity: 0.4;
+    }
+    .cta-orb-wrap {
+        background: url('animations/cta-orb-poster.jpg') center / cover no-repeat;
+        opacity: 0.5;
+    }
 }

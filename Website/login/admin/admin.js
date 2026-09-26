@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const DEFAULT_SETTINGS = {
         email: 'raktechsofthub@gmail.com',
-        phone: '+923092003125',
+        phone: '+923343096932',
         whatsapp: '923092003125',
         whatsappMsg: "Hi RAKTechSoftHub! I'm interested in your services.",
         companyDesc: 'Global provider of industrial-grade IT, infrastructure, and digital creative services. Engineering the future, one byte and bolt at a time.',
@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     s.email = 'raktechsofthub@gmail.com';
                     migrated = true;
                 }
-                if (s.phone === '+1 (555) 987-6543') {
-                    s.phone = '+923092003125';
+                if (s.phone === '+1 (555) 987-6543' || s.phone === '+923092003125') {
+                    s.phone = '+923343096932';
                     migrated = true;
                 }
                 if (migrated) {

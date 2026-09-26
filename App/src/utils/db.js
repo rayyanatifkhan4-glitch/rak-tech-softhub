@@ -1,6 +1,13 @@
 // Database Service to handle local and local network syncing
 
-const getMode = () => localStorage.getItem('erp_db_mode') || 'local';
+const getMode = () => {
+  // If running inside Capacitor / Mobile webview, default to standalone offline mode
+  const isCapacitor = window.Capacitor !== undefined || 
+                      (window.location.href.startsWith('http://localhost') === false && 
+                       window.location.href.startsWith('file://'));
+  return localStorage.getItem('erp_db_mode') || (isCapacitor ? 'standalone' : 'local');
+};
+
 const getServerIp = () => localStorage.getItem('erp_server_ip') || 'localhost';
 
 const getBaseUrl = () => {
@@ -23,10 +30,42 @@ const collections = [
   'attendance',
   'salarySlips',
   'transactions',
-  'quotations'
+  'quotations',
+  'documents',
+  'users',
+  'workspaces',
+  'workspaceMemberships',
+  'projects',
+  'projectTasks',
+  'warehouses',
+  'stockMovements',
+  'tickets',
+  'kbArticles',
+  'campaigns',
+  'auditLog',
+  'notifications',
+  'approvals',
+  'backupHistory',
+  'cmsPages',
+  'appSettings'
 ];
 
 export const loadDatabase = async () => {
+  const mode = getMode();
+  
+  // Standalone offline-first mode
+  if (mode === 'standalone') {
+    const localData = {};
+    collections.forEach(key => {
+      localData[key] = JSON.parse(
+        localStorage.getItem(`erp_cache_${key}`) || 
+        localStorage.getItem(`erp_${key}`) || 
+        '[]'
+      );
+    });
+    return localData;
+  }
+
   try {
     const res = await fetch(getBaseUrl());
     if (res.ok) {
@@ -68,6 +107,11 @@ export const saveDatabase = async (data) => {
     // Also write to traditional keys for backwards compatibility fallbacks
     localStorage.setItem(`erp_${key}`, JSON.stringify(payload[key]));
   });
+
+  const mode = getMode();
+  if (mode === 'standalone') {
+    return true; // Local storage save complete, network sync bypassed
+  }
 
   try {
     const res = await fetch(getBaseUrl(), {

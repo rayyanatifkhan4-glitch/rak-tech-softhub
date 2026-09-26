@@ -1,0 +1,26 @@
+{
+  "storageKey": "rak_inquiries",
+  "storageType": "localStorage",
+  "fields": {
+    "id": "String (unique identifier, e.g. 'm8d92k1')",
+    "name": "String (Client full name)",
+    "email": "String (Client email address)",
+    "phone": "String (Client contact number)",
+    "service": "String (Selected service category)",
+    "message": "String (Detailed inquiry description)",
+    "timestamp": "ISO 8601 String (e.g. '2026-09-26T11:20:00.000Z')",
+    "status": "String (e.g. 'new', 'in_progress', 'contacted', 'closed')"
+  },
+  "sampleRecords": [
+    {
+      "id": "sample-01",
+      "name": "Syed Farhan",
+      "email": "farhan@example.com",
+      "phone": "+92 300 1234567",
+      "service": "Industrial Network Architecture",
+      "message": "Need a multi-floor structured fiber and CAT6A network overhaul for our new warehouse facility.",
+      "timestamp": "2026-09-25T14:30:00.000Z",
+      "status": "new"
+    }
+  ]
+}

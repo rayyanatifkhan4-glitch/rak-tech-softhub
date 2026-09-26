@@ -3,1072 +3,1316 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>RAKTechSoftHub | Industrial Modern IT &amp; Creative Agency</title>
-    <meta name="description" content="RAKTechSoftHub — Global provider of industrial-grade IT, infrastructure, and digital creative services. Engineering the future, one byte and bolt at a time.">
+    <title>RAKTechSoftHub | Digital &amp; Physical Infrastructure Foundry</title>
+    <meta name="description" content="RAKTechSoftHub — Systems observatory & engineering foundry bridging high-performance software, physical networking, server architecture, and creative technology.">
     <meta name="keywords" content="IT infrastructure, digital marketing, web development, network setup, server deployment, creative agency, SEO, Meta Ads">
     <meta name="author" content="RAKTechSoftHub">
-    <meta property="og:title" content="RAKTechSoftHub | The Future of Digital & Physical Infrastructure">
+    <meta property="og:title" content="RAKTechSoftHub | Digital Foundry &amp; Systems Observatory">
     <meta property="og:description" content="Engineering excellence at the intersection of high-performance software and industrial-grade hardware.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#101415">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta property="og:image" content="rak_full_logo.jpg?v=4">
+    <meta name="theme-color" content="#050507">
+
+    <!-- Favicon & Brand Icons -->
+    <link rel="icon" type="image/png" href="logo_transparent.png?v=4">
+    <link rel="apple-touch-icon" href="logo_transparent.png?v=4">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary-fixed-dim": "#88cff9",
-                        "on-secondary-fixed": "#131b2e",
-                        "inverse-primary": "#03658a",
-                        "inverse-on-surface": "#2d3132",
-                        "on-primary": "#00344a",
-                        "tertiary-fixed-dim": "#7bd0ff",
-                        "outline-variant": "#40484e",
-                        "background": "#101415",
-                        "tertiary-fixed": "#c4e7ff",
-                        "on-primary-fixed-variant": "#004c69",
-                        "surface-container-highest": "#313536",
-                        "on-tertiary-fixed-variant": "#004c69",
-                        "on-surface-variant": "#bfc8cf",
-                        "surface-container": "#1d2022",
-                        "secondary-fixed-dim": "#bec6e0",
-                        "error": "#ffb4ab",
-                        "surface-container-high": "#272b2c",
-                        "surface-bright": "#363a3b",
-                        "surface-container-lowest": "#0b0f10",
-                        "on-primary-fixed": "#001e2c",
-                        "on-tertiary": "#00354a",
-                        "on-secondary-fixed-variant": "#3e465c",
-                        "on-secondary-container": "#adb5ce",
-                        "on-background": "#e0e3e4",
-                        "secondary": "#bec6e0",
-                        "on-tertiary-container": "#005d7f",
-                        "on-error": "#690005",
-                        "outline": "#87929a",
-                        "primary-container": "#8ed5ff",
-                        "on-surface": "#e0e3e4",
-                        "surface-container-low": "#181c1d",
-                        "secondary-container": "#3e465c",
-                        "on-primary-container": "#005d7f",
-                        "primary-fixed": "#c4e7ff",
-                        "surface-tint": "#88cff9",
-                        "surface": "#101415",
-                        "error-container": "#93000a",
-                        "tertiary": "#d1ecff",
-                        "primary": "#d2ecff",
-                        "inverse-surface": "#e0e3e4",
-                        "tertiary-container": "#8cd5ff",
-                        "secondary-fixed": "#dae2fd",
-                        "on-tertiary-fixed": "#001e2c",
-                        "surface-dim": "#101415",
-                        "surface-variant": "#313536",
-                        "on-error-container": "#ffdad6",
-                        "on-secondary": "#283044",
-                        "neon-purple": "#bc00ff",
-                        "neon-cyan": "#00f2ff"
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.125rem",
-                        lg: "0.25rem",
-                        xl: "0.5rem",
-                        full: "0.75rem"
-                    },
-                    spacing: {
-                        "margin-mobile": "16px",
-                        lg: "48px",
-                        sm: "12px",
-                        "margin-desktop": "64px",
-                        xl: "80px",
-                        md: "24px",
-                        xs: "4px",
-                        base: "8px",
-                        "max-width": "1440px",
-                        gutter: "24px"
+                        foundry: "#050507",
+                        "foundry-dark": "#07070A",
+                        violet: {
+                            500: "#8B5CF6",
+                            600: "#7C3AED",
+                            highlight: "#BFA5FF"
+                        }
                     },
                     fontFamily: {
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "title-lg": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "headline-sm": ["Plus Jakarta Sans"],
-                        "body-sm": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Plus Jakarta Sans"],
-                        "code-sm": ["JetBrains Mono"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"]
+                        heading: ["Outfit", "sans-serif"],
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"]
                     },
-                    fontSize: {
-                        "headline-md": ["30px", { lineHeight: "38px", letterSpacing: "-0.01em", fontWeight: "600" }],
-                        "title-lg": ["20px", { lineHeight: "28px", fontWeight: "600" }],
-                        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
-                        "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "600" }],
-                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
-                        "headline-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
-                        "headline-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
-                        "code-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
-                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
-                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+                    maxWidth: {
+                        "max-width": "1400px"
                     }
                 }
             }
         }
     </script>
+    
+    <link rel="stylesheet" href="style.css?v=15">
 </head>
-<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-[#050507] text-[#F5F5F7] font-sans selection:bg-[#8B5CF6]/30 selection:text-[#BFA5FF]">
+
+<!-- Accessible Skip Link -->
+<a href="#home" class="skip-link">Skip to main content</a>
 
 <!-- Systems Preloader -->
-<div id="preloader" class="fixed inset-0 z-[9999] bg-[#0b0f10] flex flex-col items-center justify-center transition-all duration-700">
-    <div class="text-center space-y-6 max-w-md w-full px-6">
-        <div class="font-headline-sm text-headline-sm text-on-surface tracking-tighter uppercase mb-2">RAKTechSoftHub</div>
-        <div class="relative h-1 w-full bg-surface-container rounded-full overflow-hidden border border-outline-variant/30">
-            <div id="preloader-bar" class="h-full bg-gradient-to-r from-primary-fixed-dim via-primary to-tertiary w-0 transition-all duration-100 ease-out"></div>
+<div id="preloader" class="fixed inset-0 z-[9999] bg-[#050507] flex flex-col items-center justify-center">
+    <div class="text-center space-y-6 max-w-sm w-full px-6">
+        <div class="w-16 h-16 mx-auto mb-1 relative flex items-center justify-center">
+            <div class="absolute inset-0 rounded-2xl bg-[#8B5CF6]/20 blur-xl animate-pulse"></div>
+            <img src="logo_transparent.png?v=4" alt="RAKTechSoftHub" class="w-14 h-14 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)]">
         </div>
-        <div class="flex justify-between text-xs text-on-surface-variant font-code-sm uppercase tracking-wider">
-            <span id="preloader-status">Initializing Systems...</span>
-            <span id="preloader-percentage">0%</span>
+        <div class="flex items-center justify-between text-xs font-mono text-[#BFA5FF] uppercase tracking-widest">
+            <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#8B5CF6] animate-ping"></span>
+                RAKTECH // SYSTEMS FOUNDRY
+            </span>
+            <span id="preloader-percentage" class="text-white font-bold">0%</span>
+        </div>
+        <div class="relative h-1.5 w-full bg-[#12121A] rounded-full overflow-hidden border border-white/10">
+            <div id="preloader-bar" class="h-full bg-gradient-to-r from-[#8B5CF6] via-[#BFA5FF] to-[#8B5CF6] w-0"></div>
+        </div>
+        <div class="flex justify-between items-center text-[11px] text-[#94A3B8] font-mono uppercase tracking-wider">
+            <span id="preloader-status">Calibrating telemetry...</span>
+            <span class="text-[#8B5CF6]">FOUNDRY: ONLINE</span>
         </div>
     </div>
 </div>
 
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant" id="navbar">
-    <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
-        <a class="font-headline-sm text-headline-sm tracking-tighter text-on-surface flex items-center gap-2" href="#" id="navLogo">
-            <span class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center text-on-primary text-label-md">R</span>
-            RAKTechSoftHub
+<!-- Header / Navigation -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+    <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-max-width mx-auto">
+        <!-- Brand Logo -->
+        <a class="font-bold text-lg tracking-tight text-white flex items-center gap-3 group" href="#home" id="navLogo">
+            <div class="w-10 h-10 rounded-xl bg-[#0c0c12] border border-white/10 flex items-center justify-center p-1 group-hover:border-[#8B5CF6] transition-all group-hover:shadow-[0_0_18px_rgba(139,92,246,0.45)]">
+                <img src="logo_transparent.png?v=4" alt="RAKTechSoftHub Logo" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(139,92,246,0.35)]">
+            </div>
+            <div class="flex flex-col">
+                <span class="font-extrabold tracking-tight text-white text-base">RAKTechSoftHub</span>
+                <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-[#BFA5FF]">Foundry &amp; Systems</span>
+            </div>
         </a>
-        <div class="hidden md:flex items-center gap-8 font-label-md text-label-md uppercase tracking-widest" id="navLinksDesktop">
-            <a class="text-on-surface-variant hover:text-primary transition-colors nav-link active" href="#services" data-section="services">Services</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors nav-link" href="#infrastructure" data-section="infrastructure">Infrastructure</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors nav-link hidden" href="#pricing" data-section="pricing">Pricing</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors nav-link" href="#faq" data-section="faq">FAQ</a>
-            <a class="text-on-surface-variant hover:text-primary transition-colors nav-link" href="#contact" data-section="contact">Contact</a>
+
+        <!-- Live Telemetry SLA Badge -->
+        <div class="hidden lg:flex items-center gap-2 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>SYSTEMS ONLINE // 99.98% SLA</span>
         </div>
-        <a class="hidden md:inline-block px-6 py-3 bg-primary-container text-on-primary-container rounded-lg font-label-md hover:brightness-110 active:scale-95 transition-all glow-button uppercase tracking-widest" href="#contact" id="navCta">
-            Get a Quote
-        </a>
-        <!-- Mobile hamburger -->
-        <button class="md:hidden flex flex-col gap-[5px] p-1 z-[60]" id="hamburger" aria-label="Toggle menu">
-            <span class="block w-6 h-[2px] bg-on-surface rounded transition-all duration-300"></span>
-            <span class="block w-6 h-[2px] bg-on-surface rounded transition-all duration-300"></span>
-            <span class="block w-6 h-[2px] bg-on-surface rounded transition-all duration-300"></span>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-7" id="navLinksDesktop">
+            <a class="nav-link active" href="#services" data-section="services">Services</a>
+            <a class="nav-link" href="#infrastructure" data-section="infrastructure">Infrastructure</a>
+            <a class="nav-link" href="#pricing" data-section="pricing">Pricing</a>
+            <a class="nav-link" href="#faq" data-section="faq">FAQ</a>
+            <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+            <a class="btn-neon-primary !py-2.5 !px-5 !text-xs ml-2" href="#contact" id="navCta">Get a Quote</a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="md:hidden flex flex-col gap-1.5 p-2 z-[60] text-white focus:outline-none" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
+            <span class="block w-6 h-[2px] bg-[#BFA5FF] rounded"></span>
+            <span class="block w-6 h-[2px] bg-[#BFA5FF] rounded"></span>
+            <span class="block w-6 h-[2px] bg-[#BFA5FF] rounded"></span>
         </button>
     </div>
 </nav>
 
-<!-- Mobile Navigation Overlay -->
-<div class="fixed inset-0 bg-background/95 backdrop-blur-xl z-[55] flex flex-col items-center justify-center gap-8 transition-all duration-500 mobile-nav" id="mobileNav">
-    <a class="text-2xl font-semibold text-on-surface hover:text-primary transition-colors mobile-nav-link" href="#services">Services</a>
-    <a class="text-2xl font-semibold text-on-surface hover:text-primary transition-colors mobile-nav-link" href="#infrastructure">Infrastructure</a>
-    <a class="text-2xl font-semibold text-on-surface hover:text-primary transition-colors mobile-nav-link hidden" href="#pricing">Pricing</a>
-    <a class="text-2xl font-semibold text-on-surface hover:text-primary transition-colors mobile-nav-link" href="#faq">FAQ</a>
-    <a class="text-2xl font-semibold text-on-surface hover:text-primary transition-colors mobile-nav-link" href="#contact">Contact</a>
-    <a class="px-8 py-4 bg-primary-container text-on-primary-container rounded-lg font-label-md uppercase tracking-widest glow-button mobile-nav-link" href="#contact">Get a Quote</a>
+<!-- Mobile Navigation Drawer -->
+<div class="fixed inset-0 bg-[#050507]/95 backdrop-blur-2xl z-[55] flex flex-col items-center justify-center gap-6 transition-all duration-300 mobile-nav hidden" id="mobileNav" role="dialog" aria-modal="true">
+    <div class="font-mono text-xs text-[#8B5CF6] tracking-[0.2em] uppercase mb-4">RAKTech Navigation Console</div>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#home">Home</a>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#services">Services</a>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#infrastructure">Infrastructure</a>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#pricing">Pricing</a>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#faq">FAQ</a>
+    <a class="text-xl font-bold text-[#F5F5F7] hover:text-[#8B5CF6] transition-colors mobile-nav-link" href="#contact">Contact</a>
+    <a class="btn-neon-primary mt-4 mobile-nav-link" href="#contact">Get a Technical Quote</a>
 </div>
 
-<!-- Hero Section -->
-<section class="relative min-h-screen flex flex-col justify-between pt-24 md:pt-20 overflow-hidden tech-grid" id="home">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
-    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10 grid md:grid-cols-2 gap-xl items-center my-auto w-full">
-        <div class="space-y-md animate-fade-up">
-            <div class="flex items-center gap-3 text-primary-fixed-dim">
-                <span class="w-2 h-2 rounded-full bg-primary-fixed-dim pulse-indicator"></span>
-                <span class="font-code-sm text-code-sm uppercase tracking-[0.2em]">Next-Gen Infrastructure Solutions</span>
-            </div>
-            <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight">
-                RAKTechSoftHub: <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed-dim to-tertiary">The Future of Digital &amp; Physical Infrastructure.</span>
-            </h1>
-            <p class="text-on-surface-variant font-body-lg text-body-lg max-w-xl">
-                Engineering excellence at the intersection of high-performance software and industrial-grade hardware. We build the systems that power modern enterprise.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 pt-base">
-                <a class="px-8 py-4 bg-primary-container text-on-primary-container rounded-xl font-title-lg text-title-lg text-center glow-button hover:shadow-[0_0_30px_rgba(142,213,255,0.4)] transition-all" href="#contact" id="heroCta">
-                    Get a Technical Quote
-                </a>
-                <a class="px-8 py-4 border border-outline-variant text-on-surface rounded-xl font-title-lg text-title-lg text-center hover:bg-surface-container transition-all" href="#services" id="heroSolutions">
-                    View Solutions
-                </a>
-            </div>
-        </div>
-        <div class="relative hidden md:block animate-fade-up-delay w-full aspect-square" id="hero-canvas-container">
-            <!-- 3D WebGL Canvas goes here -->
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full border border-primary/10 absolute hero-circle-rotate"></div>
-                <div class="w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-tertiary/5 absolute hero-circle-rotate-reverse"></div>
-            </div>
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 blur-[80px] hero-glow-1"></div>
-            <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-tertiary/20 blur-[100px] hero-glow-2"></div>
-        </div>
-    </div>
-    <!-- Stats Bar -->
-    <div class="relative md:absolute bottom-0 left-0 right-0 border-t border-outline-variant/30 bg-background/60 backdrop-blur-sm mt-12 md:mt-0 w-full">
-        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="text-center">
-                <div class="text-2xl md:text-3xl font-extrabold text-primary stat-number" data-target="500">0</div>
-                <div class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Projects Delivered</div>
-            </div>
-            <div class="text-center">
-                <div class="text-2xl md:text-3xl font-extrabold text-primary stat-number" data-target="150">0</div>
-                <div class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Enterprise Clients</div>
-            </div>
-            <div class="text-center">
-                <div class="text-2xl md:text-3xl font-extrabold text-primary stat-number" data-target="99">0</div>
-                <div class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">% Uptime SLA</div>
-            </div>
-            <div class="text-center">
-                <div class="text-2xl md:text-3xl font-extrabold text-primary stat-number" data-target="24">0</div>
-                <div class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">/ 7 Support</div>
-            </div>
-        </div>
-    </div>
-</section>
+<main id="main-content">
 
-<!-- Services Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto relative" id="services">
-    <div class="grid md:grid-cols-12 gap-xl items-start">
+<!-- ==========================================================================
+     1. HERO SECTION (Neon Network Sphere Background: hero-network.mp4)
+     Left 45-50%: Headline, copy, CTAs. Right: Network sphere through video.
+     ========================================================================== -->
+<section class="relative min-h-[96svh] flex flex-col justify-between pt-28 md:pt-36 overflow-hidden border-b border-white/5" id="home">
+    
+    <!-- Hero 4K Video Background (Crisp, No Blur, Full Clarity) -->
+    <div class="hero-video-wrap">
+        <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="animations/hero-network-poster.jpg">
+            <source src="animations/hero-network.mp4" type="video/mp4">
+        </video>
+        <div class="hero-vignette"></div>
+    </div>
+
+    <!-- Atmospheric Typographic Watermark (Antimatter AI Style) -->
+    <div class="hero-watermark" aria-hidden="true">RAKTECHSOFTHUB</div>
+
+    <!-- Hero Centered High-Impact Foreground Content -->
+    <div class="hero-center-content max-w-5xl mx-auto text-center relative z-10 px-6 my-auto pt-6">
         
-        <!-- Left Column: Sticky Title and 3D Canvas -->
-        <div class="md:col-span-5 md:sticky md:top-28 space-y-md">
-            <h2 class="font-headline-md text-headline-md reveal-up">Our Services</h2>
+        <!-- Eyebrow Pill -->
+        <div class="hero-fade-item eyebrow-pill inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#8B5CF6] animate-pulse"></span>
+            <span>SYSTEMS OBSERVATORY // FOUNDRY &amp; INFRASTRUCTURE</span>
+        </div>
+
+        <!-- Main Headline (Centered, Masked Over 4K Sphere) -->
+        <h1 class="hero-fade-item text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.16] mb-4">
+            Engineering <span class="neon-italic-glow">Digital</span><br>
+            Solutions &amp; Infrastructure.
+        </h1>
+
+        <!-- Supporting Paragraph -->
+        <p class="hero-fade-item text-sm sm:text-base md:text-lg text-[rgba(245,245,247,0.78)] max-w-2xl mx-auto leading-relaxed mb-6">
+            Engineering excellence at the intersection of high-performance software and industrial-grade hardware. We build the systems that power modern enterprise.
+        </p>
+
+        <!-- Action CTAs -->
+        <div class="hero-fade-item flex flex-wrap items-center justify-center gap-4 mb-6">
+            <a class="btn-neon-primary" href="#contact" id="heroCta">
+                <span>Start Your Project</span>
+                <span class="material-symbols-outlined !text-lg">north_east</span>
+            </a>
+            <a class="btn-glass-secondary" href="#services" id="heroSolutions">
+                <span>Explore Capabilities</span>
+                <span class="material-symbols-outlined !text-lg">expand_more</span>
+            </a>
+        </div>
+
+        <!-- Live Telemetry Strip -->
+        <div class="hero-fade-item flex items-center justify-center gap-6 text-[11px] font-mono text-[#64748B]">
+            <span>LAT: 25.2048° N // LON: 55.2708° E</span>
+            <span class="hidden sm:inline">SYS_ID: RAK-FOUNDRY-01</span>
+            <span class="text-emerald-400">STATUS: NOMINAL // 4K RENDER</span>
+        </div>
+    </div>
+
+    <!-- Verified Stats Telemetry Bar -->
+    <div class="relative w-full border-t border-white/5 bg-[#050507]/80 backdrop-blur-md z-10">
+        <div class="max-w-max-width mx-auto px-6 md:px-12 py-5 grid grid-cols-2 md:grid-cols-4 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/5">
+            <div class="text-center pt-2 md:pt-0">
+                <span class="font-mono text-[10px] text-[#BFA5FF] tracking-widest uppercase block mb-1">[01 // DELIVERED]</span>
+                <div class="text-2xl md:text-3xl font-extrabold text-white flex items-center justify-center gap-1">
+                    <span class="stat-number" data-target="500">0</span><span>+</span>
+                </div>
+                <div class="text-xs text-[rgba(245,245,247,0.55)] uppercase tracking-wider mt-0.5">Projects Engineered</div>
+            </div>
+            <div class="text-center pt-2 md:pt-0 md:pl-6">
+                <span class="font-mono text-[10px] text-[#BFA5FF] tracking-widest uppercase block mb-1">[02 // DEPLOYMENTS]</span>
+                <div class="text-2xl md:text-3xl font-extrabold text-white flex items-center justify-center gap-1">
+                    <span class="stat-number" data-target="150">0</span><span>+</span>
+                </div>
+                <div class="text-xs text-[rgba(245,245,247,0.55)] uppercase tracking-wider mt-0.5">Enterprise Clients</div>
+            </div>
+            <div class="text-center pt-2 md:pt-0 md:pl-6">
+                <span class="font-mono text-[10px] text-[#BFA5FF] tracking-widest uppercase block mb-1">[03 // GUARANTEE]</span>
+                <div class="text-2xl md:text-3xl font-extrabold text-white flex items-center justify-center">
+                    <span class="stat-number" data-target="99">0</span><span>.9%</span>
+                </div>
+                <div class="text-xs text-[rgba(245,245,247,0.55)] uppercase tracking-wider mt-0.5">Uptime SLA Target</div>
+            </div>
+            <div class="text-center pt-2 md:pt-0 md:pl-6">
+                <span class="font-mono text-[10px] text-[#BFA5FF] tracking-widest uppercase block mb-1">[04 // MONITORING]</span>
+                <div class="text-2xl md:text-3xl font-extrabold text-white flex items-center justify-center">
+                    <span class="stat-number" data-target="24">0</span><span>/7</span>
+                </div>
+                <div class="text-xs text-[rgba(245,245,247,0.55)] uppercase tracking-wider mt-0.5">Global Operations</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     2. SERVICES SECTION (Services Morphing Object: services-morph.mp4)
+     Antimatter AI 3D Agency Reference: Sticky Left Visual + Interactive Cards Stage
+     ========================================================================== -->
+<section class="py-12 md:py-16 px-6 md:px-12 max-w-max-width mx-auto relative" id="services">
+    
+    <!-- Section Header (Clean, Crisp, Bold) -->
+    <div class="mb-8 flex flex-col md:flex-row justify-between md:items-end gap-6 border-b border-white/10 pb-6">
+        <div class="space-y-3">
+            <div class="eyebrow-pill inline-flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+                <span>SPECIFICATION DIRECTORY // CAPABILITIES</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Our Services</h2>
+        </div>
+        <p class="text-sm md:text-base text-[rgba(245,245,247,0.65)] max-w-lg leading-relaxed">
+            Select or inspect any operational subsystem to examine its architectural deliverables, software frameworks, and hardware ecosystem.
+        </p>
+    </div>
+
+    <!-- Controls Row: Filter Categories & Slider Arrows -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex flex-wrap items-center gap-2" id="serviceFilters">
+            <button class="category-pill-btn active" data-filter="all">All Systems (12)</button>
+            <button class="category-pill-btn" data-filter="digital">Digital &amp; Creative (8)</button>
+            <button class="category-pill-btn" data-filter="infra">IT Infrastructure (4)</button>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-mono text-[rgba(245,245,247,0.4)] hidden sm:inline">SCROLL OR USE ARROWS</span>
+            <button id="servicesPrevBtn" class="service-nav-arrow" aria-label="Previous service">
+                <span class="material-symbols-outlined !text-lg">arrow_back</span>
+            </button>
+            <button id="servicesNextBtn" class="service-nav-arrow" aria-label="Next service">
+                <span class="material-symbols-outlined !text-lg">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Full-Width Horizontal Services Cards Showcase with Ambient Masked Animations -->
+    <div class="w-full overflow-hidden relative">
+        <div class="services-cards-track" id="servicesCardsTrack">
+                
+                <!-- 01 SEO Optimization -->
+                <div class="service-showcase-card active-card" data-category="digital" data-index="1">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#E9D5FF]">[01 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-white">north_east</span>
+                    </div>
+                    <!-- Inactive View -->
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">SEO Optimization &amp; Algorithmic Growth</h3>
+                    </div>
+                    <!-- Active View -->
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">SEO Optimization &amp; Algorithmic Growth</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Algorithmic precision to dominate search results, optimize crawl architectures, and generate sustained organic authority.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Technical Crawl &amp; Core Web Vitals Audit</li>
+                                <li>&bull; Keyword Matrix &amp; Search Intent Mapping</li>
+                                <li>&bull; Structured Schema &amp; Entity Graph Setup</li>
+                                <li>&bull; Automated Performance Attribution</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Software Stack</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Ahrefs</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">SEMrush</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Search Console</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: SEO Radar & Algorithmic Growth -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="85" stroke="#8B5CF6" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.35"/>
+                            <circle cx="100" cy="100" r="60" stroke="#8B5CF6" stroke-width="1.2" opacity="0.45"/>
+                            <circle cx="100" cy="100" r="35" stroke="#42C8F5" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="100" y1="15" x2="100" y2="185" stroke="#8B5CF6" stroke-width="0.8" opacity="0.25"/>
+                            <line x1="15" y1="100" x2="185" y2="100" stroke="#8B5CF6" stroke-width="0.8" opacity="0.25"/>
+                            <line x1="100" y1="100" x2="175" y2="40" stroke="#42C8F5" stroke-width="2.5" stroke-linecap="round" class="anim-radar-sweep"/>
+                            <path d="M35 155 Q75 145 105 100 T170 45" stroke="#C4B5FD" stroke-width="2.5" fill="none" class="anim-rank-curve"/>
+                            <circle cx="105" cy="100" r="5" fill="#42C8F5" class="anim-seo-node"/>
+                            <circle cx="170" cy="45" r="6" fill="#8B5CF6" class="anim-seo-node"/>
+                            <circle cx="65" cy="148" r="3.5" fill="#C4B5FD" class="anim-seo-node"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 02 Meta Ads Management -->
+                <div class="service-showcase-card" data-category="digital" data-index="2">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[02 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Meta Ads Management &amp; Paid Scaling</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Meta Ads Management &amp; Paid Scaling</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Targeted, high-ROAS social acquisition deployed across Facebook, Instagram, and Audience Network with server-side API conversions.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Conversions API (CAPI) Gateway Setup</li>
+                                <li>&bull; Dynamic Creative Optimization (DCO)</li>
+                                <li>&bull; Lookalike &amp; Deep-Funnel Audiences</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Platforms</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Meta Ads Manager</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Meta Ads Targeting Reticle -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="82" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="12 8" class="anim-spin-cw" opacity="0.5"/>
+                            <circle cx="100" cy="100" r="58" stroke="#42C8F5" stroke-width="1.5" stroke-dasharray="8 6" class="anim-spin-ccw" opacity="0.6"/>
+                            <circle cx="100" cy="100" r="32" stroke="#C4B5FD" stroke-width="1.8" opacity="0.7"/>
+                            <polygon points="100,55 145,100 100,145 55,100" stroke="#8B5CF6" stroke-width="2" fill="none" class="anim-meta-diamond"/>
+                            <line x1="100" y1="25" x2="100" y2="45" stroke="#42C8F5" stroke-width="2"/>
+                            <line x1="100" y1="155" x2="100" y2="175" stroke="#42C8F5" stroke-width="2"/>
+                            <line x1="25" y1="100" x2="45" y2="100" stroke="#42C8F5" stroke-width="2"/>
+                            <line x1="155" y1="100" x2="175" y2="100" stroke="#42C8F5" stroke-width="2"/>
+                            <circle cx="100" cy="100" r="8" fill="#42C8F5"/>
+                            <circle cx="100" cy="100" r="18" stroke="#8B5CF6" stroke-width="1.5" fill="none" class="anim-ppc-burst"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 03 Google Ads (PPC) -->
+                <div class="service-showcase-card" data-category="digital" data-index="3">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[03 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Google Ads (PPC) &amp; Intent Capture</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Google Ads (PPC) &amp; Intent Capture</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            High-intent search capture and Performance Max architecture engineered to capture high-value enterprise queries.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Search &amp; Performance Max Campaigns</li>
+                                <li>&bull; Negative Keyword Scrubbing</li>
+                                <li>&bull; Offline Conversion Tracking</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Tools</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Google Ads</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Tag Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Google Ads PPC Laser Intent -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 40 H30 V60" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M150 40 H170 V60" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M50 160 H30 V140" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M150 160 H170 V140" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="100" cy="100" r="70" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+                            <circle cx="100" cy="100" r="45" stroke="#42C8F5" stroke-width="1.8" opacity="0.6"/>
+                            <circle cx="100" cy="100" r="20" stroke="#C4B5FD" stroke-width="2"/>
+                            <circle cx="100" cy="100" r="6" fill="#42C8F5"/>
+                            <line x1="30" y1="30" x2="95" y2="95" stroke="#42C8F5" stroke-width="2.5" class="anim-ppc-laser"/>
+                            <polygon points="98,98 90,82 82,90" fill="#42C8F5"/>
+                            <circle cx="100" cy="100" r="30" stroke="#42C8F5" stroke-width="1.5" fill="none" class="anim-ppc-burst"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 04 Social Media Marketing -->
+                <div class="service-showcase-card" data-category="digital" data-index="4">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[04 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Social Media Marketing &amp; Presence</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Social Media Marketing &amp; Presence</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Creative storytelling, dynamic technical aesthetics, and disciplined publishing strategies across LinkedIn, X, and Instagram.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Content Matrix &amp; Editorial Calendars</li>
+                                <li>&bull; Technical Thought Leadership Copy</li>
+                                <li>&bull; Engagement &amp; Inbound Lead Capture</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Social Media Constellation Broadcast -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 100 A40 40 0 0 1 140 100" stroke="#8B5CF6" stroke-width="2" fill="none" class="anim-social-wave"/>
+                            <path d="M40 100 A60 60 0 0 1 160 100" stroke="#42C8F5" stroke-width="2" fill="none" class="anim-social-wave"/>
+                            <path d="M20 100 A80 80 0 0 1 180 100" stroke="#C4B5FD" stroke-width="1.5" fill="none" class="anim-social-wave"/>
+                            <line x1="100" y1="100" x2="60" y2="60" stroke="#8B5CF6" stroke-width="1.2" opacity="0.5"/>
+                            <line x1="100" y1="100" x2="145" y2="65" stroke="#8B5CF6" stroke-width="1.2" opacity="0.5"/>
+                            <line x1="100" y1="100" x2="155" y2="135" stroke="#8B5CF6" stroke-width="1.2" opacity="0.5"/>
+                            <line x1="100" y1="100" x2="55" y2="140" stroke="#8B5CF6" stroke-width="1.2" opacity="0.5"/>
+                            <circle cx="100" cy="100" r="10" fill="#8B5CF6"/>
+                            <circle cx="60" cy="60" r="5" fill="#42C8F5" class="anim-social-node"/>
+                            <circle cx="145" cy="65" r="6" fill="#C4B5FD" class="anim-social-node"/>
+                            <circle cx="155" cy="135" r="5" fill="#42C8F5" class="anim-social-node"/>
+                            <circle cx="55" cy="140" r="4.5" fill="#8B5CF6" class="anim-social-node"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 05 Full-Stack Web Design & Development -->
+                <div class="service-showcase-card" data-category="digital" data-index="5">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[05 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Full-Stack Web Design &amp; Development</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Full-Stack Web Design &amp; Development</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Industrial-grade web platforms engineered with modern component frameworks, custom 3D WebGL interfaces, and ultra-fast load times.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Headless Next.js &amp; Vite Architecture</li>
+                                <li>&bull; Three.js Interactive 3D &amp; GSAP</li>
+                                <li>&bull; Secure REST / GraphQL API Integration</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Technologies</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">React / Next.js</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Three.js</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Full-Stack Web Hologram Brackets -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="25" y="35" width="150" height="130" rx="14" stroke="#8B5CF6" stroke-width="1.5" fill="none" opacity="0.4"/>
+                            <line x1="25" y1="62" x2="175" y2="62" stroke="#8B5CF6" stroke-width="1" opacity="0.3"/>
+                            <circle cx="42" cy="48" r="3.5" fill="#EF4444" opacity="0.7"/>
+                            <circle cx="56" cy="48" r="3.5" fill="#F59E0B" opacity="0.7"/>
+                            <circle cx="70" cy="48" r="3.5" fill="#10B981" opacity="0.7"/>
+                            <path d="M72 85 L52 110 L72 135" stroke="#42C8F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="anim-code-bracket-left"/>
+                            <line x1="90" y1="138" x2="110" y2="82" stroke="#C4B5FD" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M128 85 L148 110 L128 135" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="anim-code-bracket-right"/>
+                            <path d="M25 110 H12 V170 H70" stroke="#42C8F5" stroke-width="1.5" class="anim-circuit-trace" opacity="0.6"/>
+                            <circle cx="70" cy="170" r="3" fill="#42C8F5"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 06 Mobile Application Engineering -->
+                <div class="service-showcase-card" data-category="digital" data-index="6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[06 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Mobile Application Engineering</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Mobile Application Engineering</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Native-speed iOS and Android architectures with real-time offline caching, biometric authentication, and push notifications.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; React Native / Flutter Cross-Platform</li>
+                                <li>&bull; Biometric &amp; Encrypted Local Storage</li>
+                                <li>&bull; App Store &amp; Play Store Deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Mobile App Biometric Laser Scan -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="60" y="25" width="80" height="150" rx="18" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.6"/>
+                            <rect x="68" y="42" width="64" height="114" rx="8" stroke="#C4B5FD" stroke-width="1" fill="none" opacity="0.3"/>
+                            <line x1="88" y1="33" x2="112" y2="33" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="100" cy="164" r="4.5" stroke="#42C8F5" stroke-width="1.5" fill="none"/>
+                            <line x1="68" y1="80" x2="132" y2="80" stroke="#42C8F5" stroke-width="2.5" stroke-linecap="round" class="anim-mobile-laser"/>
+                            <rect x="74" y="55" width="22" height="22" rx="5" fill="#8B5CF6" opacity="0.35" class="anim-app-block"/>
+                            <rect x="104" y="55" width="22" height="22" rx="5" fill="#42C8F5" opacity="0.35" class="anim-app-block"/>
+                            <rect x="74" y="95" width="22" height="22" rx="5" fill="#C4B5FD" opacity="0.35" class="anim-app-block"/>
+                            <rect x="104" y="95" width="22" height="22" rx="5" fill="#8B5CF6" opacity="0.35" class="anim-app-block"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 07 Full-Funnel Analytics & Attribution -->
+                <div class="service-showcase-card" data-category="digital" data-index="7">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[07 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Full-Funnel Analytics &amp; Attribution</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Full-Funnel Analytics &amp; Attribution</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Transparent pipeline metrics and server attribution. We audit every event touchpoint to identify conversion bottlenecks.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; GA4 Server-Side Container Configuration</li>
+                                <li>&bull; Custom BigQuery Event Pipelines</li>
+                                <li>&bull; Executive Looker Studio Dashboards</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Full-Funnel Analytics Telemetry -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 45 H165 L125 110 V160 L75 160 V110 Z" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.6"/>
+                            <line x1="50" y1="65" x2="150" y2="65" stroke="#42C8F5" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.4"/>
+                            <line x1="70" y1="90" x2="130" y2="90" stroke="#C4B5FD" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.4"/>
+                            <circle cx="100" cy="70" r="4.5" fill="#42C8F5" class="anim-funnel-dot"/>
+                            <circle cx="92" cy="100" r="4" fill="#C4B5FD" class="anim-funnel-dot" style="animation-delay: 0.8s;"/>
+                            <circle cx="108" cy="130" r="3.5" fill="#8B5CF6" class="anim-funnel-dot" style="animation-delay: 1.5s;"/>
+                            <path d="M25 178 Q60 160 100 178 T175 178" stroke="#42C8F5" stroke-width="2" fill="none" class="anim-telemetry-wave"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 08 Creative Media & Motion Design -->
+                <div class="service-showcase-card" data-category="digital" data-index="8">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[08 // DIGITAL]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Creative Media &amp; Motion Design</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Creative Media &amp; Motion Design</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Industrial video campaigns, 3D motion graphics, and post-production color grading designed to position your brand at the high end.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; 3D Product Renders &amp; Animation</li>
+                                <li>&bull; High-Definition Commercial Motion</li>
+                                <li>&bull; Vector Brand Guidelines &amp; Typography</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Motion Media Isometric Cube & Iris -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="75" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.4" class="anim-spin-cw"/>
+                            <circle cx="100" cy="100" r="50" stroke="#42C8F5" stroke-width="1.8" opacity="0.6"/>
+                            <g class="anim-iris-blade">
+                                <line x1="100" y1="50" x2="125" y2="100" stroke="#C4B5FD" stroke-width="2"/>
+                                <line x1="125" y1="100" x2="100" y2="150" stroke="#C4B5FD" stroke-width="2"/>
+                                <line x1="100" y1="150" x2="75" y2="100" stroke="#C4B5FD" stroke-width="2"/>
+                                <line x1="75" y1="100" x2="100" y2="50" stroke="#C4B5FD" stroke-width="2"/>
+                            </g>
+                            <g class="anim-iso-cube">
+                                <polygon points="100,82 120,93 100,104 80,93" stroke="#42C8F5" stroke-width="1.8" fill="rgba(66,200,245,0.15)"/>
+                                <polygon points="80,93 100,104 100,126 80,115" stroke="#8B5CF6" stroke-width="1.8" fill="rgba(139,92,246,0.15)"/>
+                                <polygon points="120,93 100,104 100,126 120,115" stroke="#C4B5FD" stroke-width="1.8" fill="rgba(196,181,253,0.15)"/>
+                            </g>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 09 Office Structured Cabling & Racks -->
+                <div class="service-showcase-card" data-category="infra" data-index="9">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[09 // INFRASTRUCTURE]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Office Structured Cabling &amp; Racks</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Office Structured Cabling &amp; Racks</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Certified copper and fiber installation, patch panel dressing, rack cooling architecture, and physical network labeling.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Cat6A / OM4 Fiber Optic Runs</li>
+                                <li>&bull; Server Rack Assembly &amp; Thermal Balance</li>
+                                <li>&bull; Fluke Certification Testing</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Hardware Ecosystems</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Ubiquiti UniFi</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Panduit</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">CommScope</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Structured Cabling & Fiber Traces -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="45" width="140" height="35" rx="6" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.6"/>
+                            <rect x="42" y="55" width="14" height="15" rx="2" stroke="#42C8F5" stroke-width="1.2"/>
+                            <rect x="66" y="55" width="14" height="15" rx="2" stroke="#42C8F5" stroke-width="1.2"/>
+                            <rect x="90" y="55" width="14" height="15" rx="2" stroke="#42C8F5" stroke-width="1.2"/>
+                            <rect x="114" y="55" width="14" height="15" rx="2" stroke="#42C8F5" stroke-width="1.2"/>
+                            <rect x="138" y="55" width="14" height="15" rx="2" stroke="#42C8F5" stroke-width="1.2"/>
+                            <circle cx="49" cy="51" r="2.5" fill="#10B981" class="anim-port-led"/>
+                            <circle cx="73" cy="51" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 0.3s;"/>
+                            <circle cx="97" cy="51" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 0.6s;"/>
+                            <circle cx="121" cy="51" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 0.9s;"/>
+                            <circle cx="145" cy="51" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 1.2s;"/>
+                            <path d="M49 70 C49 110, 80 120, 80 160" stroke="#8B5CF6" stroke-width="2.5" fill="none" class="anim-fiber-pulse"/>
+                            <path d="M73 70 C73 115, 100 125, 100 160" stroke="#42C8F5" stroke-width="2.5" fill="none" class="anim-fiber-pulse" style="animation-delay: 0.5s;"/>
+                            <path d="M97 70 C97 120, 120 130, 120 160" stroke="#C4B5FD" stroke-width="2.5" fill="none" class="anim-fiber-pulse" style="animation-delay: 1s;"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 10 Enterprise Routing, Switching & Wi-Fi 6 -->
+                <div class="service-showcase-card" data-category="infra" data-index="10">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[10 // INFRASTRUCTURE]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Enterprise Routing, Switching &amp; Wi-Fi 6</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Enterprise Routing, Switching &amp; Wi-Fi 6</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Layer 2/3 core switching, VLAN network isolation, dynamic routing protocols, and high-density enterprise Wi-Fi 6 AP setups.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; L2/L3 Managed Switch Provisioning</li>
+                                <li>&bull; Guest / Corporate VLAN Segmentation</li>
+                                <li>&bull; Seamless Roaming Mesh Deployment</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Hardware Ecosystems</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Cisco Catalyst</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">MikroTik</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">UniFi APs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Enterprise Wi-Fi 6 Wavefronts -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="100,70 126,85 126,115 100,130 74,115 74,85" stroke="#8B5CF6" stroke-width="2" fill="none" class="anim-router-hex"/>
+                            <circle cx="100" cy="100" r="12" fill="#42C8F5" opacity="0.8"/>
+                            <path d="M70 60 A45 45 0 0 1 130 60" stroke="#42C8F5" stroke-width="2.5" stroke-linecap="round" fill="none" class="anim-wifi-wave"/>
+                            <path d="M50 40 A70 70 0 0 1 150 40" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" fill="none" class="anim-wifi-wave"/>
+                            <path d="M30 20 A95 95 0 0 1 170 20" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" fill="none" class="anim-wifi-wave"/>
+                            <line x1="45" y1="150" x2="74" y2="115" stroke="#42C8F5" stroke-width="1.8" stroke-dasharray="4 4"/>
+                            <line x1="155" y1="150" x2="126" y2="115" stroke="#42C8F5" stroke-width="1.8" stroke-dasharray="4 4"/>
+                            <line x1="100" y1="130" x2="100" y2="175" stroke="#8B5CF6" stroke-width="2"/>
+                            <circle cx="100" cy="175" r="4.5" fill="#42C8F5"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 11 Server Deployment & Virtualization -->
+                <div class="service-showcase-card" data-category="infra" data-index="11">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[11 // INFRASTRUCTURE]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Server Deployment &amp; Virtualization</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Server Deployment &amp; Virtualization</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Hypervisor clustering, active directory infrastructure, local RAID storage, and immutable off-site automated backups.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; Proxmox VE / VMware ESXi Hypervisors</li>
+                                <li>&bull; Windows Server Active Directory &amp; DNS</li>
+                                <li>&bull; TrueNAS Enterprise ZFS Storage</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Hardware Ecosystems</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Dell PowerEdge</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">HPE ProLiant</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Synology</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: Server Blade & Hypervisor Fans -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="35" y="40" width="130" height="32" rx="5" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.6"/>
+                            <rect x="35" y="84" width="130" height="32" rx="5" stroke="#42C8F5" stroke-width="2" fill="none" opacity="0.7"/>
+                            <rect x="35" y="128" width="130" height="32" rx="5" stroke="#C4B5FD" stroke-width="2" fill="none" opacity="0.6"/>
+                            <g class="anim-server-fan">
+                                <circle cx="75" cy="100" r="10" stroke="#42C8F5" stroke-width="1.5" fill="none"/>
+                                <line x1="75" y1="90" x2="75" y2="110" stroke="#42C8F5" stroke-width="2"/>
+                                <line x1="65" y1="100" x2="85" y2="100" stroke="#42C8F5" stroke-width="2"/>
+                            </g>
+                            <g class="anim-server-fan-2">
+                                <circle cx="125" cy="100" r="10" stroke="#42C8F5" stroke-width="1.5" fill="none"/>
+                                <line x1="125" y1="90" x2="125" y2="110" stroke="#42C8F5" stroke-width="2"/>
+                                <line x1="115" y1="100" x2="135" y2="100" stroke="#42C8F5" stroke-width="2"/>
+                            </g>
+                            <circle cx="48" cy="56" r="2.5" fill="#10B981" class="anim-port-led"/>
+                            <circle cx="56" cy="56" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 0.4s;"/>
+                            <circle cx="48" cy="144" r="2.5" fill="#10B981" class="anim-port-led"/>
+                            <circle cx="56" cy="144" r="2.5" fill="#10B981" class="anim-port-led" style="animation-delay: 0.4s;"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+                <!-- 12 Physical Security & Biometrics -->
+                <div class="service-showcase-card" data-category="infra" data-index="12">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-[#8B5CF6]">[12 // INFRASTRUCTURE]</span>
+                        <span class="material-symbols-outlined text-lg text-[rgba(245,245,247,0.6)]">north_east</span>
+                    </div>
+                    <div class="service-inactive-view">
+                        <h3 class="text-base font-bold text-white mt-auto">Physical Security &amp; Biometrics</h3>
+                    </div>
+                    <div class="service-active-view space-y-4">
+                        <h3 class="text-xl font-bold text-white leading-tight">Physical Security &amp; Biometrics</h3>
+                        <p class="text-xs text-[rgba(255,255,255,0.85)] leading-relaxed">
+                            Workplace perimeter security with 4K IP CCTV surveillance, AI motion tracking, and biometric access control systems.
+                        </p>
+                        <div class="pt-3 border-t border-white/15 space-y-2">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block">Deliverables</span>
+                            <ul class="text-xs space-y-1 text-white/90">
+                                <li>&bull; 4K NVR &amp; AI Smart Motion Cameras</li>
+                                <li>&bull; RFID / Facial Recognition Access Locks</li>
+                                <li>&bull; Remote Multi-Branch Live Video Feeds</li>
+                            </ul>
+                        </div>
+                        <div class="pt-2 border-t border-white/15">
+                            <span class="text-[10px] font-mono text-[#E9D5FF] uppercase tracking-wider block mb-1.5">Hardware Ecosystems</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Hikvision</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">Dahua</span>
+                                <span class="px-2 py-0.5 bg-black/25 rounded text-[10px] font-mono text-white">ZKTeco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ambient Masked Symbol Animation: 4K CCTV Security & Biometric Mesh -->
+                    <div class="service-card-ambient-bg" aria-hidden="true">
+                        <svg class="service-symbol-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="75" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+                            <circle cx="100" cy="100" r="50" stroke="#42C8F5" stroke-width="1.8" opacity="0.6"/>
+                            <polygon points="100,100 160,50 170,80" fill="rgba(66,200,245,0.25)" class="anim-cctv-sweep"/>
+                            <path d="M45 45 H30 V60" stroke="#42C8F5" stroke-width="2.5"/>
+                            <path d="M155 45 H170 V60" stroke="#42C8F5" stroke-width="2.5"/>
+                            <path d="M45 155 H30 V140" stroke="#42C8F5" stroke-width="2.5"/>
+                            <path d="M155 155 H170 V140" stroke="#42C8F5" stroke-width="2.5"/>
+                            <path d="M85 100 A15 15 0 0 1 115 100" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <path d="M75 100 A25 25 0 0 1 125 100" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <path d="M65 100 A35 35 0 0 1 135 100" stroke="#42C8F5" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <line x1="60" y1="100" x2="140" y2="100" stroke="#42C8F5" stroke-width="2.5" class="anim-biometric-laser"/>
+                        </svg>
+                    </div>
+                
+                </div>
+
+            </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     3. PURPLE ENERGY DUST TRANSITION (section-transition.mp4)
+     Cinematic chapter break between Services and Infrastructure (~44vh)
+     ========================================================================== -->
+<div class="energy-transition-wrap" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="animations/section-transition-poster.jpg">
+        <source src="animations/section-transition.mp4" type="video/mp4">
+    </video>
+    <div class="relative z-10 text-center space-y-2 pointer-events-none">
+        <span class="font-mono text-[10px] text-[#BFA5FF] tracking-[0.3em] uppercase block">CHAPTER // TRANSITION</span>
+        <div class="text-xs text-[rgba(245,245,247,0.4)] font-mono">FROM APPLICATION CODE TO PHYSICAL HARDWARE</div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     4. INFRASTRUCTURE / BITS & BOLTS (infrastructure-network.mp4)
+     Full-width fiber optic network background with negative space for headings
+     ========================================================================== -->
+<section class="infra-section-wrap py-28 px-6 md:px-12 border-y border-white/5" id="infrastructure">
+    
+    <!-- Video Background Component -->
+    <div class="infra-video-wrap">
+        <video autoplay muted loop playsinline preload="metadata" poster="animations/infrastructure-network-poster.jpg">
+            <source src="animations/infrastructure-network.mp4" type="video/mp4">
+        </video>
+        <div class="infra-dark-overlay"></div>
+    </div>
+
+    <!-- Content positioned in clean upper/middle negative space -->
+    <div class="max-w-max-width mx-auto relative z-10 space-y-12 w-full">
+        
+        <!-- Header -->
+        <div class="max-w-3xl space-y-4">
+            <div class="eyebrow-pill">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+                <span>BRIDGING THE GAP // CONVERGED STACK</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.18] pb-1">
+                Bits &amp; Bolts: <br>
+                <span class="neon-gradient-text">Integrated Mastery.</span>
+            </h2>
+            <p class="text-base sm:text-lg text-[rgba(245,245,247,0.7)] leading-relaxed">
+                Most agencies only understand software code, and most IT contractors only understand hardware racks. At RAKTechSoftHub, we engineer both. We lay the fiber cables, terminate the switch ports, mount the hypervisors, and write the distributed web applications that run on top.
+            </p>
+        </div>
+
+        <!-- Two Pillars Cards (Physical + Digital) -->
+        <div class="grid md:grid-cols-2 gap-8 items-stretch pt-4">
             
-            <!-- Large 3D WebGL Canvas Container -->
-            <div id="services-canvas-container" class="w-full aspect-square relative overflow-visible rounded-xl border border-outline-variant/20 bg-surface-container/10 backdrop-blur-sm">
-                <!-- Three.js Canvas mounts here and dynamically renders the active service's shape -->
-                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div class="w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full border border-primary/5 absolute hero-circle-rotate"></div>
+            <!-- Pillar 1: Physical Infrastructure Mastery -->
+            <div class="p-8 rounded-2xl bg-[#0c0c12]/85 backdrop-blur-xl border border-white/10 hover:border-[#8B5CF6]/40 transition-all space-y-4 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+                <div class="w-12 h-12 rounded-xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#BFA5FF]">
+                    <span class="material-symbols-outlined !text-2xl">dns</span>
                 </div>
-            </div>
-        </div>
-
-        <!-- Right Column: Description & Expandable Services List -->
-        <div class="md:col-span-7 space-y-lg">
-            <p class="text-on-surface-variant font-body-lg text-body-lg reveal-up">
-                We offer comprehensive digital solutions that transform your business and drive innovation across every touchpoint.
-            </p>
-
-            <!-- Tab Navigation (keeps the two categories of services) -->
-            <div class="flex flex-wrap mt-lg reveal-up">
-                <div class="inline-flex p-1 bg-surface-container rounded-full border border-outline-variant">
-                    <button class="px-6 py-2.5 rounded-full font-label-md text-label-md transition-all tab-btn tab-active" data-tab="digital" id="tabDigital">
-                        Digital, Marketing &amp; Creative
-                    </button>
-                    <button class="px-6 py-2.5 rounded-full font-label-md text-label-md transition-all tab-btn text-on-surface-variant" data-tab="infrastructure-tab" id="tabInfra">
-                        IT Infrastructure &amp; Hardware
-                    </button>
-                </div>
-            </div>
-
-            <!-- Tab 1: Digital Services List -->
-            <div class="tab-content active flex flex-col gap-sm" id="digital">
-                
-                <!-- Service 1: SEO -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden active-item" data-service="seo" data-shape="cone">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">01</span>
-                            <h3 class="font-title-lg text-title-lg">SEO Optimization</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Algorithmic precision to dominate search results, optimize metadata structure, and increase organic acquisition.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Keyword Research &amp; Mapping</li>
-                                    <li>• On-Page &amp; Technical Audit</li>
-                                    <li>• Backlink &amp; Authority Strategy</li>
-                                    <li>• Performance Monitoring &amp; Reports</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Ahrefs</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">SEMrush</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Google Console</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Screaming Frog</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 2: Meta Ads -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="meta-ads" data-shape="torus">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">02</span>
-                            <h3 class="font-title-lg text-title-lg">Meta Ads Management</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Targeted, high-ROAS social campaigns deployed across Facebook, Instagram, and Audience Network.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Ad Creative &amp; Copywriting</li>
-                                    <li>• Custom &amp; Lookalike Audiences</li>
-                                    <li>• Pixel &amp; API Conversion Setup</li>
-                                    <li>• A/B Testing &amp; Scaling</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Meta Ads Manager</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Canva</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">CapCut</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Figma</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 3: Google Ads -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="google-ads" data-shape="octahedron">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">03</span>
-                            <h3 class="font-title-lg text-title-lg">Google Ads (PPC)</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Strategic bidding and search capture designed to drive direct leads, sales, and high-intent traffic.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Search &amp; Performance Max Campaigns</li>
-                                    <li>• Negative Keyword Scrubbing</li>
-                                    <li>• Copywriting &amp; Extension Optimization</li>
-                                    <li>• Conversion Attribution Analytics</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Google Ads Suite</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Google Tag Manager</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Looker Studio</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 4: Social Media -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="social-media" data-shape="sphere-orbit">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">04</span>
-                            <h3 class="font-title-lg text-title-lg">Social Media Marketing</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Creative storytelling, dynamic grid aesthetics, and engagement strategies for cross-platform growth.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Content Calendar &amp; Scheduling</li>
-                                    <li>• Community Moderation</li>
-                                    <li>• Reel / Short Production</li>
-                                    <li>• Influencer Outreaches</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Later / Buffer</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Photoshop</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Illustrator</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">TikTok Studio</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 5: Web Design & Dev -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="web-dev" data-shape="code-mesh">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">05</span>
-                            <h3 class="font-title-lg text-title-lg">Web Design &amp; Dev</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Next-gen, conversion-focused websites engineered with modern frameworks, animations, and clean architectures.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• UI/UX Interactive Design</li>
-                                    <li>• Responsive Web Development</li>
-                                    <li>• Speed Optimization &amp; SEO Friendly</li>
-                                    <li>• Content Management Integration</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">React / Next.js</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Tailwind CSS</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Node.js</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Framer Motion</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 6: Mobile App Dev -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="mobile-app" data-shape="mobile-mesh">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">06</span>
-                            <h3 class="font-title-lg text-title-lg">Mobile App Development</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Seamless iOS and Android application engineering leveraging cross-platform architectures.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Custom Mobile App Architecture</li>
-                                    <li>• API Integration &amp; Real-time Synced</li>
-                                    <li>• App Store &amp; Play Store Deployment</li>
-                                    <li>• Smooth Material / Cupertino UX</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Flutter</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">React Native</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Firebase</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Fastlane</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 7: Analytics -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="analytics" data-shape="wave-mesh">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">07</span>
-                            <h3 class="font-title-lg text-title-lg">Analytics &amp; Reporting</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Full-funnel attribution and transparent data insights. We analyze every click to boost conversion rates.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• GA4 Tracking Setup</li>
-                                    <li>• Funnel Conversion Audit</li>
-                                    <li>• Custom Automated Dashboards</li>
-                                    <li>• Monthly Strategic Reports</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Google Analytics 4</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Mixpanel</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Hotjar</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Looker Studio</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 8: Creative Media -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="creative" data-shape="torus-knot">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">08</span>
-                            <h3 class="font-title-lg text-title-lg">Creative Media &amp; Video</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            High-impact commercial ads, motion graphics, and post-production editing for social systems.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Promotional Video Campaigns</li>
-                                    <li>• Motion Design &amp; SFX</li>
-                                    <li>• Cinematic Editing &amp; Grading</li>
-                                    <li>• Static Graphics Production</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Tools</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Premiere Pro</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">After Effects</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">DaVinci Resolve</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Tab 2: IT Infrastructure List -->
-            <div class="tab-content flex flex-col gap-sm" id="infrastructure-tab">
-                
-                <!-- Service 9: Network Setup -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="network" data-shape="network-nodes">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">01</span>
-                            <h3 class="font-title-lg text-title-lg">Office Network Setup</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Professional cabling, structured fiber distribution, and robust server rack deployment.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Structured Cabling (Cat6a/Fiber)</li>
-                                    <li>• Rack Organization &amp; Patch Panel</li>
-                                    <li>• Physical Infrastructure Mapping</li>
-                                    <li>• Hardware Quality Certification</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Hardware Brands</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Ubiquiti UniFi</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Panduit</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">CommScope</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 10: Routing & Switching -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="routing" data-shape="waves">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">02</span>
-                            <h3 class="font-title-lg text-title-lg">Routing &amp; Switching</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Enterprise-grade core networks, dynamic routing protocols, and high-density corporate Wi-Fi coverage.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Core Router Provisioning (OSPF/BGP)</li>
-                                    <li>• Layer 2/3 Managed Switches</li>
-                                    <li>• Enterprise Wi-Fi 6 AP Distribution</li>
-                                    <li>• VLAN Segmentation &amp; Security Policy</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Hardware Brands</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Cisco Systems</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Fortinet</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">MikroTik</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">UniFi</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 11: Server Setup -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="server" data-shape="box-grid">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">03</span>
-                            <h3 class="font-title-lg text-title-lg">Server &amp; System Deployment</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Hypervisor setup, active directory configuration, local backups, and high-performance server systems.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• Proxmox / ESXi Virtualization</li>
-                                    <li>• Windows Server &amp; Domain Policy</li>
-                                    <li>• NAS Storage (RAID Setup)</li>
-                                    <li>• Off-site Automated Cloud Backups</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Platforms</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Proxmox VE</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Synology DSM</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">TrueNAS</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">AWS / GCP</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 12: Security -->
-                <div class="service-list-item glass-card border border-outline-variant/60 rounded-xl overflow-hidden" data-service="security" data-shape="shield">
-                    <div class="service-item-header w-full px-6 py-5 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center gap-md">
-                            <span class="font-code-sm text-primary">04</span>
-                            <h3 class="font-title-lg text-title-lg">Physical Security</h3>
-                        </div>
-                        <span class="material-symbols-outlined service-chevron transition-transform duration-300">north_east</span>
-                    </div>
-                    <div class="service-item-content px-6 pb-6 space-y-md transition-all duration-300">
-                        <p class="text-on-surface-variant text-body-md">
-                            Secure workplace ecosystems with high-definition CCTV surveillance and biometric entry control.
-                        </p>
-                        <div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant/20">
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Deliverables</h5>
-                                <ul class="space-y-1 text-xs text-on-surface-variant">
-                                    <li>• IP CCTV (4K Resolution)</li>
-                                    <li>• Biometric Access Controllers</li>
-                                    <li>• Network Video Recorder (NVR)</li>
-                                    <li>• Mobile Remote Live Feed Setup</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Brands</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Hikvision</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">Dahua</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">ZKTeco</span>
-                                    <span class="px-2 py-1 bg-surface-container rounded text-[10px] text-on-surface-variant">UniFi Protect</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- Expertise: Bits and Bolts -->
-<section class="py-xl bg-surface-container-lowest border-y border-outline-variant" id="infrastructure">
-    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
-        <div class="order-2 md:order-1 relative">
-            <div class="grid grid-cols-2 gap-md">
-                <div class="aspect-square rounded-xl overflow-hidden border border-outline-variant relative group reveal-up">
-                    <img alt="Hardware Precision" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCApqO2lpkM2oYXYhj72cmnXa-wWxToquKt8iuK77ZE0gAQ5tA1VmlxI4z6V4mUAuXlG3x3vWSyrCqqrifoSBwiObajuM3Ax5yNbjqugRcRWcFJkUjtcQvJzkcBbawU8vGI7uhQrLSmBdcqnteynBygw8ld51317ucb0nt5Z5PvoVSxAOgc2SonFVwnKBvfL1lIDtVR2DbmU27l_aXwbyIFVZZMiYhENL5OyAWE17_oACHTb-PKQutMealJG3u2DOaYOxFKfc2Z1g">
-                </div>
-                <div class="aspect-square rounded-xl overflow-hidden border border-outline-variant relative group mt-lg reveal-up" style="--delay: 0.2s">
-                    <img alt="Software Excellence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAPvJsO3Uai1JwRCtTHdl9QDCCxdQ2vMnIqveJNOkyzgRSRyqmgDSfEXVN9VXto4Wzh0tufR3s_yw54AaYZ1Z5sJyAw6tAxGibzqixs-BD1vqhUxHRZH99tBxuJRQ6PxmrJuUgZGcI-9IHykJ8eQQUc_0b2NGQGxbtZLqrQM8kau_vIqDb4g7BYY-FR30uZuNAz32zQJ-pnABWu11DKDdUk9ig3tZLoTKjK_rzRtGwodVqmhrE0Oo2ypGH_-n8CBUkeKYCrx5aV4s">
-                </div>
-            </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/30 blur-[60px] pointer-events-none"></div>
-        </div>
-        <div class="order-1 md:order-2 space-y-md">
-            <span class="font-code-sm text-code-sm text-primary uppercase tracking-widest reveal-up">Bridging the Gap</span>
-            <h2 class="font-headline-md text-headline-md reveal-up">Bits and Bolts: <br>Integrated Mastery</h2>
-            <p class="text-on-surface-variant text-body-lg reveal-up">
-                At RAKTechSoftHub, we don't just write code; we build the environment it lives in. Our team handles everything from the fiber-optic cabling in your server room to the microservices architecture in your cloud dashboard.
-            </p>
-            <div class="space-y-sm">
-                <div class="flex items-start gap-4 reveal-up">
-                    <div class="mt-1 w-5 h-5 rounded-full border border-primary flex items-center justify-center shrink-0">
-                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                    </div>
-                    <div>
-                        <h5 class="font-title-lg text-body-md font-bold">Physical Deployment</h5>
-                        <p class="text-on-surface-variant text-body-sm">On-site technicians for rack installation, network routing, and security hardware.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 reveal-up" style="--delay: 0.1s">
-                    <div class="mt-1 w-5 h-5 rounded-full border border-primary flex items-center justify-center shrink-0">
-                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                    </div>
-                    <div>
-                        <h5 class="font-title-lg text-body-md font-bold">Digital Ecosystems</h5>
-                        <p class="text-on-surface-variant text-body-sm">Full-stack development that leverages the latest in IoT and industrial connectivity.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Pricing Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto hidden" id="pricing">
-    <div class="text-center mb-xl">
-        <h2 class="font-headline-md text-headline-md mb-xs reveal-up">Technical Service Tiers</h2>
-        <p class="text-on-surface-variant font-body-md text-body-md max-w-2xl mx-auto reveal-up">Scalable plans engineered for every stage of growth. No hidden costs.</p>
-        <div class="flex items-center justify-center gap-4 mt-lg reveal-up">
-            <span class="text-sm font-semibold toggle-label active-label" id="toggleMonthly">Monthly</span>
-            <button class="toggle-switch" id="pricingToggle" aria-label="Toggle billing"><span class="toggle-thumb"></span></button>
-            <span class="text-sm font-semibold toggle-label" id="toggleYearly">Yearly <span class="text-[10px] px-2 py-0.5 bg-neon-cyan/15 text-neon-cyan rounded-full ml-1">SAVE 20%</span></span>
-        </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        <!-- Starter -->
-        <div class="glass-card rounded-2xl border border-outline-variant p-8 flex flex-col reveal-up">
-            <h3 class="font-headline-sm text-headline-sm mb-2">Starter</h3>
-            <p class="text-on-surface-variant text-body-sm mb-6">Ideal for startups and small businesses.</p>
-            <div class="flex items-baseline gap-1 mb-8 pb-6 border-b border-outline-variant">
-                <span class="text-on-surface-variant text-lg">$</span>
-                <span class="text-4xl font-extrabold text-primary pricing-value" data-monthly="999" data-yearly="799">999</span>
-                <span class="text-on-surface-variant text-sm">/mo</span>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1 text-body-sm">
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> SEO Basic Optimization</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Social Media (2 Platforms)</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Monthly Reports</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Email Support</li>
-                <li class="flex items-center gap-3 text-outline/50"><span class="material-symbols-outlined !text-base">cancel</span> Meta/Google Ads</li>
-                <li class="flex items-center gap-3 text-outline/50"><span class="material-symbols-outlined !text-base">cancel</span> Dedicated Manager</li>
-            </ul>
-            <a href="#contact" class="w-full py-4 border border-outline-variant text-on-surface rounded-xl font-label-md text-center hover:bg-surface-container transition-all uppercase tracking-widest pricing-cta block" data-plan="Starter">Select Plan</a>
-        </div>
-        <!-- Growth -->
-        <div class="relative glass-card rounded-2xl border-2 border-primary-container p-8 flex flex-col reveal-up scale-[1.03] shadow-[0_0_40px_rgba(142,213,255,0.1)]" style="--delay: 0.15s">
-            <div class="absolute -top-px left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-container text-on-primary-container rounded-b-lg text-[11px] font-bold uppercase tracking-widest">Recommended</div>
-            <h3 class="font-headline-sm text-headline-sm mb-2 mt-2">Growth</h3>
-            <p class="text-on-surface-variant text-body-sm mb-6">For scaling businesses ready to dominate.</p>
-            <div class="flex items-baseline gap-1 mb-8 pb-6 border-b border-outline-variant">
-                <span class="text-on-surface-variant text-lg">$</span>
-                <span class="text-4xl font-extrabold text-primary pricing-value" data-monthly="2499" data-yearly="1999">2,499</span>
-                <span class="text-on-surface-variant text-sm">/mo</span>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1 text-body-sm">
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Advanced SEO Strategy</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Meta Ads Management</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Google Ads (PPC)</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Social Media (4 Platforms)</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Weekly Reports</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Dedicated Account Manager</li>
-            </ul>
-            <a href="#contact" class="w-full py-4 bg-primary-container text-on-primary-container rounded-xl font-label-md text-center glow-button uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all pricing-cta block" data-plan="Growth">Select Plan</a>
-        </div>
-        <!-- Enterprise -->
-        <div class="glass-card rounded-2xl border border-outline-variant p-8 flex flex-col reveal-up" style="--delay: 0.3s">
-            <h3 class="font-headline-sm text-headline-sm mb-2">Enterprise</h3>
-            <p class="text-on-surface-variant text-body-sm mb-6">Full-scale digital + physical infrastructure.</p>
-            <div class="flex items-baseline gap-1 mb-8 pb-6 border-b border-outline-variant">
-                <span class="text-on-surface-variant text-lg">$</span>
-                <span class="text-4xl font-extrabold text-primary pricing-value" data-monthly="4999" data-yearly="3999">4,999</span>
-                <span class="text-on-surface-variant text-sm">/mo</span>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1 text-body-sm">
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Everything in Growth</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Web &amp; Mobile App Dev</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Network Infrastructure</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Security Systems</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> 24/7 Priority Support</li>
-                <li class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined !text-base text-neon-cyan">check_circle</span> Quarterly Strategy Sessions</li>
-            </ul>
-            <a href="#contact" class="w-full py-4 border border-outline-variant text-on-surface rounded-xl font-label-md text-center hover:bg-surface-container transition-all uppercase tracking-widest pricing-cta block" data-plan="Enterprise">Contact Sales</a>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-xl bg-surface-container-lowest border-y border-outline-variant" id="faq">
-    <div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
-        <div class="text-center mb-xl">
-            <h2 class="font-headline-md text-headline-md mb-xs reveal-up">Frequently Asked Questions</h2>
-            <p class="text-on-surface-variant font-body-md text-body-md reveal-up">Everything you need to know about our services and processes.</p>
-        </div>
-        <div class="space-y-3" id="faqList">
-            <div class="faq-item glass-card border border-outline-variant rounded-xl overflow-hidden reveal-up">
-                <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-on-surface hover:text-primary transition-colors" aria-expanded="false">
-                    <span>How long does a typical project take to complete?</span>
-                    <span class="material-symbols-outlined faq-chevron transition-transform duration-300 text-outline">expand_more</span>
-                </button>
-                <div class="faq-answer px-6 overflow-hidden max-h-0 transition-all duration-500">
-                    <p class="text-on-surface-variant text-body-sm pb-5">Project timelines vary based on complexity. Website projects typically take 4-8 weeks, while full infrastructure deployments can take 2-4 months. We provide detailed project timelines during our initial consultation and keep you updated at every milestone.</p>
-                </div>
-            </div>
-            <div class="faq-item glass-card border border-outline-variant rounded-xl overflow-hidden reveal-up" style="--delay:0.1s">
-                <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-on-surface hover:text-primary transition-colors" aria-expanded="false">
-                    <span>Do you offer on-site hardware installation?</span>
-                    <span class="material-symbols-outlined faq-chevron transition-transform duration-300 text-outline">expand_more</span>
-                </button>
-                <div class="faq-answer px-6 overflow-hidden max-h-0 transition-all duration-500">
-                    <p class="text-on-surface-variant text-body-sm pb-5">Absolutely! Our certified technicians handle everything from server rack assembly and fiber optic cabling to CCTV installation and biometric access systems. We operate across major cities and can deploy teams on-site within 48 hours of project approval.</p>
-                </div>
-            </div>
-            <div class="faq-item glass-card border border-outline-variant rounded-xl overflow-hidden reveal-up" style="--delay:0.15s">
-                <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-on-surface hover:text-primary transition-colors" aria-expanded="false">
-                    <span>Can I combine digital marketing with infrastructure services?</span>
-                    <span class="material-symbols-outlined faq-chevron transition-transform duration-300 text-outline">expand_more</span>
-                </button>
-                <div class="faq-answer px-6 overflow-hidden max-h-0 transition-all duration-500">
-                    <p class="text-on-surface-variant text-body-sm pb-5">That's our specialty! Our Enterprise plan includes both digital marketing and physical infrastructure services. We're one of the few agencies that bridge the gap between software and hardware, offering a truly integrated solution under one roof.</p>
-                </div>
-            </div>
-            <div class="faq-item glass-card border border-outline-variant rounded-xl overflow-hidden reveal-up" style="--delay:0.2s">
-                <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-on-surface hover:text-primary transition-colors" aria-expanded="false">
-                    <span>What's included in the free technical quote?</span>
-                    <span class="material-symbols-outlined faq-chevron transition-transform duration-300 text-outline">expand_more</span>
-                </button>
-                <div class="faq-answer px-6 overflow-hidden max-h-0 transition-all duration-500">
-                    <p class="text-on-surface-variant text-body-sm pb-5">Our free technical quote includes a comprehensive audit of your current systems, a detailed proposal with scope of work, timeline, and cost breakdown, plus a 30-minute strategy call with one of our technical architects. No strings attached.</p>
-                </div>
-            </div>
-            <div class="faq-item glass-card border border-outline-variant rounded-xl overflow-hidden reveal-up" style="--delay:0.25s">
-                <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-on-surface hover:text-primary transition-colors" aria-expanded="false">
-                    <span>Do you provide ongoing maintenance and support?</span>
-                    <span class="material-symbols-outlined faq-chevron transition-transform duration-300 text-outline">expand_more</span>
-                </button>
-                <div class="faq-answer px-6 overflow-hidden max-h-0 transition-all duration-500">
-                    <p class="text-on-surface-variant text-body-sm pb-5">Yes! All our plans include ongoing support. Starter gets email support, Growth includes a dedicated account manager, and Enterprise clients enjoy 24/7 priority support with guaranteed response times under 1 hour for critical issues.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Logos Section -->
-<section class="py-12 bg-surface-container-lowest border-y border-outline-variant/30 overflow-hidden relative">
-    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-6 text-center">
-        <h4 class="font-code-sm text-code-sm text-primary uppercase tracking-[0.2em] opacity-80">Trusted by Industry Leaders</h4>
-    </div>
-    <div class="perspective-container relative w-full flex items-center justify-center">
-        <div class="logo-marquee-track flex gap-16 py-4">
-            <!-- First Set -->
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Cognizant</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Trimble</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">e2open</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Toyota</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Celonis</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Inyaza</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Lowe's</div>
-            <!-- Duplicate for Seamless Scroll -->
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Cognizant</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Trimble</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">e2open</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Toyota</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Celonis</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Inyaza</div>
-            <div class="logo-item flex items-center justify-center font-bold text-lg text-outline/50 tracking-wider hover:text-primary transition-colors cursor-pointer uppercase">Lowe's</div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto" id="contact">
-    <div class="grid md:grid-cols-12 gap-xl">
-        <div class="md:col-span-5 space-y-md flex flex-col justify-between">
-            <div class="space-y-md">
-                <h2 class="font-headline-md text-headline-md reveal-up">Ready to Scale Your Infrastructure?</h2>
-                <p class="text-on-surface-variant text-body-md reveal-up">
-                    Our technical architects at RAKTechSoftHub are ready to review your project needs. Provide your details, and we'll generate a comprehensive technical proposal within 48 hours.
+                <h3 class="text-xl font-bold text-white">Physical Infrastructure Mastery</h3>
+                <p class="text-xs sm:text-sm text-[rgba(245,245,247,0.60)] leading-relaxed">
+                    Direct certified technician deployment for rack architecture, 10G/40G optical routing, managed switching, server thermal balancing, and biometric security perimeters.
                 </p>
-                <div class="p-md bg-surface-container rounded-xl border border-outline-variant reveal-up">
-                    <div class="flex items-center gap-md">
-                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">headset_mic</span>
-                        </div>
-                        <div>
-                            <p class="font-label-md text-label-md uppercase text-primary">Technical Liaison</p>
-                            <p class="font-title-lg text-title-lg" data-setting="email">raktechsofthub@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-md bg-surface-container rounded-xl border border-outline-variant reveal-up" style="--delay:0.1s">
-                    <div class="flex items-center gap-md">
-                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">call</span>
-                        </div>
-                        <div>
-                            <p class="font-label-md text-label-md uppercase text-primary">Direct Line</p>
-                            <p class="font-title-lg text-title-lg" data-setting="phone">+923092003125</p>
-                        </div>
-                    </div>
+                <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">Cat6A / Fiber</span>
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">Cisco / Fortinet</span>
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">4K CCTV</span>
                 </div>
             </div>
-            
-            <!-- 3D Astronaut / Hologram Container -->
-            <div id="cta-canvas-container" class="w-full h-64 md:h-80 relative overflow-visible rounded-xl border border-outline-variant/30 bg-surface-container/30 backdrop-blur-md mt-6 reveal-up">
-                <!-- Three.js Canvas mounts here -->
+
+            <!-- Pillar 2: Modern Digital Ecosystems -->
+            <div class="p-8 rounded-2xl bg-[#0c0c12]/85 backdrop-blur-xl border border-white/10 hover:border-[#8B5CF6]/40 transition-all space-y-4 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+                <div class="w-12 h-12 rounded-xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#BFA5FF]">
+                    <span class="material-symbols-outlined !text-2xl">hub</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Modern Digital Ecosystems</h3>
+                <p class="text-xs sm:text-sm text-[rgba(245,245,247,0.60)] leading-relaxed">
+                    Custom web platforms, mobile architectures, and automated customer acquisition funnels that capture high-intent enterprise demand and convert at scale.
+                </p>
+                <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">Next.js / Vite</span>
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">Algorithmic SEO</span>
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] font-mono text-[#BFA5FF]">Meta &amp; Google Ads</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ==========================================================================
+     5. PRICING SECTION (Clean, Minimal, Visual Break)
+     Near-black background, 3 clean cards, no large video
+     ========================================================================== -->
+<section class="py-24 px-6 md:px-12 max-w-max-width mx-auto" id="pricing">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+        <div class="eyebrow-pill">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+            <span>TRANSPARENT ENGAGEMENT</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">Predictable Engineering Retainers</h2>
+        <p class="text-sm text-[rgba(245,245,247,0.60)] leading-relaxed">
+            Transparent milestone-based architecture. No surprise fees or disjointed vendor disputes.
+        </p>
+    </div>
+
+    <!-- 3 Pricing Cards -->
+    <div class="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        
+        <!-- Card 1: Starter / Foundation -->
+        <div class="pricing-card space-y-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <span class="font-mono text-xs text-[rgba(245,245,247,0.5)] uppercase tracking-wider block">TIER 01 // FOUNDATION</span>
+                <h3 class="text-2xl font-bold text-white">Targeted Sprint</h3>
+                <p class="text-xs text-[rgba(245,245,247,0.60)] leading-relaxed">
+                    Designed for startups or single-site facilities requiring focused digital launches or initial network setups.
+                </p>
+                <div class="pt-4 border-t border-white/5 space-y-2 text-xs text-[rgba(245,245,247,0.7)]">
+                    <div class="flex items-center gap-2"><span>&bull;</span> Technical Architecture Audit</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> High-Performance Web Deployment</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> Core SEO Schema or Rack Provisioning</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> 30-Day Post-Launch SLA Warranty</div>
+                </div>
+            </div>
+            <a class="btn-glass-secondary w-full text-center text-xs" href="#contact">Get Foundation Scope</a>
+        </div>
+
+        <!-- Card 2: Growth / Converged (Featured with controlled violet aura) -->
+        <div class="pricing-card featured-plan space-y-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs text-[#BFA5FF] uppercase tracking-wider block">TIER 02 // RECOMMENDED</span>
+                    <span class="px-2 py-0.5 rounded-full bg-[#8B5CF6]/30 text-[#BFA5FF] text-[10px] font-mono font-bold">MOST POPULAR</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Converged Growth</h3>
+                <p class="text-xs text-[rgba(245,245,247,0.60)] leading-relaxed">
+                    The integrated standard: Physical networking, custom software platforms, and active customer acquisition funnels.
+                </p>
+                <div class="pt-4 border-t border-white/5 space-y-2 text-xs text-[rgba(245,245,247,0.7)]">
+                    <div class="flex items-center gap-2"><span class="text-[#8B5CF6]">&check;</span> Full Web Platform &amp; Mobile App</div>
+                    <div class="flex items-center gap-2"><span class="text-[#8B5CF6]">&check;</span> Office Cabling, Switching &amp; Wi-Fi 6</div>
+                    <div class="flex items-center gap-2"><span class="text-[#8B5CF6]">&check;</span> Paid Scaling (Meta &amp; Google Ads)</div>
+                    <div class="flex items-center gap-2"><span class="text-[#8B5CF6]">&check;</span> Server Virtualization &amp; Backup Sync</div>
+                    <div class="flex items-center gap-2"><span class="text-[#8B5CF6]">&check;</span> Priority Engineering Hotline</div>
+                </div>
+            </div>
+            <a class="btn-neon-primary w-full text-center text-xs" href="#contact">Deploy Converged Plan</a>
+        </div>
+
+        <!-- Card 3: Enterprise / Bespoke -->
+        <div class="pricing-card space-y-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <span class="font-mono text-xs text-[rgba(245,245,247,0.5)] uppercase tracking-wider block">TIER 03 // ENTERPRISE</span>
+                <h3 class="text-2xl font-bold text-white">Industrial Retainer</h3>
+                <p class="text-xs text-[rgba(245,245,247,0.60)] leading-relaxed">
+                    Dedicated systems engineers and technicians managing enterprise campuses, multitenant clouds, and global ad campaigns.
+                </p>
+                <div class="pt-4 border-t border-white/5 space-y-2 text-xs text-[rgba(245,245,247,0.7)]">
+                    <div class="flex items-center gap-2"><span>&bull;</span> 24/7/365 Dedicated Systems Team</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> Sub-1-Hour Emergency SLA Response</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> Multi-Campus Structured Fiber Runs</div>
+                    <div class="flex items-center gap-2"><span>&bull;</span> Full-Funnel Multi-Touch Attribution</div>
+                </div>
+            </div>
+            <a class="btn-glass-secondary w-full text-center text-xs" href="#contact">Consult Enterprise Architect</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==========================================================================
+     6. FAQ SECTION (Clean Accordion, Minimal, Original Q&A Preserved)
+     ========================================================================== -->
+<section class="py-24 px-6 md:px-12 max-w-3xl mx-auto border-t border-white/5" id="faq">
+    
+    <div class="text-center space-y-3 mb-12">
+        <div class="eyebrow-pill">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+            <span>KNOWLEDGE BASE // FAQ</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h2>
+        <p class="text-sm text-[rgba(245,245,247,0.60)]">Technical specifications and deployment workflows clarified.</p>
+    </div>
+
+    <!-- Original Technical FAQ Rows -->
+    <div class="space-y-3" id="faqList">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-row">
+            <button class="faq-question-btn" aria-expanded="false">
+                <span>How long does a typical project take to complete?</span>
+                <span class="material-symbols-outlined faq-chevron">expand_more</span>
+            </button>
+            <div class="faq-answer-body px-6 pb-5">
+                Project timelines vary based on architectural complexity. High-performance website deployments typically take 4–8 weeks, while full data-room and structured infrastructure rollouts range between 2–4 months. We deliver milestone-based gantt charts during initial technical discovery.
             </div>
         </div>
-        <div class="md:col-span-7">
-            <form class="glass-card border border-outline-variant rounded-2xl p-md md:p-xl space-y-md reveal-up" id="contactForm">
-                <div class="grid md:grid-cols-2 gap-md">
-                    <div class="space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formName">Full Name</label>
-                        <input id="formName" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="John Doe" type="text" required>
+
+        <!-- FAQ 2 -->
+        <div class="faq-row">
+            <button class="faq-question-btn" aria-expanded="false">
+                <span>Do you offer on-site hardware and rack installations?</span>
+                <span class="material-symbols-outlined faq-chevron">expand_more</span>
+            </button>
+            <div class="faq-answer-body px-6 pb-5">
+                Yes. Our certified technicians handle server rack assembly, Cat6A/fiber optic cable drops, managed switch configuration, CCTV camera mounting, and biometric access controllers directly at your enterprise facility.
+            </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-row">
+            <button class="faq-question-btn" aria-expanded="false">
+                <span>Can I combine digital marketing with infrastructure services?</span>
+                <span class="material-symbols-outlined faq-chevron">expand_more</span>
+            </button>
+            <div class="faq-answer-body px-6 pb-5">
+                That is our foundational distinction. We frequently configure both physical network infrastructure and full-funnel digital customer acquisition under a single SLA contract, avoiding finger-pointing between multiple disjointed vendors.
+            </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-row">
+            <button class="faq-question-btn" aria-expanded="false">
+                <span>What is included in the free technical quote?</span>
+                <span class="material-symbols-outlined faq-chevron">expand_more</span>
+            </button>
+            <div class="faq-answer-body px-6 pb-5">
+                Our technical quote includes an architectural audit of your current stack, scope of work breakdown, itemized hardware/software bill of materials, and a 30-minute consultation with a systems architect with zero obligation.
+            </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-row">
+            <button class="faq-question-btn" aria-expanded="false">
+                <span>Do you provide ongoing SLA maintenance and support?</span>
+                <span class="material-symbols-outlined faq-chevron">expand_more</span>
+            </button>
+            <div class="faq-answer-body px-6 pb-5">
+                Yes. All deployments include post-launch warranty and monitoring options. Enterprise retainers enjoy 24/7 priority support with sub-1-hour response guarantees for mission-critical disruptions.
+            </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     7. FINAL CTA / CONTACT (CTA Neon Orb: cta-orb.mp4)
+     Cinematic final CTA with radial gradient masked Neon Orb
+     ========================================================================== -->
+<section class="cta-section-wrap border-t border-white/5" id="contact">
+    
+    <!-- Neon Orb Video Background -->
+    <div class="cta-orb-wrap">
+        <video autoplay muted loop playsinline preload="metadata" poster="animations/cta-orb-poster.jpg">
+            <source src="animations/cta-orb.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Content placed above Orb -->
+    <div class="max-w-4xl mx-auto text-center space-y-6 relative z-10 mb-16">
+        <div class="eyebrow-pill">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]"></span>
+            <span>LET'S BUILD</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
+            Ready to Build <span class="neon-gradient-text">What's Next?</span>
+        </h2>
+        <p class="text-base sm:text-lg text-[rgba(245,245,247,0.7)] max-w-xl mx-auto leading-relaxed">
+            Whether you need a high-performance web platform or full enterprise network wiring, our engineering team is ready to deploy.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+            <a class="btn-neon-primary" href="#contactForm">
+                <span>Start a Project</span>
+                <span class="material-symbols-outlined !text-lg">arrow_forward</span>
+            </a>
+            <a class="btn-glass-secondary" href="tel:+923343096932">
+                <span>Contact Us</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Integrated Technical Briefing Form (Preserving all working functionality) -->
+    <div class="max-w-4xl mx-auto relative z-10 grid lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Direct Liaison Cards -->
+        <div class="lg:col-span-5 space-y-4">
+            <div class="p-5 rounded-2xl bg-[#0c0c12]/80 backdrop-blur-xl border border-white/10 flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#BFA5FF] shrink-0">
+                    <span class="material-symbols-outlined">alternate_email</span>
+                </div>
+                <div>
+                    <span class="font-mono text-[10px] text-[rgba(245,245,247,0.5)] uppercase tracking-wider block">Technical Liaison Email</span>
+                    <a href="mailto:raktechsofthub@gmail.com" class="text-sm font-semibold text-white hover:text-[#8B5CF6] transition-colors" data-setting="email">
+                        raktechsofthub@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#0c0c12]/80 backdrop-blur-xl border border-white/10 flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#BFA5FF] shrink-0">
+                    <span class="material-symbols-outlined">call</span>
+                </div>
+                <div>
+                    <span class="font-mono text-[10px] text-[rgba(245,245,247,0.5)] uppercase tracking-wider block">Direct Engineering Line</span>
+                    <a href="tel:+923343096932" class="text-sm font-semibold text-white hover:text-[#8B5CF6] transition-colors" data-setting="phone">
+                        +92 334 3096932
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#0c0c12]/80 backdrop-blur-xl border border-white/10 space-y-2 text-xs font-mono text-[rgba(245,245,247,0.6)]">
+                <div class="text-[#BFA5FF] flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>STATION: ASIA-PK-01 // GLOBAL</span>
+                </div>
+                <div>SLA Guarantee: Sub-48-Hour Proposal</div>
+            </div>
+        </div>
+
+        <!-- Right: Briefing Console Form -->
+        <div class="lg:col-span-7">
+            <form class="briefing-console p-6 md:p-8 space-y-4" id="contactForm">
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="font-mono text-xs text-[#BFA5FF] uppercase tracking-wider">PROJECT_SPECIFICATION_INPUT</span>
+                    <span class="text-[11px] font-mono text-emerald-400">ENCRYPTION: ACTIVE</span>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="console-label" for="formName">Full Name *</label>
+                        <input id="formName" class="console-input" placeholder="e.g. David Vance" type="text" required>
                     </div>
-                    <div class="space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formCompany">Company</label>
-                        <input id="formCompany" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="TechCorp Intl." type="text">
+                    <div>
+                        <label class="console-label" for="formCompany">Organization / Enterprise</label>
+                        <input id="formCompany" class="console-input" placeholder="e.g. Apex Dynamics Ltd." type="text">
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-md">
-                    <div class="space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formEmail">Email Address</label>
-                        <input id="formEmail" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="john@example.com" type="email">
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="console-label" for="formEmail">Email Address *</label>
+                        <input id="formEmail" class="console-input" placeholder="david@apexdynamics.com" type="email">
                     </div>
-                    <div class="space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formPhone">Phone Number</label>
-                        <input id="formPhone" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="+1 (555) 000-0000" type="tel">
+                    <div>
+                        <label class="console-label" for="formPhone">Direct Phone Number</label>
+                        <input id="formPhone" class="console-input" placeholder="+1 (555) 000-0000" type="tel">
                     </div>
                 </div>
-                <div class="space-y-xs">
-                    <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formService">Service Interest</label>
-                    <select id="formService" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface">
-                        <option value="">Select a Service</option>
-                        <option value="seo">SEO Optimization</option>
-                        <option value="meta-ads">Meta Ads Management</option>
-                        <option value="google-ads">Google Ads (PPC)</option>
-                        <option value="social-media">Social Media Marketing</option>
-                        <option value="web-dev">Web Design & Development</option>
+
+                <div>
+                    <label class="console-label" for="formService">Primary Subsystem Required *</label>
+                    <select id="formService" class="console-input text-white bg-[#07070A]">
+                        <option value="">-- Select Required Capability --</option>
+                        <option value="seo">SEO Optimization &amp; Crawl Strategy</option>
+                        <option value="meta-ads">Meta Ads &amp; Paid Scaling</option>
+                        <option value="google-ads">Google Ads (PPC) Search</option>
+                        <option value="social-media">Social Media &amp; Content</option>
+                        <option value="web-dev">Web Design &amp; Development</option>
                         <option value="mobile-app">Mobile App Development</option>
-                        <option value="analytics">Analytics & Reporting</option>
-                        <option value="creative">Creative Media & Video</option>
-                        <option value="network">Office Network Setup</option>
-                        <option value="routing">Routing & Switching</option>
-                        <option value="server">Server & System Deployment</option>
-                        <option value="security">Physical Security</option>
-                        <option value="digital">Digital, Marketing & Creative</option>
-                        <option value="infrastructure">IT Infrastructure & Hardware</option>
+                        <option value="analytics">Analytics &amp; Attribution</option>
+                        <option value="creative">Creative Media &amp; Video</option>
+                        <option value="network">Office Structured Cabling &amp; Racks</option>
+                        <option value="routing">Routing, Switching &amp; Wi-Fi 6</option>
+                        <option value="server">Server &amp; Hypervisor Deployment</option>
+                        <option value="security">Physical Security &amp; Biometrics</option>
+                        <option value="integrated">Full Integrated (Physical + Digital)</option>
                     </select>
                 </div>
-                <div class="space-y-xs">
-                    <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="formMessage">Project Brief</label>
-                    <textarea id="formMessage" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Describe your technical requirements..." rows="4"></textarea>
+
+                <div>
+                    <label class="console-label" for="formMessage">Technical Requirements Brief *</label>
+                    <textarea id="formMessage" class="console-input" placeholder="Detail your project timeline, site locations, user volumes, or specific hardware/software preferences..." rows="3"></textarea>
                 </div>
-                <button class="w-full py-4 bg-primary-container text-on-primary-container rounded-xl font-headline-sm text-headline-sm glow-button uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all" type="submit" id="formSubmit">
-                    Get Started
+
+                <button class="btn-neon-primary w-full !py-3.5 text-sm" type="submit" id="formSubmit">
+                    <span>Transmit Project Brief</span>
+                    <span class="material-symbols-outlined !text-lg">send</span>
                 </button>
-                <p class="text-center text-on-surface-variant font-body-sm">By submitting, you agree to our privacy protocols and technical terms.</p>
             </form>
-            <!-- Success Message -->
-            <div class="glass-card border border-outline-variant rounded-2xl p-xl text-center hidden" id="formSuccess">
-                <div class="text-5xl mb-4">✅</div>
-                <h3 class="font-headline-sm text-headline-sm mb-2">Inquiry Received!</h3>
-                <p class="text-on-surface-variant text-body-md mb-6">Our technical architects will review your project and respond within 48 hours with a comprehensive proposal.</p>
-                <button class="px-8 py-3 border border-outline-variant text-on-surface rounded-xl font-label-md hover:bg-surface-container transition-all uppercase tracking-widest" id="formReset">Submit Another Inquiry</button>
+
+            <!-- Success Confirmation -->
+            <div class="briefing-console p-8 text-center space-y-4 hidden" id="formSuccess">
+                <div class="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto text-2xl">&check;</div>
+                <h3 class="text-xl font-bold text-white">Briefing Transmitted Successfully</h3>
+                <p class="text-xs text-[rgba(245,245,247,0.60)] max-w-md mx-auto leading-relaxed">
+                    Your parameters have been logged. Our systems architects will transmit a comprehensive proposal within 48 hours.
+                </p>
+                <button class="btn-glass-secondary !py-2 !px-4 text-xs" id="formReset">Submit Additional Specifications</button>
             </div>
-        </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="w-full py-xl bg-surface-container-lowest border-t border-outline-variant">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
-        <div class="md:col-span-1 space-y-md">
-            <a class="font-headline-sm text-headline-sm text-on-surface tracking-tighter" href="#" id="footerLogo">RAKTechSoftHub</a>
-            <p class="text-on-surface-variant font-body-sm pr-md" data-setting="company-desc">
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="w-full py-16 bg-[#040406] border-t border-white/5">
+    <div class="max-w-max-width mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+        
+        <div class="space-y-4">
+            <a class="font-bold text-lg text-white flex items-center gap-3 group" href="#home" id="footerLogo">
+                <div class="w-8 h-8 rounded-lg bg-[#0c0c12] border border-white/10 flex items-center justify-center p-1 group-hover:border-[#8B5CF6] transition-all group-hover:shadow-[0_0_12px_rgba(139,92,246,0.35)]">
+                    <img src="logo_transparent.png?v=4" alt="RAKTechSoftHub Logo" class="w-full h-full object-contain">
+                </div>
+                <span>RAKTechSoftHub</span>
+            </a>
+            <p class="text-xs text-[rgba(245,245,247,0.50)] leading-relaxed" data-setting="company-desc">
                 Global provider of industrial-grade IT, infrastructure, and digital creative services. Engineering the future, one byte and bolt at a time.
             </p>
+            <div class="font-mono text-[10px] text-[#BFA5FF]">
+                SYSTEM STATION: ASIA-PK-01 // GLOBAL
+            </div>
         </div>
-        <div class="space-y-sm">
-            <h5 class="font-label-md text-label-md text-primary uppercase">Services</h5>
-            <nav class="flex flex-col gap-xs font-body-sm text-body-sm text-on-surface-variant">
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#services">Digital Marketing</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#services">Software Development</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#infrastructure">Network Infrastructure</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#infrastructure">Security Engineering</a>
+
+        <div class="space-y-3">
+            <h5 class="font-mono text-xs text-[#8B5CF6] uppercase tracking-wider">Subsystems</h5>
+            <nav class="flex flex-col gap-2 text-xs text-[rgba(245,245,247,0.60)]">
+                <a class="hover:text-white transition-colors" href="#services">Digital Marketing</a>
+                <a class="hover:text-white transition-colors" href="#services">Software Engineering</a>
+                <a class="hover:text-white transition-colors" href="#infrastructure">Network Infrastructure</a>
+                <a class="hover:text-white transition-colors" href="#infrastructure">Security &amp; Surveillance</a>
             </nav>
         </div>
-        <div class="space-y-sm">
-            <h5 class="font-label-md text-label-md text-primary uppercase">Company</h5>
-            <nav class="flex flex-col gap-xs font-body-sm text-body-sm text-on-surface-variant">
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#infrastructure">About Us</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block footer-coming-soon" href="#" data-page="Privacy Policy">Privacy Policy</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block footer-coming-soon" href="#" data-page="Terms of Service">Terms of Service</a>
-                <a class="hover:text-primary transition-colors hover:translate-x-1 inline-block" href="#contact">Contact Us</a>
+
+        <div class="space-y-3">
+            <h5 class="font-mono text-xs text-[#8B5CF6] uppercase tracking-wider">Enterprise</h5>
+            <nav class="flex flex-col gap-2 text-xs text-[rgba(245,245,247,0.60)]">
+                <a class="hover:text-white transition-colors" href="#infrastructure">About the Foundry</a>
+                <a class="hover:text-white transition-colors" href="#pricing">Pricing Plans</a>
+                <a class="hover:text-white transition-colors" href="#faq">Technical FAQ</a>
+                <a class="hover:text-white transition-colors" href="#contact">Contact Briefing</a>
             </nav>
         </div>
-        <div class="space-y-sm">
-            <h5 class="font-label-md text-label-md text-primary uppercase">Newsletter</h5>
-            <form class="flex gap-2" id="newsletterForm">
-                <input class="bg-surface-container border border-outline-variant rounded p-2 text-xs flex-grow focus:border-primary focus:ring-0 outline-none" placeholder="Email" type="email" id="newsletterEmail" required>
-                <button type="submit" class="bg-primary-container text-on-primary-container p-2 rounded flex items-center justify-center transition-all hover:brightness-110" id="newsletterBtn">
-                    <span class="material-symbols-outlined !text-base">send</span>
-                </button>
-            </form>
-            <p class="text-[10px] text-on-surface-variant" id="newsletterMsg">Subscribe for technical whitepapers and industry insights.</p>
+
+        <div class="space-y-3">
+            <h5 class="font-mono text-xs text-[#8B5CF6] uppercase tracking-wider">Live Telemetry</h5>
+            <div class="p-4 rounded-xl bg-[#0a0a10] border border-white/5 space-y-2 text-xs font-mono">
+                <div class="flex items-center gap-2 text-emerald-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>ALL SYSTEMS NOMINAL</span>
+                </div>
+                <div class="text-[11px] text-[rgba(245,245,247,0.4)]">60 FPS RUNTIME CONFIRMED</div>
+                <div class="text-[11px] text-[#BFA5FF]">LAT: 25.20° N // LON: 55.27° E</div>
+            </div>
         </div>
     </div>
-    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mt-xl pt-md border-t border-outline-variant/30 text-center text-on-surface-variant font-body-sm" data-setting="copyright">
-        &copy; 2026 RAKTechSoftHub. All rights reserved.
+
+    <div class="max-w-max-width mx-auto px-6 md:px-12 mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-xs text-[rgba(245,245,247,0.4)] font-mono gap-4" data-setting="copyright">
+        <span>&copy; 2026 RAKTechSoftHub. All rights reserved.</span>
+        <span>CONTROLLED NEON // CINEMATIC RUNTIME</span>
     </div>
 </footer>
 
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
     <span class="material-symbols-outlined">arrow_upward</span>
 </button>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/923092003125?text=Hi%20RAKTechSoftHub!%20I'm%20interested%20in%20your%20services." target="_blank" rel="noopener" class="whatsapp-float" id="whatsappFloat" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32" fill="currentColor" width="26" height="26"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.502 1.14 6.746 3.072 9.384L1.06 31.372l6.174-1.972A15.93 15.93 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.312 22.618c-.388 1.092-2.278 2.09-3.142 2.164-.794.068-1.782.096-2.876-.182a26.256 26.256 0 01-2.604-.964c-4.584-1.978-7.576-6.618-7.806-6.924-.224-.306-1.838-2.45-1.838-4.67 0-2.222 1.164-3.314 1.578-3.766.414-.452.902-.564 1.202-.564l.866.016c.278.012.652-.106 1.02.778.388.918 1.318 3.222 1.432 3.454.114.232.19.504.038.81-.152.306-.228.496-.456.766-.228.268-.48.598-.684.802-.228.228-.466.476-.2.934s1.186 1.956 2.546 3.168c1.748 1.556 3.222 2.038 3.678 2.268.456.228.722.19.988-.114.268-.306 1.138-1.326 1.44-1.778.304-.452.606-.376 1.022-.228.414.152 2.638 1.246 3.092 1.472.456.228.758.342.87.53.114.19.114 1.092-.274 2.184z"/></svg>
-    <span class="whatsapp-tooltip">Chat with us!</span>
+<!-- WhatsApp Direct Access -->
+<a href="https://wa.me/923092003125?text=Hi%20RAKTechSoftHub!%20I'm%20interested%20in%20your%20services." target="_blank" rel="noopener" class="whatsapp-float" id="whatsappFloat" aria-label="Direct Engineering Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" width="24" height="24"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.502 1.14 6.746 3.072 9.384L1.06 31.372l6.174-1.972A15.93 15.93 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.312 22.618c-.388 1.092-2.278 2.09-3.142 2.164-.794.068-1.782.096-2.876-.182a26.256 26.256 0 01-2.604-.964c-4.584-1.978-7.576-6.618-7.806-6.924-.224-.306-1.838-2.45-1.838-4.67 0-2.222 1.164-3.314 1.578-3.766.414-.452.902-.564 1.202-.564l.866.016c.278.012.652-.106 1.02.778.388.918 1.318 3.222 1.432 3.454.114.232.19.504.038.81-.152.306-.228.496-.456.766-.228.268-.48.598-.684.802-.228.228-.466.476-.2.934s1.186 1.956 2.546 3.168c1.748 1.556 3.222 2.038 3.678 2.268.456.228.722.19.988-.114.268-.306 1.138-1.326 1.44-1.778.304-.452.606-.376 1.022-.228.414.152 2.638 1.246 3.092 1.472.456.228.758.342.87.53.114.19.114 1.092-.274 2.184z"/></svg>
 </a>
 
-<!-- Toast Container -->
+<!-- Toast Notifications Container -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- Three.js and GLTFLoader CDNs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<!-- Custom 3D Animation Code -->
-<script src="js/3d-animations.js"></script>
-<script src="script.js?v=2"></script>
+<!-- Libraries: GSAP, ScrollTrigger, Lenis -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+<!-- Project Application Script -->
+<script src="script.js?v=14"></script>
 </body>
 </html>
