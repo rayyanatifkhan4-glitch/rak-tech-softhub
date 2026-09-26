@@ -3,6 +3,7 @@ import { Plus, Search, Mail, Phone, X, Trash2, Download, FileText, CheckCircle2,
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { loadDatabase, saveDatabase } from '../utils/db';
+import { drawBrandedHeader, BRAND } from '../utils/documentBranding';
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
@@ -136,16 +137,91 @@ export default function Clients() {
 
   const generateQuotePDF = (quote, action = 'preview') => {
     const doc = new jsPDF();
-    doc.setFontSize(22); doc.setTextColor(59, 130, 246); doc.text('RAK Tech Soft Hub', 14, 20);
-    doc.setFontSize(16); doc.setTextColor(50); doc.text('QUOTATION', 14, 42);
-    doc.setFontSize(10); doc.text(`ID: ${quote.id}`, 14, 49); doc.text(`Date: ${quote.date}`, 14, 54);
-    doc.text(`For: ${quote.client}`, 14, 74);
+    
+    // Official Branded Header with Logo, Direct Engineering Line, and Watermark
+    drawBrandedHeader(doc, { pageNo: 1, totalPages: 1 });
+
+    // Document Title Banner
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(124, 58, 237); // Brand Violet
+    doc.text('OFFICIAL PROJECT QUOTATION', 14, 38);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Quote ID: ${quote.id}`, 14, 44);
+    doc.text(`Valid Until: ${quote.date}`, 14, 49);
+    doc.text(`Status: ${quote.status || 'Draft'}`, 196, 44, { align: 'right' });
+
+    // Client Information Box
+    doc.setFillColor(248, 250, 252);
+    doc.setDrawColor(226, 232, 240);
+    doc.roundedRect(14, 54, 182, 22, 2, 2, 'FD');
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text('PROPOSED FOR (CLIENT / PROSPECT):', 18, 60);
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text(quote.client || 'Valued Client', 18, 66);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(71, 85, 105);
+    let contactInfo = [];
+    if (quote.clientEmail) contactInfo.push(`Email: ${quote.clientEmail}`);
+    if (quote.clientPhone) contactInfo.push(`Phone: ${quote.clientPhone}`);
+    doc.text(contactInfo.join('  |  ') || 'Digital & Infrastructure Growth Account', 18, 71);
+
+    const lineItems = quote.items || [];
+    const tableBody = lineItems.map((it, idx) => [
+      idx + 1, it.name, it.qty, `Rs. ${Number(it.rate).toLocaleString()}`, `Rs. ${Number(it.total).toLocaleString()}`
+    ]);
+
     autoTable(doc, {
-      startY: 85,
-      head: [['#', 'Description', 'Qty', 'Rate', 'Total']],
-      body: quote.items.map((it, idx) => [idx + 1, it.name, it.qty, it.rate, it.total]),
-      headStyles: { fillColor: [59, 130, 246] }
+      startY: 81,
+      head: [['#', 'Scope / Deliverables Description', 'Qty', 'Unit Rate', 'Total Amount (PKR)']],
+      body: tableBody,
+      theme: 'grid',
+      headStyles: { fillColor: [124, 58, 237], textColor: [255, 255, 255], fontStyle: 'bold' },
+      styles: { fontSize: 9, cellPadding: 3.5 }
     });
+
+    const finalY = doc.lastAutoTable.finalY || 120;
+    
+    // Total block
+    const grandTotal = lineItems.reduce((acc, curr) => acc + (Number(curr.total) || 0), 0);
+    doc.setFillColor(248, 250, 252);
+    doc.rect(120, finalY + 6, 76, 16, 'F');
+    doc.setDrawColor(124, 58, 237);
+    doc.setLineWidth(0.4);
+    doc.rect(120, finalY + 6, 76, 16, 'S');
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Estimated Project Total:', 124, finalY + 14);
+
+    doc.setFontSize(12);
+    doc.setTextColor(124, 58, 237);
+    doc.text(`Rs. ${grandTotal.toLocaleString()}`, 192, finalY + 14, { align: 'right' });
+
+    // Signatures & Acceptance
+    const sigY = Math.min(finalY + 45, 255);
+    doc.setDrawColor(203, 213, 225);
+    doc.setLineWidth(0.3);
+    doc.line(14, sigY, 70, sigY);
+    doc.line(140, sigY, 196, sigY);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Engineering Lead (RAKTechSoftHub)', 14, sigY + 5);
+    doc.text('Client Proposal Approval', 140, sigY + 5);
+
     const blobUrl = doc.output('bloburl');
     if (action === 'print') {
       const iframe = document.createElement('iframe'); iframe.style.display = 'none'; document.body.appendChild(iframe);

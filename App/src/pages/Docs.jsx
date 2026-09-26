@@ -101,39 +101,45 @@ export default function Docs() {
   }, []);
 
   // Helper to draw standard branded RAK Tech Soft Hub letterhead on any PDF page
+  // Helper to draw standard branded RAKTechSoftHub letterhead on any PDF page
   const drawLetterhead = (doc, pageNo, totalPages) => {
-    // 1. Draw vector top bar (sky blue/cyan matching logo theme)
-    doc.setFillColor(14, 165, 233);
-    doc.rect(0, 0, 210, 4, 'F');
+    // 1. Draw vector top bar (violet matching website theme)
+    doc.setFillColor(124, 58, 237);
+    doc.rect(0, 0, 210, 4.5, 'F');
 
     // 2. Official Logo Image
-    doc.addImage(LOGO_BASE64, 'PNG', 14, 8, 12, 12);
+    doc.addImage(LOGO_BASE64, 'PNG', 14, 8, 14, 14);
 
     // 3. Company Title & Slogan
     doc.setFont('Helvetica', 'bold');
     doc.setFontSize(18);
     doc.setTextColor(15, 23, 42); // Charcoal `#0f172a`
-    doc.text('RAK Tech Soft Hub', 30, 19);
+    doc.text('RAKTechSoftHub', 32, 17.5);
 
     doc.setFont('Helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(100, 116, 139); // Slate-500 `#64748b`
-    doc.text('IT Infrastructure & Digital Creative Services', 30, 24);
+    doc.text('Systems Foundry & Digital Infrastructure', 32, 22.5);
 
     // 4. Contact Block (Top-Right)
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(124, 58, 237); // Brand Violet
+    doc.text('Direct Engineering Line: +92 334 3096932', 196, 14, { align: 'right' });
+
+    doc.setFont('Helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(71, 85, 105); // Slate-600 `#475569`
-    doc.text('Office 12, Floor 3, RAK Tech Plaza, Lahore, Pakistan.', 196, 15, { align: 'right' });
-    doc.text('+92 300 1234567 | info@raktechsofthub.com', 196, 19, { align: 'right' });
-    doc.text('www.raktechsofthub.com', 196, 23, { align: 'right' });
+    doc.text('Email: contact@raktechsofthub.com | Web: raktechsofthub.netlify.app', 196, 19, { align: 'right' });
+    doc.text('HQ: Karachi, Pakistan', 196, 23.5, { align: 'right' });
 
     // 5. Header divider lines
-    doc.setDrawColor(59, 130, 246);
-    doc.setLineWidth(0.5);
-    doc.line(14, 28, 196, 28);
+    doc.setDrawColor(139, 92, 246);
+    doc.setLineWidth(0.6);
+    doc.line(14, 27.5, 196, 27.5);
     doc.setDrawColor(226, 232, 240); // slate-200
     doc.setLineWidth(0.15);
-    doc.line(14, 29, 196, 29);
+    doc.line(14, 28.5, 196, 28.5);
 
     // 6. Subtle Watermark (Centered on page)
     doc.saveGraphicsState();
@@ -146,14 +152,14 @@ export default function Docs() {
     doc.setLineWidth(0.15);
     doc.line(14, 278, 196, 278);
 
-    doc.setFillColor(139, 92, 246); // Purple bottom bar
+    doc.setFillColor(124, 58, 237); // Brand Violet bottom bar
     doc.rect(0, 292, 210, 5, 'F');
 
     // Footer Text
     doc.setFont('Helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(148, 163, 184); // Slate-400 `#94a3b8`
-    doc.text('Confidential — RAK Tech Soft Hub', 14, 283);
+    doc.text('Confidential — RAKTechSoftHub Systems Foundry', 14, 283);
     doc.text(`Page ${pageNo} of ${totalPages}`, 196, 283, { align: 'right' });
   };
 
@@ -320,23 +326,18 @@ export default function Docs() {
   const generateMockPDF = (docItem) => {
     const doc = new jsPDF();
     
-    // Title
-    doc.setFontSize(22);
-    doc.setTextColor(59, 130, 246);
-    doc.text('RAK Tech Soft Hub', 14, 20);
+    // Official Branded Header with Logo, Direct Engineering Line, and Watermark
+    drawLetterhead(doc, 1, 1);
     
-    doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text('IT Infrastructure & Digital Creative Services', 14, 26);
-    doc.text(`Folder: ${docItem.folder} | Date Created: ${docItem.date}`, 14, 31);
-    
-    // Divider
-    doc.setDrawColor(220);
-    doc.line(14, 35, 195, 35);
-    
+    doc.setFont('Helvetica', 'bold');
     doc.setFontSize(16);
-    doc.setTextColor(50);
-    doc.text(docItem.name.replace('.pdf', ''), 14, 48);
+    doc.setTextColor(124, 58, 237); // Brand Violet
+    doc.text(docItem.name.replace('.pdf', '').toUpperCase(), 14, 38);
+    
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Folder Archive: ${docItem.folder} | Date Created: ${docItem.date}`, 14, 44);
     
     doc.setFontSize(11);
     doc.setTextColor(80);
@@ -544,10 +545,10 @@ export default function Docs() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 'var(--sp-6)' }}>
         
         {/* Folders */}
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)', alignSelf: 'start' }}>
-          <h3 style={{ marginBottom: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Folder size={20} color="var(--accent-warning)" />
-            Folders
+        <div className="glass-panel" style={{ padding: 'var(--sp-6)', alignSelf: 'start', background: '#0c0c12', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <h3 style={{ marginBottom: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: '8px', color: '#f5f5f7' }}>
+            <Folder size={20} color="#bfa5ff" />
+            Folders Archive
           </h3>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
             {folders.map((folder, idx) => (
@@ -557,16 +558,16 @@ export default function Docs() {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: 'var(--sp-3)', 
-                  background: 'rgba(255,255,255,0.02)',
+                  background: '#12121a',
                   borderRadius: 'var(--radius-sm)',
-                  border: '1px solid var(--border-color)',
+                  border: '1px solid rgba(255,255,255,0.06)',
                   color: 'var(--text-primary)'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Folder size={16} color={folder.color} />
+                    <Folder size={16} color="#8b5cf6" />
                     {folder.name}
                   </div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.2)', padding: '2px 8px', borderRadius: '10px' }}>
+                  <span style={{ fontSize: '0.8rem', color: '#bfa5ff', background: 'rgba(139, 92, 246, 0.15)', padding: '2px 8px', borderRadius: '10px' }}>
                     {documents.filter(d => d.folder === folder.name).length}
                   </span>
                 </div>
@@ -576,10 +577,10 @@ export default function Docs() {
         </div>
 
         {/* Recent Files */}
-        <div className="glass-panel" style={{ padding: 'var(--sp-6)' }}>
-          <h3 style={{ marginBottom: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Book size={20} color="var(--accent-primary)" />
-            Recent Documents
+        <div className="glass-panel" style={{ padding: 'var(--sp-6)', background: '#0c0c12', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <h3 style={{ marginBottom: 'var(--sp-4)', display: 'flex', alignItems: 'center', gap: '8px', color: '#f5f5f7' }}>
+            <Book size={20} color="#8b5cf6" />
+            Agency Documents
           </h3>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
@@ -589,33 +590,39 @@ export default function Docs() {
                 justifyContent: 'space-between', 
                 alignItems: 'center',
                 padding: 'var(--sp-4)',
-                background: 'rgba(15, 23, 42, 0.4)',
-                border: '1px solid var(--border-color)',
+                background: '#12121a',
+                border: '1px solid rgba(255, 255, 255, 0.06)',
                 borderRadius: 'var(--radius-md)',
-                transition: 'border-color var(--transition-fast)'
+                transition: 'all var(--transition-fast)'
               }}
-              onMouseOver={e => e.currentTarget.style.borderColor = 'var(--border-highlight)'}
-              onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
+              onMouseOver={e => {
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.45)';
+                e.currentTarget.style.boxShadow = '0 0 15px rgba(139, 92, 246, 0.1)';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ padding: '10px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-primary)' }}>
+                  <div style={{ padding: '10px', background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.25)', borderRadius: 'var(--radius-sm)', color: '#bfa5ff' }}>
                     <File size={20} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: '500', color: 'var(--text-primary)' }}>{doc.name}</h4>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '2px' }}>Folder: {doc.folder} | {doc.size}</p>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: '500', color: '#f5f5f7' }}>{doc.name}</h4>
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '2px' }}>Folder: {doc.folder} | {doc.size}</p>
                   </div>
                 </div>
                 
                 {/* Actions */}
                 <div style={{ display: 'flex', gap: '6px' }}>
-                  <button className="btn btn-outline" style={{ padding: '6px', minWidth: 'auto' }} title="View Document" onClick={() => handleViewDoc(doc)}>
+                  <button className="btn btn-outline" style={{ padding: '6px 10px', minWidth: 'auto', borderColor: 'rgba(139, 92, 246, 0.3)', color: '#bfa5ff' }} title="View Document" onClick={() => handleViewDoc(doc)}>
                     <Eye size={14} />
                   </button>
-                  <button className="btn btn-outline" style={{ padding: '6px', minWidth: 'auto', color: 'var(--accent-success)', borderColor: 'rgba(16,185,129,0.3)' }} title="Print Document" onClick={() => handlePrintDoc(doc)}>
+                  <button className="btn btn-outline" style={{ padding: '6px 10px', minWidth: 'auto', color: 'var(--accent-success)', borderColor: 'rgba(16,185,129,0.3)' }} title="Print Document" onClick={() => handlePrintDoc(doc)}>
                     <Printer size={14} />
                   </button>
-                  <button className="btn btn-outline" style={{ padding: '6px', minWidth: 'auto', color: 'var(--accent-danger)', borderColor: 'rgba(239,68,68,0.3)' }} title="Delete Document" onClick={() => handleDeleteDoc(doc.id)}>
+                  <button className="btn btn-outline" style={{ padding: '6px 10px', minWidth: 'auto', color: 'var(--accent-danger)', borderColor: 'rgba(239,68,68,0.3)' }} title="Delete Document" onClick={() => handleDeleteDoc(doc.id)}>
                     <Trash2 size={14} />
                   </button>
                 </div>
@@ -627,16 +634,16 @@ export default function Docs() {
       </div>
       {/* Upload Modal */}
       {showUploadModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
-          <div className="glass-panel" style={{ padding: '24px', width: '450px', maxWidth: '100%', background: 'var(--surface-elevated, #1e293b)', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(5, 5, 7, 0.88)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
+          <div style={{ padding: '24px', width: '450px', maxWidth: '100%', background: '#0c0c12', borderRadius: '14px', border: '1px solid rgba(139, 92, 246, 0.3)', boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-              <h2 style={{ margin: 0, fontSize: '1.1rem' }}>Upload Document</h2>
+              <h2 style={{ margin: 0, fontSize: '1.1rem', color: '#f5f5f7' }}>Upload Document</h2>
               <button onClick={() => setShowUploadModal(false)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}><X size={18}/></button>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div className="input-group" style={{ marginBottom: 0 }}>
-                <label className="input-label">Document Name *</label>
-                <input className="input-field" value={docName} onChange={e => setDocName(e.target.value)} placeholder="e.g. Acme API Specifications" />
+                <label className="input-label" style={{ color: '#bfa5ff' }}>Document Name *</label>
+                <input className="input-field" style={{ background: '#12121a', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#f5f5f7' }} value={docName} onChange={e => setDocName(e.target.value)} placeholder="e.g. Acme API Specifications" />
               </div>
               <div className="input-group" style={{ marginBottom: 0 }}>
                 <label className="input-label">Select Target Folder</label>
@@ -652,10 +659,10 @@ export default function Docs() {
 
       {/* PDF Preview & Print Modal */}
       {showPreviewModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
-          <div className="glass-panel" style={{ width: '850px', maxWidth: '100%', height: '85vh', display: 'flex', flexDirection: 'column', background: 'var(--surface-elevated, #1e293b)', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(15,23,42,0.4)', flexShrink: 0 }}>
-              <h2 style={{ fontSize: '1.1rem', margin: 0, color: '#f8fafc' }}>Document Preview — {previewFileName}</h2>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(5, 5, 7, 0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
+          <div style={{ width: '850px', maxWidth: '100%', height: '85vh', display: 'flex', flexDirection: 'column', background: '#0c0c12', borderRadius: '14px', border: '1px solid rgba(139, 92, 246, 0.3)', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.85)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.08)', background: '#12121a', flexShrink: 0 }}>
+              <h2 style={{ fontSize: '1.1rem', margin: 0, color: '#f5f5f7' }}>Document Preview — {previewFileName}</h2>
               <button onClick={() => { setShowPreviewModal(false); setPdfPreviewUrl(null); }} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}><X size={18}/></button>
             </div>
             
@@ -665,8 +672,8 @@ export default function Docs() {
               style={{ width: '100%', flex: 1, border: 'none', background: 'white' }} 
             />
 
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', padding: '16px 24px', borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(15,23,42,0.6)', flexShrink: 0 }}>
-              <button className="btn btn-outline" onClick={() => {
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', padding: '16px 24px', borderTop: '1px solid rgba(255,255,255,0.08)', background: '#12121a', flexShrink: 0 }}>
+              <button className="btn btn-outline" style={{ borderColor: 'rgba(255,255,255,0.15)', color: '#f5f5f7' }} onClick={() => {
                 const link = document.createElement('a');
                 link.href = pdfPreviewUrl;
                 link.download = previewFileName;
@@ -699,17 +706,17 @@ export default function Docs() {
 
       {/* Type Letter Modal */}
       {showLetterModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
-          <div className="glass-panel" style={{ width: '850px', maxWidth: '100%', maxHeight: 'calc(100vh - 32px)', display: 'flex', flexDirection: 'column', background: 'var(--surface-elevated, #1e293b)', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 24px 80px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(5, 5, 7, 0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
+          <div style={{ width: '850px', maxWidth: '100%', maxHeight: 'calc(100vh - 32px)', display: 'flex', flexDirection: 'column', background: '#0c0c12', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 25px 80px rgba(0,0,0,0.85)', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
             
             {/* Modal Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 24px', borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(15, 23, 42, 0.5)', flexShrink: 0 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 24px', borderBottom: '1px solid rgba(255,255,255,0.08)', background: '#12121a', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-primary)' }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#bfa5ff' }}>
                   <FileText size={20} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '1.15rem', margin: 0, color: '#f8fafc', fontWeight: 600 }}>Type Official Letter</h2>
+                  <h2 style={{ fontSize: '1.15rem', margin: 0, color: '#f5f5f7', fontWeight: 600 }}>Type Official Letter</h2>
                   <p style={{ fontSize: '0.78rem', color: '#94a3b8', margin: 0 }}>Generate branded official business letters and proposals</p>
                 </div>
               </div>
@@ -720,8 +727,8 @@ export default function Docs() {
             <div style={{ flex: 1, overflowY: 'auto', padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               
               {/* Section 1: Template & References */}
-              <div style={{ background: 'rgba(15,23,42,0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px' }}>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#60a5fa', marginBottom: '14px' }}>
+              <div style={{ background: '#12121a', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#bfa5ff', marginBottom: '14px' }}>
                   Section 1: Template & Document Details
                 </div>
                 <div className="responsive-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
@@ -747,7 +754,7 @@ export default function Docs() {
 
                   <div className="input-group" style={{ marginBottom: 0 }}>
                     <label className="input-label">Save to Folder</label>
-                    <select className="input-field" value={letterFolder} onChange={e => setLetterFolder(e.target.value)} style={{ background: 'rgba(15,23,42,0.8)' }}>
+                    <select className="input-field" value={letterFolder} onChange={e => setLetterFolder(e.target.value)} style={{ background: '#12121a' }}>
                       {folders.map((f, idx) => <option key={idx} value={f.name}>{f.name}</option>)}
                     </select>
                   </div>
@@ -755,8 +762,8 @@ export default function Docs() {
               </div>
 
               {/* Section 2: Recipient & Signatory */}
-              <div style={{ background: 'rgba(15,23,42,0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px' }}>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#a78bfa', marginBottom: '14px' }}>
+              <div style={{ background: '#12121a', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#bfa5ff', marginBottom: '14px' }}>
                   Section 2: Recipient & Signatory Info
                 </div>
                 <div className="responsive-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
@@ -783,8 +790,8 @@ export default function Docs() {
               </div>
 
               {/* Section 3: Subject & Letter Content */}
-              <div style={{ background: 'rgba(15,23,42,0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#34d399' }}>
+              <div style={{ background: '#12121a', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#8b5cf6' }}>
                   Section 3: Letter Content
                 </div>
 
@@ -809,7 +816,7 @@ export default function Docs() {
             </div>
 
             {/* Modal Fixed Footer */}
-            <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(15, 23, 42, 0.7)', display: 'flex', justifyContent: 'flex-end', gap: '12px', flexShrink: 0 }}>
+            <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(255,255,255,0.08)', background: '#12121a', display: 'flex', justifyContent: 'flex-end', gap: '12px', flexShrink: 0 }}>
               <button className="btn btn-outline" onClick={() => setShowLetterModal(false)}>
                 Cancel
               </button>

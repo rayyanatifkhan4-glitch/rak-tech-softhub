@@ -2,24 +2,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark Mode Palette */
-  --bg-dark: #0a0f1e;
-  --bg-body: #0a0f1e;
-  --bg-card: rgba(30, 41, 59, 0.7);
-  --bg-card-hover: rgba(51, 65, 85, 0.8);
-  --surface-elevated: #1e293b;
+  /* Dark Mode Palette — Website Foundry Match */
+  --bg-dark: #050507;
+  --bg-body: #050507;
+  --bg-card: #0c0c12;
+  --bg-card-hover: #12121a;
+  --surface-elevated: #12121a;
 
-  --text-primary: #f8fafc;
+  --text-primary: #f5f5f7;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(255, 255, 255, 0.15);
+  --border-highlight: rgba(139, 92, 246, 0.35);
 
-  /* Brand Accents */
-  --accent-primary: #3b82f6;
-  --accent-primary-hover: #2563eb;
+  /* Brand Accents — Foundry Violet */
+  --accent-primary: #8b5cf6;
+  --accent-primary-hover: #7c3aed;
   --accent-purple: #8b5cf6;
+  --accent-highlight: #bfa5ff;
   --accent-pink: #ec4899;
   --accent-success: #10b981;
   --accent-warning: #f59e0b;
@@ -42,10 +43,10 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.5);
-  --shadow-panel: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 18px rgba(139, 92, 246, 0.35);
+  --shadow-panel: 0 8px 30px rgba(0, 0, 0, 0.6);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -65,15 +66,15 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(191, 165, 255, 0.04) 0px, transparent 50%);
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -92,7 +93,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent-primary-hover);
+  color: var(--accent-highlight);
 }
 
 button {
@@ -100,18 +101,18 @@ button {
   font-family: inherit;
 }
 
-/* Glassmorphism Utilities */
+/* High-Contrast Solid Panel (Replaces Foggy Blur) */
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .glass-panel:hover {
   border-color: var(--border-highlight);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
 }
 
 /* Buttons */

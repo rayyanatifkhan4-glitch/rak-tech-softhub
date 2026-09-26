@@ -3,6 +3,7 @@ import { Plus, Download, FileText, X, Mail, Phone, Trash2, Tag, User, Eye, Print
 import autoTable from 'jspdf-autotable';
 import jsPDF from 'jspdf';
 import { loadDatabase, saveDatabase } from '../utils/db';
+import { drawBrandedHeader, BRAND } from '../utils/documentBranding';
 
 export default function Invoices() {
   const [invoices, setInvoices] = useState([]);
@@ -123,53 +124,89 @@ export default function Invoices() {
 
   const generatePDF = (inv, action = 'preview') => {
     const doc = new jsPDF();
-    doc.setFontSize(22);
-    doc.setTextColor(59, 130, 246);
-    doc.text('RAK Tech Soft Hub', 14, 20);
-    doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text('IT Infrastructure & Digital Creative Services', 14, 26);
-    doc.text('Phone: +92 309 2003125 | Email: raktechsofthub@gmail.com', 14, 31);
-    doc.setFontSize(16);
-    doc.setTextColor(50);
-    doc.text('INVOICE', 14, 45);
-    doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text(`Invoice ID: ${inv.id}`, 14, 52);
-    doc.text(`Date: ${inv.date}`, 14, 57);
-    doc.setFontSize(11);
-    doc.setTextColor(20);
-    doc.text('Billed To:', 14, 70);
-    doc.setFontSize(13);
-    doc.text(inv.client, 14, 76);
-    doc.setFontSize(10);
-    doc.setTextColor(80);
-    let nextY = 82;
-    if (inv.clientEmail) { doc.text(`Email: ${inv.clientEmail}`, 14, nextY); nextY += 5; }
-    if (inv.clientPhone) { doc.text(`Phone: ${inv.clientPhone}`, 14, nextY); nextY += 5; }
     
-    const lineItems = inv.items || [{ name: inv.packageDetails || 'Services', qty: 1, rate: inv.amount, total: inv.amount }];
+    // Official Branded Header with Logo, Direct Engineering Line, and Watermark
+    drawBrandedHeader(doc, { pageNo: 1, totalPages: 1 });
+
+    // Document Title Banner
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(124, 58, 237); // Brand Violet
+    doc.text('COMMERCIAL INVOICE', 14, 38);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Invoice ID: ${inv.id}`, 14, 44);
+    doc.text(`Issue Date: ${inv.date}`, 14, 49);
+    doc.text(`Status: ${inv.status || 'Issued'}`, 196, 44, { align: 'right' });
+
+    // Billed To Box
+    doc.setFillColor(248, 250, 252);
+    doc.setDrawColor(226, 232, 240);
+    doc.roundedRect(14, 54, 182, 22, 2, 2, 'FD');
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text('BILLED TO (CLIENT DETAILS):', 18, 60);
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text(inv.client || 'Valued Client', 18, 66);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(71, 85, 105);
+    let contactInfo = [];
+    if (inv.clientEmail) contactInfo.push(`Email: ${inv.clientEmail}`);
+    if (inv.clientPhone) contactInfo.push(`Phone: ${inv.clientPhone}`);
+    doc.text(contactInfo.join('  |  ') || 'Standard Business Account', 18, 71);
+
+    const lineItems = inv.items || [{ name: inv.packageDetails || 'Engineering & Digital Services', qty: 1, rate: inv.amount, total: inv.amount }];
     const tableBody = lineItems.map((item, index) => [
       index + 1, item.name, item.qty, `Rs. ${Number(item.rate).toLocaleString()}`, `Rs. ${Number(item.total).toLocaleString()}`
     ]);
-    
+
     autoTable(doc, {
-      startY: nextY + 5,
-      head: [['#', 'Description', 'Qty', 'Rate', 'Total']],
+      startY: 81,
+      head: [['#', 'Description / Service Item', 'Qty', 'Unit Rate', 'Amount (PKR)']],
       body: tableBody,
       theme: 'grid',
-      headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255] }
+      headStyles: { fillColor: [124, 58, 237], textColor: [255, 255, 255], fontStyle: 'bold' },
+      styles: { fontSize: 9, cellPadding: 3.5 }
     });
+
+    const finalY = doc.lastAutoTable.finalY || 120;
     
-    const finalY = doc.lastAutoTable.finalY || 100;
+    // Total block
+    doc.setFillColor(248, 250, 252);
+    doc.rect(120, finalY + 6, 76, 16, 'F');
+    doc.setDrawColor(124, 58, 237);
+    doc.setLineWidth(0.4);
+    doc.rect(120, finalY + 6, 76, 16, 'S');
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Total Amount Due:', 124, finalY + 14);
+
     doc.setFontSize(12);
-    doc.text(`Total Amount Due:`, 110, finalY + 15);
-    doc.setFontSize(14);
-    doc.text(`Rs. ${Number(inv.amount).toLocaleString()}`, 160, finalY + 15, { align: 'right' });
-    doc.text('_______________________', 14, finalY + 45);
-    doc.text('Authorized Signature', 14, finalY + 51);
-    doc.text('_______________________', 130, finalY + 45);
-    doc.text("Receiver's Signature", 130, finalY + 51);
+    doc.setTextColor(124, 58, 237);
+    doc.text(`Rs. ${Number(inv.amount).toLocaleString()}`, 192, finalY + 14, { align: 'right' });
+
+    // Signatures
+    const sigY = Math.min(finalY + 45, 255);
+    doc.setDrawColor(203, 213, 225);
+    doc.setLineWidth(0.3);
+    doc.line(14, sigY, 70, sigY);
+    doc.line(140, sigY, 196, sigY);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Authorized Signature (RAKTechSoftHub)', 14, sigY + 5);
+    doc.text("Client Acceptance & Signature", 140, sigY + 5);
 
     const blobUrl = doc.output('bloburl');
     if (action === 'print') {

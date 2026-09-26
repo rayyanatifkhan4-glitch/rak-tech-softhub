@@ -70,8 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
     (function applyAdminSettings() {
         const s = rakGetSettings();
         if (!s) return;
+        let migrated = false;
         if (s.phone === '+923092003125' || s.phone === '+1 (555) 987-6543') {
             s.phone = '+92 334 3096932';
+            migrated = true;
+        }
+        if (s.whatsapp === '923092003125') {
+            s.whatsapp = '923343096932';
+            migrated = true;
+        }
+        if (migrated) {
             try { Storage.setItem(RAK_KEYS.settings, JSON.stringify(s)); } catch {}
         }
         if (s.email) document.querySelectorAll('[data-setting="email"]').forEach(el => { el.textContent = s.email; el.href = `mailto:${s.email}`; });

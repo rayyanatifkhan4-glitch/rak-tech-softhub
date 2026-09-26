@@ -4,6 +4,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { loadDatabase } from '../utils/db';
 import { formatCurrency } from '../utils/format';
+import { drawBrandedHeader, BRAND } from '../utils/documentBranding';
 
 export default function Ledgers() {
   const [clients,        setClients]        = useState([]);
@@ -99,32 +100,55 @@ export default function Ledgers() {
   const generatePDF = () => {
     const doc  = new jsPDF('p', 'mm', 'a4');
     const type = activeTab === 'customers' ? 'Customer' : 'Vendor';
+    
+    // Official Branded Header with Logo, Direct Engineering Line, and Watermark
+    drawBrandedHeader(doc, { pageNo: 1, totalPages: 1 });
+
+    // Document Title Banner
+    doc.setFont('Helvetica', 'bold');
     doc.setFontSize(16);
-    doc.text('RAK Tech Soft Hub', 14, 18);
-    doc.setFontSize(11);
-    doc.setTextColor(100);
-    doc.text(`${type} Ledger Statement`, 14, 26);
-    doc.text(`Account: ${entityName}`, 14, 33);
-    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 14, 40);
+    doc.setTextColor(124, 58, 237); // Brand Violet
+    doc.text(`${type.toUpperCase()} ACCOUNT LEDGER STATEMENT`, 14, 38);
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Account Name: ${entityName}`, 14, 44);
+    doc.text(`Statement Generated: ${new Date().toLocaleDateString()}`, 14, 49);
+    doc.text(`Closing Balance: Rs. ${ledger.balance.toLocaleString()}`, 196, 44, { align: 'right' });
 
     autoTable(doc, {
-      startY   : 48,
-      head     : [['Date', 'Reference', 'Description', 'Debit (Rs.)', 'Credit (Rs.)', 'Balance (Rs.)', 'Status']],
-      body     : ledgerEntries.map(e => [
+      startY     : 55,
+      head       : [['Date', 'Reference', 'Description', 'Debit (Rs.)', 'Credit (Rs.)', 'Balance (Rs.)', 'Status']],
+      body       : ledgerEntries.map(e => [
         e.date || '', e.ref || '', e.description || '',
         e.debit ? e.debit.toLocaleString() : '-',
         e.credit ? e.credit.toLocaleString() : '-',
         e.balance.toLocaleString(),
         e.status || '',
       ]),
-      styles     : { fontSize: 9 },
-      headStyles : { fillColor: [30, 64, 175] },
+      styles     : { fontSize: 8.5, cellPadding: 3 },
+      headStyles : { fillColor: [124, 58, 237], textColor: [255, 255, 255], fontStyle: 'bold' },
     });
 
-    const finalY = doc.lastAutoTable.finalY + 8;
-    doc.setFontSize(10);
-    doc.setTextColor(0);
-    doc.text(`Closing Balance: Rs. ${ledger.balance.toLocaleString()}`, 14, finalY);
+    const finalY = doc.lastAutoTable.finalY + 10;
+    
+    // Summary Box
+    doc.setFillColor(248, 250, 252);
+    doc.rect(120, finalY, 76, 15, 'F');
+    doc.setDrawColor(124, 58, 237);
+    doc.setLineWidth(0.4);
+    doc.rect(120, finalY, 76, 15, 'S');
+
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Final Net Balance:', 124, finalY + 10);
+
+    doc.setFontSize(11);
+    doc.setTextColor(124, 58, 237);
+    doc.text(`Rs. ${ledger.balance.toLocaleString()}`, 192, finalY + 10, { align: 'right' });
+
     return doc;
   };
 
